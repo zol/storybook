@@ -57,7 +57,7 @@
   "scripts": {
     "build-storybook": "build-storybook",
     "build": "gatsby build && cp static/* .travis.yml ./public",
-    "deploy": "gh-pages -t -r git@github.com:storybooks/storybooks.github.io.git -d public -o origin -b master",
+    "deploy": "gh-pages -t -r git@github.com:storybooks/storybook.git -d public -o origin -b gh-pages",
     "deploy-travis": "gh-pages -t -r https://${GH_TOKEN}@github.com/storybooks/storybooks.github.io.git -d public -o origin -b master",
     "develop": "gatsby develop",
     "storybook": "start-storybook -p 9009",

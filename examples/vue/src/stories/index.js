@@ -8,6 +8,8 @@ import { linkTo } from '@storybook/addon-links';
 
 import { withNotes } from '@storybook/addon-notes';
 
+import { withKnobs, text, boolean, number } from '@storybook/addon-knobs';
+
 import MyButton from './Button.vue';
 
 
@@ -97,3 +99,14 @@ storiesOf('Addon Notes', module)
   .add('with some bold text', withNotes({ notes: 'My notes on some bold text' })(() => ({
     render: h => h('div', [h('strong', ['A very long text to display'])])
   })));
+
+
+  storiesOf('Addon Knobs', module)
+    .addDecorator(withKnobs)
+    .add('With some name', () => {
+      const name = text('Name', 'Arunoda Susiripala');
+      const age = number('Age', 89);
+
+      const content = `I am ${name} and I'm ${age} years old.`;
+      return `<div>${content}</div>`;
+    });

@@ -68,3 +68,8 @@ export function withKnobsOptions(options = {}) {
     return withKnobs(...args);
   };
 }
+
+export function experiment(storyFn) {
+  const channel = addons.getChannel();
+  return manager.experiment(channel, storyFn);
+}

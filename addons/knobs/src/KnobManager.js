@@ -3,6 +3,7 @@
 
 import React from 'react';
 import deepEqual from 'deep-equal';
+
 import WrapStory from './components/WrapStory';
 import KnobStore from './KnobStore';
 
@@ -11,7 +12,7 @@ const PANEL_UPDATE_INTERVAL = 400;
 
 export default class KnobManager {
   constructor() {
-    this.knobStore = null;
+    this.knobStore = new KnobStore();
     this.knobStoreMap = {};
   }
 
@@ -36,6 +37,16 @@ export default class KnobManager {
 
     knobStore.set(name, knobInfo);
     return knobStore.get(name).value;
+  }
+
+  experiment(channel, storyFn) {
+    this.channel = channel;
+    channel.on('addon:knobs:knobChange', ({ name, type, value }) => {
+      console.log('addon:knobs:knobChange', name, type, value);
+      channel.emit('rerender');
+    });
+
+    return storyFn;
   }
 
   wrapStory(channel, storyFn, context) {

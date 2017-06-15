@@ -5,13 +5,10 @@ import { storiesOf } from '@storybook/vue';
 
 import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
-
 import { withNotes } from '@storybook/addon-notes';
-
-import { withKnobs, text, boolean, number } from '@storybook/addon-knobs';
+import { experiment, text, boolean, number } from '@storybook/addon-knobs';
 
 import MyButton from './Button.vue';
-
 
 storiesOf('Button', module)
   // Works if Vue.component is called in the config.js in .storybook 
@@ -100,13 +97,11 @@ storiesOf('Addon Notes', module)
     render: h => h('div', [h('strong', ['A very long text to display'])])
   })));
 
+storiesOf('Addon Knobs', module)
+  .add('With some name', experiment(() => {
+    const name = text('Name', 'Arunoda Susiripala');
+    const age = number('Age', 89);
 
-  storiesOf('Addon Knobs', module)
-    .addDecorator(withKnobs)
-    .add('With some name', () => {
-      const name = text('Name', 'Arunoda Susiripala');
-      const age = number('Age', 89);
-
-      const content = `I am ${name} and I'm ${age} years old.`;
-      return `<div>${content}</div>`;
-    });
+    const content = `I am ${name} and I'm ${age} years old.`;
+    return `<div>${content}</div>`;
+  }));

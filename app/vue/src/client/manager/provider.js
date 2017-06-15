@@ -24,11 +24,6 @@ export default class ReactProvider extends Provider {
       selectedStory,
     };
 
-    // Add the react-perf query string to the iframe if that present.
-    if (/react_perf/.test(location.search)) {
-      queryParams.react_perf = '1';
-    }
-
     const queryString = qs.stringify(queryParams);
     const url = `iframe.html?${queryString}`;
     return <Preview url={url} />;
@@ -40,6 +35,10 @@ export default class ReactProvider extends Provider {
     });
     this.channel.on('setStories', data => {
       api.setStories(data.stories);
+    });
+    this.channel.on('rerender', data => {
+      console.log('rerender request received in manager');
+      this.channel.emit('rerender');
     });
     this.channel.on('selectStory', data => {
       api.selectStory(data.kind, data.story);

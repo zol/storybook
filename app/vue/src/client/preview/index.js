@@ -22,10 +22,12 @@ const isBrowser =
 const storyStore = new StoryStore();
 const reduxStore = createStore(reducer);
 const context = { storyStore, reduxStore };
+let queryParams;
+let channel;
 
 if (isBrowser) {
-  const queryParams = qs.parse(window.location.search.substring(1));
-  const channel = createChannel({ page: 'preview' });
+  queryParams = qs.parse(window.location.search.substring(1));
+  channel = createChannel({ page: 'preview' });
   channel.on('setCurrentStory', data => {
     reduxStore.dispatch(selectStory(data.kind, data.story));
   });
@@ -48,7 +50,7 @@ export const configure = configApi.configure.bind(configApi);
 // initialize the UI
 const renderUI = () => {
   if (isBrowser) {
-    render(context);
+    render(context, channel);
   }
 };
 

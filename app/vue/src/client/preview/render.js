@@ -37,6 +37,7 @@ export function renderException(error) {
 
 export function renderMain(data, storyStore) {
   if (storyStore.size() === 0) return null;
+  console.log('renderMain');
 
   const { selectedKind, selectedStory } = data;
 

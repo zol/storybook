@@ -20,7 +20,7 @@ humans
 throw new Rock({ size: 'medium' });
 ```
 
-## Code examples
+## Custom component example
 
 :::Test {test: true}
 

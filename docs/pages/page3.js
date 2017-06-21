@@ -1,5 +1,4 @@
-import React, { createElement } from 'react';
-import createFragment from 'react-addons-create-fragment';
+import React from 'react';
 
 import Head from 'next/head';
 import Link from 'next/link';
@@ -44,4 +43,3 @@ export default () =>
     </Container>
     <Link prefetch href="/"><a>I bet next has more stars (?)</a></Link>
   </Page>;
-  

@@ -20,6 +20,8 @@ humans.map(human => new Slave(human));
 thow new Rock({ size: 'medium' });
 ```
 
+## Code examples
+
 :::Test {test: true}
 
 ```js // human.js
@@ -27,6 +29,9 @@ thow new Rock({ size: 'medium' });
 ```
 
 :::
+
+> the above is a code-sample wrapped in a react component named `Test`,
+> The react component will also receive props `test` with value `true`.
 
 test
 

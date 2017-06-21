@@ -10,7 +10,6 @@ module.exports = function blockPlugin() {
     if (!keep) return;
     if (keep.index !== 0) return;
 
-    /* istanbul ignore if - never used (yet) */
     if (silent) return true;
 
     const linesToEat = [];
@@ -21,11 +20,12 @@ module.exports = function blockPlugin() {
       const next = value.indexOf(C_NEWLINE, idx + 1);
       // either slice until next NEWLINE or slice until end of string
       const lineToEat = next !== -1 ? value.slice(idx + 1, next) : value.slice(idx + 1);
-      if (lineToEat.match(regexClose)) break;
-      // const keep = regexClose.exec(value);
-      // if (!keep) break;
+      if (lineToEat.match(regexClose)) {
+        const line = lineToEat;
+        linesToEat.push(lineToEat);
+        break;
+      }
 
-      // remove leading `FENCE ` or leading `FENCE`
       const line = lineToEat;
       linesToEat.push(lineToEat);
       content.push(line);
@@ -41,9 +41,19 @@ module.exports = function blockPlugin() {
     exit();
 
     return add({
-      type: `${keep[1]}`,
+      type: 'ReactComponent',
+      data: {
+        hName: 'component',
+        hProperties: {
+          props: keep[2],
+          component: `${keep[1]}`,
+        },
+      },
       children: contents,
-      options: keep[2],
+      options: {
+        component: `${keep[1]}`,
+        props: keep[2],
+      },
     });
   }
 

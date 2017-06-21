@@ -10,14 +10,14 @@ Run humans, run!
 >
 > _-humans_
 
-```js
-// robot.master.js
-humans.map(human => new Slave(human));
+```js // robot.master.js
+humans
+  .map(human => new Slave(human))
+  .filter(slave => slave.canwork());
 ```
 
-```js
-// human.js
-thow new Rock({ size: 'medium' });
+```js // human.js
+throw new Rock({ size: 'medium' });
 ```
 
 ## Code examples

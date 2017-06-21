@@ -2,104 +2,45 @@ import React from 'react';
 import glamorous from 'glamorous';
 
 import unified from 'unified';
-import remark from 'remark';
 import remarkParse from 'remark-parse';
 import u from 'unist-builder';
-import all from 'mdast-util-to-hast/lib/all';
-import toHast from 'mdast-util-to-hast';
 import reactRenderer from 'remark-react';
 import myCustomBlocks from './myCustomBlocks';
-
-const ReactComponent = (h, node) => {
-  console.log('ReactComponent called!');
-  const { type, children, options } = node;
-  const { component } = options;
-  let props;
-  try {
-    props = eval(`(${options.props.trim()})`);
-  } catch (error) {
-    props = {};
-  } finally {
-    Object.assign(props, { type, mdChildren: children });
-  }
-  console.log([node, component, props]);
-  return h(node, component, props, all(h, node));
-};
-
-const Unknown = (h, node) => {
-  console.log('Unknown called!');
-  console.log(node);
-  // node.data = {
-  //   hProperties: node.options,
-  // };
-  return h(node, 'div', node.options, all(h, node));
-};
 
 const splitLang = /([\w#+]+)(?:\s\/\/\s(.+\.\w+)?(?:\s\|\s)?(\w+)?)?/;
 const code = (h, node) => {
   const { value } = node;
-  const component = 'Code';
   const [, lang, filename, framework] = node.lang.match(splitLang);
   const props = { lang, filename, framework };
-  return h(node, component, props, [all('text', value)]);
+  return h(node, 'code', props, [u('text', value)]);
 };
-const Code = props =>
-  <code style={{ background: 'deepskyblue', padding: 2 }} {...props}>{props.children}</code>;
-const Test = props => {
-  console.log('TEST WAS CALLED', props);
-  return <div style={{ background: 'deeppink', padding: 2 }} {...props}>{props.children}</div>;
-};
-const Temp = props => {
-  console.log('component WAS CALLED', props);
-  return <div style={{ background: 'deeppink', padding: 2 }} {...props}>{props.children}</div>;
-};
-
-const hastToReact = ({
-  tagName = 'div',
-  properties: { children: childrendProps, ...props } = {},
-  children = [],
-  value,
-}) =>
-  React.createElement(
-    React.DOM[tagName] || eval(tagName),
-    { ...props, childrendProps },
-    typeof value === 'string' ? value : Array.from(children.map(hastToReact))
-  );
-
-const processor = unified().use(remarkParse).use(myCustomBlocks);
-
-const hastOptions = {
-  handlers: {
-    ReactComponent,
-    code,
+const Code = glamorous(({ children, className, ...rest }) => {
+  console.log('code', { children, className, ...rest });
+  return <code {...{ className }}>{children}</code>;
+})({
+  background: 'hotpink',
+  whiteSpace: 'pre',
+  'p > &': {
+    display: 'inline-block',
   },
-};
-
-export default content => {
-  const mdast = processor.parse(content);
-
-  const hast = toHast(mdast, hastOptions);
-
-  const react = hastToReact(hast);
-
-  return react;
-};
-
-export const DebugComponent = ({ markdown }) => {
-  const mdast = processor.parse(markdown);
-  const hast = toHast(mdast, hastOptions);
-  const out = hastToReact(hast);
-  console.log(out);
-
+  'div > &': {
+    display: 'block',
+    marginBottom: 20,
+  },
+});
+const Component = glamorous(({ children, className, ...rest }) => {
+  console.log('component', { children, className, ...rest });
   return (
-    <pre>
-      {/* out.props.children*/}
-      {JSON.stringify(hast, null, 2)}
-    </pre>
+    <div {...{ className }}>
+      <p><em>Managed by react</em></p>
+      {children}
+    </div>
   );
-};
+})({
+  background: 'deeppink',
+});
 
-export const Component = ({ markdown }) =>
+export const parser = markdown =>
   unified()
     .use(remarkParse)
     .use(myCustomBlocks)
@@ -107,14 +48,12 @@ export const Component = ({ markdown }) =>
       sanitize: false,
       remarkReactComponents: {
         code: Code,
-        component: Temp,
+        component: Component,
       },
       toHast: {
         handlers: {
-          // ReactComponent: Unknown,
-          // Test,
-          // code,
+          code,
         },
       },
     })
-    .processSync(markdown).contents;
+    .processSync(markdown);

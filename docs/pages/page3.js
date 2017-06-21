@@ -5,7 +5,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Page from '../components/Page';
 
-import reactRenderer, { Component } from '../lib/reactRenderer';
+import { parser } from '../lib/reactRenderer';
 
 import TopNav from '../components/TopNav';
 import PageTitle from '../components/PageTitle';
@@ -13,12 +13,12 @@ import Split from '../components/Split';
 import Container from '../components/Container';
 import Toc from '../components/Toc';
 
-import md from '../content/page3.md';
+import markdown from '../content/page3.md';
 
 // const content = reactRenderer(md);
 
 const toc = [];
-const body = '';
+const body = parser(markdown).contents;
 const intro = '';
 
 // console.log(<div>{createElement(content)}</div>);
@@ -39,7 +39,7 @@ export default () =>
         <nav>
           <Toc toc={toc} />
         </nav>
-        <Component markdown={md} />
+        {body}
       </Split>
     </Container>
     <Link prefetch href="/"><a>I bet next has more stars (?)</a></Link>

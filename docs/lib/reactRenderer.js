@@ -1,11 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import glamorous from 'glamorous';
 
 import unified from 'unified';
-import remarkParse from 'remark-parse';
 import u from 'unist-builder';
+import remarkParse from 'remark-parse';
 import reactRenderer from 'remark-react';
 import myCustomBlocks from './myCustomBlocks';
+import myCustomToc from './myCustomToc';
 
 const splitLang = /([\w#+]+)(?:\s\/\/\s(.+\.\w+)?(?:\s\|\s)?(\w+)?)?/;
 const code = (h, node) => {
@@ -15,7 +17,8 @@ const code = (h, node) => {
   return h(node, 'code', props, [u('text', value)]);
 };
 const Code = glamorous(({ children, className, ...rest }) => {
-  console.log('code', { children, className, ...rest });
+  // console.log('code', { children, className, ...rest });
+  const f = 4;
   return <code {...{ className }}>{children}</code>;
 })({
   background: 'hotpink',
@@ -28,22 +31,31 @@ const Code = glamorous(({ children, className, ...rest }) => {
     marginBottom: 20,
   },
 });
-const Component = glamorous(({ children, className, ...rest }) => {
+Code.displayName = 'Code';
+Code.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
+const Component = glamorous(({ children, className, component, ...rest }) => {
   console.log('component', { children, className, ...rest });
   return (
     <div {...{ className }}>
-      <p><em>Managed by react</em></p>
       {children}
     </div>
   );
 })({
   background: 'deeppink',
 });
+Component.displayName = 'MarkdownReactComponent';
+Component.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export const parser = markdown =>
   unified()
     .use(remarkParse)
     .use(myCustomBlocks)
+    .use(myCustomToc)
     .use(reactRenderer, {
       sanitize: false,
       remarkReactComponents: {
@@ -56,4 +68,4 @@ export const parser = markdown =>
         },
       },
     })
-    .processSync(markdown);
+    .processSync(markdown).contents.props.children;

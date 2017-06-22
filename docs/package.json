@@ -29,6 +29,7 @@
     "react-dom": "^15.6.1",
     "remark-parse": "^3.0.1",
     "remark-react": "^4.0.0",
+    "remark-toc": "^4.0.1",
     "unified": "^6.1.5",
     "unist-builder": "^1.0.2",
     "webpack-watch": "^0.2.0"

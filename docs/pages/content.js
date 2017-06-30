@@ -15,6 +15,10 @@ const content = parser(markdown);
 export default () =>
   <Page>
     <TopNav />
-    <Content>{content}</Content>
-    <Link prefetch href="/"><a>I bet next has more stars (?)</a></Link>
+    <Content>
+      {content}
+    </Content>
+    <Link prefetch href="/">
+      <a>I bet next has more stars (?)</a>
+    </Link>
   </Page>;

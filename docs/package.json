@@ -7,11 +7,12 @@
   "author": "",
   "main": "index.js",
   "scripts": {
-    "build": "next build",
+    "build": "NODE_ENV=production next build",
     "dev": "next",
-    "start": "next start"
+    "start": "NODE_ENV=production next start"
   },
   "dependencies": {
+    "babili-webpack-plugin": "^0.1.2",
     "chokidar": "^1.7.0",
     "glamor": "^2.20.25",
     "glamorous": "^3.23.2",
@@ -32,6 +33,7 @@
     "remark-toc": "^4.0.1",
     "unified": "^6.1.5",
     "unist-builder": "^1.0.2",
+    "webpack-bundle-analyzer": "^2.8.2",
     "webpack-watch": "^0.2.0"
   },
   "private": true

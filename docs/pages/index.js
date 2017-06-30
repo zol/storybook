@@ -2,7 +2,6 @@ import React from 'react';
 import glamorous from 'glamorous';
 
 import Head from 'next/head';
-import Link from 'next/link';
 import Page from '../components/Page';
 
 import TopNav from '../components/TopNav';
@@ -17,66 +16,77 @@ import EmberLogo from '../components/logos/Ember';
 import PolymerLogo from '../components/logos/Polymer';
 import AureliaLogo from '../components/logos/Aurelia';
 
-const Logos = glamorous.div({
-  display: 'flex',
-  flexDirection: 'column',
-  '& > *': {
-    flex: 1,
-  },
-});
-
-export default class IndexPage extends React.Component {
-  static async getInitialProps() {
-    await Promise.resolve(1);
-    return { x: 1 };
-  }
-
-  render() {
-    // eslint-disable-next-line
-    const { x } = this.props;
-    return (
-      <Page>
-        <Head>
-          <title>Ola!</title>
-        </Head>
-        <TopNav />
-        <Hero>
-          <p>The extendible component explorer</p>
-          <button>Start</button>
-        </Hero>
-        <Container width={800} vSpacing={30}>
-          <Blocks>
-            <p>Hi!</p>
-            <ol>
-              <li>a</li>
-              <li>b</li>
-            </ol>
-            <p style={{ minWidth: 100 }}>Hi! I'm a rather long text, but everything is cool!</p>
-          </Blocks>
-        </Container>
-        <Container width={1000} vPadding={30} color={'silver'}>
-          <Blocks>
-            <p>Hi!</p>
-            <p>Hi!</p>
-            <p>Hi!</p>
-            <p>Hi!</p>
-            <p>Hi!</p>
-            <ol>
-              <li>a</li>
-              <li>b</li>
-            </ol>
-          </Blocks>
-        </Container>
-        <Logos>
-          <ReactLogo />
-          <AngularLogo />
-          <VueLogo />
-          <EmberLogo />
-          <PolymerLogo />
-          <AureliaLogo />
-        </Logos>
-        <Link prefetch href="/page2"><a>I bet next has more stars (?)</a></Link>
-      </Page>
-    );
-  }
-}
+export default () =>
+  <Page>
+    <Head>
+      <title>Storybook docs</title>
+    </Head>
+    <TopNav />
+    <Hero>
+      <h1>
+        The extendible component explorer<br />you'll ♥️ to use
+      </h1>
+      <button>Start</button>
+    </Hero>
+    <Container width={800} vSpacing={30} hPadding={10}>
+      <Blocks>
+        <section>
+          <h1>Quick documentation</h1>
+          <ol>
+            <li>Automatic setup</li>
+            <li>Add storybook manually</li>
+            <li>Writing stories</li>
+          </ol>
+        </section>
+        <section>
+          <h1>Custom configuration</h1>
+          <ol>
+            <li>Customise webpack config</li>
+            <li>Custom babel config</li>
+            <li>Adding global CSS & fonts</li>
+          </ol>
+        </section>
+        <section>
+          <h1>Try it now</h1>
+          <code>
+            <pre>
+              npm i -g @storybook/cli<br />cd my-react-app<br />getstorybook
+            </pre>
+          </code>
+        </section>
+      </Blocks>
+    </Container>
+    <Container vPadding={30} hPadding={30}>
+      <h1>Supported UI libraries / frameworks</h1>
+      <Blocks max={6}>
+        <ReactLogo />
+        <VueLogo />
+        <AngularLogo />
+        <EmberLogo />
+        <PolymerLogo />
+        <AureliaLogo />
+      </Blocks>
+    </Container>
+    <Container width={1000} vPadding={30} hPadding={30} background={'silver'}>
+      <h1>Live examples</h1>
+      <Blocks>
+        <p>storybook</p>
+        <p>airbnb</p>
+        <p>slack</p>
+        <p>lonely planet</p>
+        <p>squarespace</p>
+        <p>coursera</p>
+      </Blocks>
+      <button>More...</button>
+    </Container>
+    <Container vPadding={30} hPadding={30}>
+      <h1>Integrations</h1>
+      <Blocks max={6}>
+        <p>Percy</p>
+        <p>Screener</p>
+        <p>Create React App</p>
+        <p>NextJS (planned)</p>
+        <p>Nuxt (planned)</p>
+      </Blocks>
+    </Container>
+  </Page>;

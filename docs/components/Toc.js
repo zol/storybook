@@ -4,9 +4,14 @@ import glamorous from 'glamorous';
 
 const List = glamorous.ol({
   position: 'relative',
-  // counterReset: 'section',
 });
-const Toc = ({ toc, ...rest }) => (toc.length ? <List>{toc}</List> : null);
+
+const Toc = ({ toc }) =>
+  toc.length
+    ? <List>
+        {toc}
+      </List>
+    : null;
 
 Toc.displayName = 'Toc';
 Toc.propTypes = {

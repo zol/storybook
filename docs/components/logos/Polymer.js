@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Logo = () =>
-  <svg version="1.1" viewBox="0 0 414 286">
+  <svg version="1.1" viewBox="0 0 414 286" width="100%">
     <defs />
     <polygon fill="#303F9F" points="83.16 143 41.88 214.5 83.16 286 124.44 214.5" />
     <polygon fill="#3F51B5" points="330.84 0 289.56 71.5 330.84 143 372.12 71.5" />

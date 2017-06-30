@@ -26,9 +26,13 @@ const Page = ({ children }) => {
   });
   css.global('body', {
     margin: 0,
-    padding: '60px 0 0 0',
+    padding: '50px 0 0 0',
   });
-  return <main>{children}</main>;
+  return (
+    <main>
+      {children}
+    </main>
+  );
 };
 Page.propTypes = {
   children: PropTypes.node.isRequired,

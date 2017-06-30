@@ -16,6 +16,7 @@ const Root = glamorous.div(
     position: 'relative',
     display: 'flex',
     flexWrap: 'wrap',
+    overflow: 'hidden',
   },
   ({ vSpacing = 0, hSpacing = 10, count = 1, max = 3 }) => ({
     marginLeft: -hSpacing / 2,
@@ -24,7 +25,11 @@ const Root = glamorous.div(
     marginBottom: vSpacing - hSpacing,
     '& > *': {
       margin: hSpacing / 2,
-      flex: `1 1 ${100 / (count > max ? max : count) - 3}%`,
+      flex: '1 1 auto',
+      flexBasis: `${100 / (count > max ? max : count) - 3}%`,
+      '@media screen and (max-width: 500px)': {
+        flexBasis: 'auto',
+      },
     },
   })
 );
@@ -46,7 +51,11 @@ const Item = glamorous.div(
 
 const Blocks = ({ children, ...rest }) =>
   <Root {...rest} count={Children.count(children)}>
-    {Children.toArray(children).map(child => <Item color={getRandomColor()}>{child}</Item>)}
+    {Children.toArray(children).map(child =>
+      <Item color={getRandomColor()}>
+        {child}
+      </Item>
+    )}
   </Root>;
 
 Blocks.displayName = 'Blocks';

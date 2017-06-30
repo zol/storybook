@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Logo = () =>
-  <svg viewBox="0 0 256 249">
+  <svg viewBox="0 0 256 249" width="100%">
     <defs>
       <linearGradient
         gradientUnits="userSpaceOnUse"

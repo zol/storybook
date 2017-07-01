@@ -51,16 +51,25 @@ const NavItem = glamorous.li({
   '@media screen and (min-width: 501px)': {
     alignItems: 'center',
     justifyContent: 'center',
+    textAlign: 'center',
     fontSize: '13px',
     borderLeft: '1px solid rgba(0, 0, 0, 0.05)',
   },
   '& > a': {
     padding: 12,
+    color: 'currentColor',
+    textDecoration: 'none',
+  },
+  '& > a:hover, &>a:active, &>a:focus': {
+    textDecoration: 'underline',
+    outline: 0,
+    color: '#f1618c',
   },
   '& > a + a': {
-    paddingLeft: 0,
+    marginLeft: -12,
   },
 });
+
 const NavToggle = glamorous(({ children, ...props }) =>
   <button {...props} title="open navigation">
     <MenuIcon />
@@ -76,7 +85,6 @@ const NavToggle = glamorous(({ children, ...props }) =>
     width: 'auto',
   },
 });
-
 const Search = dynamic(import('./Search'), {
   ssr: false,
   loading: glamorous.span({
@@ -94,7 +102,6 @@ const SearchContainer = glamorous.div({
   borderLeft: '1px solid rgba(0, 0, 0, 0.05)',
   order: -1,
 });
-
 const NavContainer = glamorous.div({
   display: 'flex',
   '@media screen and (min-width: 501px)': {
@@ -137,7 +144,11 @@ const TopNav = class extends Component {
     return (
       <div>
         <Bar active={active}>
-          <TopLogo />
+          <Link href="/">
+            <a>
+              <TopLogo />
+            </a>
+          </Link>
           <NavContainer>
             <Nav active={expanded}>
               <NavItem>

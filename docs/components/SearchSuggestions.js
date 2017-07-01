@@ -307,8 +307,8 @@ css.global('.algolia-docsearch-footer--logo', {
 
 const SuggestionsContainer = glamorous.div({
   position: 'fixed',
-  left: 0,
-  right: 0,
+  left: -24,
+  right: -24,
   top: 50,
   zIndex: 1002,
 });

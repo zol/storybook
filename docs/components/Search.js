@@ -1,31 +1,30 @@
 import React, { Component } from 'react';
 import glamorous from 'glamorous';
+import docsearch from 'docsearch.js';
 
 import SearchIcon from './icons/Search';
 
 const Form = glamorous.form({
   display: 'inline-block',
   position: 'relative',
-  height: 30,
+  height: 50,
   whiteSpace: 'nowrap',
   boxSizing: 'border-box',
   verticalAlign: 'middle',
-});
-
-const Wrapper = glamorous.div({
-  width: '100%',
-  height: '100%',
+  '& > *': {
+    display: 'block !important',
+    height: '100%',
+  },
 });
 
 const Submit = glamorous.button({
   position: 'absolute',
-  top: 0,
+  top: 1,
   margin: 0,
   border: 0,
   backgroundColor: 'rgba(255, 255, 255, 0)',
   padding: 0,
   width: 30,
-  lineHeight: '30px',
   height: '100%',
   verticalAlign: 'middle',
   textAlign: 'center',
@@ -46,7 +45,7 @@ const Submit = glamorous.button({
 const Input = glamorous.input({
   lineHeight: 1.2,
   background: 'transparent',
-  '-webkit-appearance': 'none',
+  WebkitAppearance: 'none',
   boxSizing: 'border-box',
   display: 'inline-block',
   transition: 'box-shadow .4s ease, background .4s ease',
@@ -56,7 +55,7 @@ const Input = glamorous.input({
   height: '100%',
   verticalAlign: 'middle',
   whiteSpace: 'normal',
-  fontSize: 12,
+  fontSize: 16,
   color: 'transparent',
   fontFamily: 'inherit',
   margin: 0,
@@ -88,25 +87,50 @@ const Input = glamorous.input({
   },
 });
 
+let count = 1;
+
 const Search = class extends Component {
+  constructor(props) {
+    super(props);
+
+    this.id = `docsearch-${count}`;
+    count += 1;
+    this.submitHandler = event => {
+      event.preventDefault();
+    };
+  }
+  componentDidMount() {
+    const { id } = this;
+    docsearch({
+      apiKey: 'a4f7f972f1d8f99a66e237e7fd2e489f',
+      indexName: 'storybook-js',
+      inputSelector: `#${id}`,
+      autocompleteOptions: {
+        // debug: true,
+        dropdownMenuContainer: '#suggestions',
+      },
+    });
+  }
   render() {
-    const { props } = this;
+    const { props, id } = this;
+    const { onFocus, onBlur } = props;
 
     return (
-      <Form novalidate="novalidate" onsubmit="return false;">
-        <Wrapper role="search">
-          <Input
-            autoComplete="off"
-            id="docsearch"
-            name="search"
-            placeholder="Search the docs"
-            required="required"
-            type="search"
-          />
-          <Submit title="Submit your search query." type="submit">
-            <SearchIcon />
-          </Submit>
-        </Wrapper>
+      <Form novalidate="novalidate" onSubmit={this.submitHandler}>
+        <Input
+          ref={el => (this.input = el)}
+          autoComplete="off"
+          onFocus={onFocus}
+          onBlur={onBlur}
+          id={id}
+          name="search"
+          placeholder="Search the docs"
+          required="required"
+          type="search"
+        />
+        <Submit title="Submit your search query." type="submit" tabIndex="-1">
+          <SearchIcon />
+        </Submit>
       </Form>
     );
   }

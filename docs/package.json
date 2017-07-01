@@ -12,6 +12,11 @@
     "start": "NODE_ENV=production next start"
   },
   "dependencies": {
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.5.2",
+    "babel-preset-react": "^6.24.1",
     "babili-webpack-plugin": "^0.1.2",
     "chokidar": "^1.7.0",
     "glamor": "^2.20.25",
@@ -21,7 +26,7 @@
     "markdown-loader": "^2.0.0",
     "mdast-util-to-hast": "^2.4.1",
     "mdast-util-toc": "^2.0.1",
-    "next": "^3.0.0-beta15",
+    "next": "^3.0.0-beta16",
     "node-hook": "^0.6.1",
     "node-raw": "^0.2.3",
     "prop-types": "^15.5.10",

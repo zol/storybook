@@ -1,44 +1,19 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import dynamic from 'next/dynamic';
+import Link from 'next/link';
 import glamorous from 'glamorous';
 
-// import StorybookIcon from '../components/logos/StorybookIcon';
-import StorybookLogo from '../components/logos/Storybook';
-import MenuIcon from '../components/icons/Menu';
-import GithubIcon from '../components/icons/Github';
-import SlackIcon from '../components/icons/Slack';
-import MediumIcon from '../components/icons/Medium';
-import TwitterIcon from '../components/icons/Twitter';
+import StorybookLogo from './logos/Storybook';
+import MenuIcon from './icons/Menu';
+import GithubIcon from './icons/Github';
+import SlackIcon from './icons/Slack';
+import MediumIcon from './icons/Medium';
+import TwitterIcon from './icons/Twitter';
 
-import Search from '../components/Search';
+import Bar from './TopBar';
+import Suggestions from './SearchSuggestions';
 
-const Bar = glamorous.nav(
-  {
-    position: 'fixed',
-    left: -10,
-    top: '0px',
-    right: -10,
-    bottom: 'auto',
-    padding: '12px 22px',
-    display: 'flex',
-    justifyContent: 'space-between',
-    boxSizing: 'border-box',
-    boxShadow: '0 0 30px rgba(0,0,0,0.3)',
-    height: 50,
-    backgroundImage:
-      'linear-gradient(to bottom, rgba(255,255,255, 1) 0%, rgba(244,244,244, 0.94) 100%)',
-  },
-  ({ active }) => ({
-    '@media screen and (min-width: 501px)': {
-      padding: '12px 22px',
-      zIndex: 999,
-    },
-    '@media screen and (max-width: 500px)': {
-      padding: '8px 16px',
-      zIndex: active ? 1001 : 999,
-    },
-  })
-);
 const TopLogo = glamorous(StorybookLogo)({
   height: '100%',
   width: 'auto',
@@ -48,8 +23,6 @@ const Nav = glamorous.ul(({ active }) => ({
   padding: 0,
   '@media screen and (min-width: 501px)': {
     display: 'flex',
-    margin: '-12px -22px -12px 20px',
-    overflow: 'auto',
     padding: 0,
   },
   '@media screen and (max-width: 500px)': {
@@ -66,41 +39,80 @@ const Nav = glamorous.ul(({ active }) => ({
     opacity: active ? 1 : 0,
   },
 }));
-const NavItem = glamorous.li(
-  {
-    display: 'flex',
+const NavItem = glamorous.li({
+  display: 'flex',
+  boxSizing: 'border-box',
+  '@media screen and (max-width: 500px)': {
+    height: 45,
+    borderBottom: '1px solid rgba(0, 0, 0, 0.05)',
+    paddingLeft: 20,
+    paddingRight: 20,
+  },
+  '@media screen and (min-width: 501px)': {
     alignItems: 'center',
     justifyContent: 'center',
     fontSize: '13px',
     borderLeft: '1px solid rgba(0, 0, 0, 0.05)',
   },
-  ({ padded = true }) => ({
-    padding: padded ? 12 : 0,
-  })
-);
+  '& > a': {
+    padding: 12,
+  },
+  '& > a + a': {
+    paddingLeft: 0,
+  },
+});
 const NavToggle = glamorous(({ children, ...props }) =>
   <button {...props} title="open navigation">
     <MenuIcon />
     {children}
   </button>
 )({
+  background: 'none',
+  border: '0 none',
+  padding: 0,
+  width: 30,
+  '& > *': {
+    height: '100%',
+    width: 'auto',
+  },
+});
+
+const Search = dynamic(import('./Search'), {
+  ssr: false,
+  loading: glamorous.span({
+    padding: 12,
+    lineHeight: '28px',
+    '&::before': {
+      content: '"⋯"',
+      display: 'inline',
+    },
+  }),
+});
+
+const SearchContainer = glamorous.div({
+  display: 'flex',
+  borderLeft: '1px solid rgba(0, 0, 0, 0.05)',
+  order: -1,
+});
+
+const NavContainer = glamorous.div({
+  display: 'flex',
+  '@media screen and (min-width: 501px)': {
+    margin: '-12px -12px -12px 12px',
+  },
+  '@media screen and (max-width: 500px)': {
+    margin: '-8px -16px -8px 16px',
+  },
+});
+const ToggleContainer = glamorous.div({
   '@media screen and (min-width: 501px)': {
     display: 'none',
   },
   '@media screen and (max-width: 500px)': {
-    position: 'absolute',
-    right: 20,
-    top: 10,
-    bottom: 10,
-    auto: 50,
-    display: 'block',
-    background: 'none',
-    border: '0 none',
-    padding: 0,
-  },
-  '& > *': {
-    height: '100%',
-    width: 'auto',
+    display: 'flex',
+    paddingLeft: 8,
+    paddingRight: 16,
+    borderLeft: '1px solid rgba(0, 0, 0, 0.05)',
   },
 });
 
@@ -109,32 +121,70 @@ const TopNav = class extends Component {
     super(props);
 
     this.state = { active: false };
-    this.toggle = () => {
-      this.setState({ active: !this.state.active });
+    this.toggleExpanded = () => {
+      this.setState({ expanded: !this.state.expanded });
+    };
+    this.activateSearching = () => {
+      this.setState({ searching: true });
+    };
+    this.deactivateSearching = () => {
+      this.setState({ searching: false });
     };
   }
   render() {
-    const { active } = this.state;
+    const { expanded, searching } = this.state;
+    const active = expanded || searching;
     return (
-      <Bar active={active}>
-        <TopLogo />
-        <NavToggle onClick={this.toggle} active={active} />
-        <Nav active={active}>
-          <NavItem>Guides</NavItem>
-          <NavItem>Demo</NavItem>
-          <NavItem>Docs</NavItem>
-          <NavItem>Examples</NavItem>
-          <NavItem padded={false}>
-            <Search />
-          </NavItem>
-          <NavItem>
-            <GithubIcon height={20} />
-            <SlackIcon height={20} />
-            <TwitterIcon height={20} />
-            <MediumIcon height={20} />
-          </NavItem>
-        </Nav>
-      </Bar>
+      <div>
+        <Bar active={active}>
+          <TopLogo />
+          <NavContainer>
+            <Nav active={expanded}>
+              <NavItem>
+                <Link href="/guides">
+                  <a>Guides</a>
+                </Link>
+              </NavItem>
+              <NavItem>
+                <Link href="/guides">
+                  <a>Demo</a>
+                </Link>
+              </NavItem>
+              <NavItem>
+                <Link href="/guides">
+                  <a>Docs</a>
+                </Link>
+              </NavItem>
+              <NavItem>
+                <Link href="/guides">
+                  <a>Examples</a>
+                </Link>
+              </NavItem>
+              <NavItem>
+                <a href="https://github.com/storybooks/storybook">
+                  <GithubIcon height={20} />
+                </a>
+                <a href="https://storybooks.slack.com">
+                  <SlackIcon height={20} />
+                </a>
+                <a href="https://twitter.com/storybookjs">
+                  <TwitterIcon height={20} />
+                </a>
+                <a href="https://medium.com/storybookjs">
+                  <MediumIcon height={20} />
+                </a>
+              </NavItem>
+            </Nav>
+            <SearchContainer>
+              <Search onFocus={this.activateSearching} onBlur={this.deactivateSearching} />
+            </SearchContainer>
+            <ToggleContainer>
+              <NavToggle onClick={this.toggleExpanded} active={expanded} />
+            </ToggleContainer>
+          </NavContainer>
+        </Bar>
+        <Suggestions />
+      </div>
     );
   }
 };

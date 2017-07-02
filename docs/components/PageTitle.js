@@ -18,13 +18,39 @@ const Root = glamorous.section(
     alignItems: 'flex-start',
     padding: 30,
     justifyContent: 'flex-start',
+    color: '#fff',
+    textShadow: '1px 1px 2px rgba(0,0,0,0.5)',
+    fontSize: 15,
+    overflow: 'hidden',
+    lineHeight: 1.2,
+    '& h1': {
+      fontSize: '3em',
+      fontWeight: 200,
+      marginTop: 0,
+      marginBottom: 20,
+    },
+    '@media screen and (min-width: 600px)': {
+      '& h1': {
+        float: 'left',
+        maxWidth: '40vw',
+        marginRight: 50,
+      },
+      '& p:first-of-type': {
+        marginTop: 0,
+      },
+    },
   },
   ({ minHeight = '60vh' }) => ({
     minHeight,
   })
 );
 
-const PageTitle = ({ children, ...rest }) => <Root {...rest}><div>{children}</div></Root>;
+const PageTitle = ({ children, ...rest }) =>
+  <Root {...rest}>
+    <div>
+      {children}
+    </div>
+  </Root>;
 
 PageTitle.displayName = 'PageTitle';
 PageTitle.propTypes = {

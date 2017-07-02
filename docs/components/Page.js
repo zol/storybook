@@ -28,6 +28,7 @@ const Page = ({ children }) => {
     margin: 0,
     padding: '50px 0 0 0',
   });
+
   return (
     <main>
       {children}

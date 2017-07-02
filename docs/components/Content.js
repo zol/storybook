@@ -34,7 +34,9 @@ const Content = ({ children }) => {
   return (
     <div>
       <Head>
-        <title>{`${header} - Storybook` || 'Storybook'}</title>
+        <title>
+          {`${header} - Storybook` || 'Storybook'}
+        </title>
       </Head>
       <PageTitle minHeight={'auto'}>
         {intro}

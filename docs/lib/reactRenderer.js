@@ -19,7 +19,11 @@ const code = (h, node) => {
 const Code = glamorous(({ children, className, ...rest }) => {
   // console.log('code', { children, className, ...rest });
   const f = 4;
-  return <code {...{ className }}>{children}</code>;
+  return (
+    <code {...{ className }}>
+      {children}
+    </code>
+  );
 })({
   background: 'hotpink',
   whiteSpace: 'pre',

@@ -23,7 +23,12 @@ const Root = glamorous.section(
   })
 );
 
-const Hero = ({ children, ...rest }) => <Root {...rest}><div>{children}</div></Root>;
+const Hero = ({ children, ...rest }) =>
+  <Root {...rest}>
+    <div>
+      {children}
+    </div>
+  </Root>;
 
 Hero.displayName = 'Hero';
 Hero.propTypes = {

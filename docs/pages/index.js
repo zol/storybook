@@ -1,5 +1,4 @@
 import React from 'react';
-import glamorous from 'glamorous';
 
 import Head from 'next/head';
 import Page from '../components/Page';

@@ -2,14 +2,7 @@ import React, { Children } from 'react';
 import PropTypes from 'prop-types';
 import glamorous from 'glamorous';
 
-const getRandomColor = () => {
-  const letters = '0123456789ABCDEF';
-  let color = '#';
-  for (let i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
-};
+const getColor = (list, index) => list[index] || getColor(list, index - list.length);
 
 const Root = glamorous.div(
   {
@@ -34,25 +27,87 @@ const Root = glamorous.div(
   })
 );
 
+const alignment = ({ aligned = true }) =>
+  aligned
+    ? {
+        alignItems: 'center',
+        justifyContent: 'center',
+      }
+    : {};
+const variance = ({ color = 'silver', variant }) => {
+  switch (variant) {
+    case 'background': {
+      return {
+        backgroundColor: color,
+      };
+    }
+    case 'inverted': {
+      return {
+        backgroundColor: 'white',
+        color,
+      };
+    }
+    case 'bordered': {
+      return {
+        border: `3px double ${color}`,
+        backgroundColor: 'white',
+
+        // color,
+      };
+    }
+    case 'masked': {
+      return {
+        color,
+        backgroundColor: 'transparent',
+        '& > *': {
+          position: 'relative',
+          zIndex: 2,
+          transition: 'all .5s',
+        },
+        '&::after': {
+          transition: 'all .5s',
+
+          content: '" "',
+          position: 'absolute',
+          left: 0,
+          right: 0,
+          top: 0,
+          bottom: 0,
+          background: color,
+          zIndex: 1,
+          borderRadius: 3,
+          opacity: 0.1,
+        },
+      };
+    }
+    default: {
+      return {};
+    }
+  }
+};
+
 const Item = glamorous.div(
   {
+    position: 'relative',
     padding: '40px 30px 45px',
     borderRadius: '3px',
     display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    transition: 'all 5s',
+    transition: 'all .5s',
     boxSizing: 'border-box',
+    '&:hover': {
+      // boxShadow: '0 1px 8px rgba(0,0,0,0.57)',
+      boxShadow: 'inset 0 0 0 3px rgba(0,0,0,0.15)',
+      // boxShadow: '0 1px 8px currentColor',
+    },
   },
-  ({ color = 'silver' }) => ({
-    backgroundColor: color,
-  })
+  alignment,
+  variance
 );
 
-const Blocks = ({ children, ...rest }) =>
+const Blocks = ({ children, colors, variant, aligned, ...rest }) =>
   <Root {...rest} count={Children.count(children)}>
-    {Children.toArray(children).map(child =>
-      <Item color={getRandomColor()}>
+    {Children.toArray(children).map((child, index) =>
+      <Item key={index} variant={variant} aligned={aligned} color={getColor(colors, index)}>
         {child}
       </Item>
     )}
@@ -64,11 +119,15 @@ Blocks.propTypes = {
   vSpacing: PropTypes.number,
   hSpacing: PropTypes.number,
   max: PropTypes.number,
+  variant: PropTypes.oneOf('background', 'inverted', 'bordered'),
+  colors: PropTypes.arrayOf(PropTypes.string),
 };
 Blocks.defaultProps = {
   vSpacing: undefined,
   hSpacing: undefined,
   max: undefined,
+  variant: 'background',
+  colors: ['#f1618c', '#f3ad38', '#a2e05e', '#b57ee5', '#6dabf5', '#f16161'],
 };
 
 export default Blocks;

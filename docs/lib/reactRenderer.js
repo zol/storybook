@@ -2,12 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import glamorous from 'glamorous';
 
+import Lowlight from 'react-lowlight';
+import jsDefinition from 'highlight.js/lib/languages/javascript';
+import jsonDefinition from 'highlight.js/lib/languages/json';
+import shDefinition from 'highlight.js/lib/languages/shell';
+
 import unified from 'unified';
 import u from 'unist-builder';
 import remarkParse from 'remark-parse';
 import reactRenderer from 'remark-react';
 import myCustomBlocks from './myCustomBlocks';
 import myCustomToc from './myCustomToc';
+
+// Then register them with lowlight
+Lowlight.registerLanguage('js', jsDefinition);
+Lowlight.registerLanguage('json', jsonDefinition);
+Lowlight.registerLanguage('sh', shDefinition);
 
 const splitLang = /([\w#+]+)(?:\s\/\/\s(.+\.\w+)?(?:\s\|\s)?(\w+)?)?/;
 const code = (h, node) => {
@@ -16,13 +26,16 @@ const code = (h, node) => {
   const props = { lang, filename, framework };
   return h(node, 'code', props, [u('text', value)]);
 };
-const Code = glamorous(({ children, className, ...rest }) => {
-  // console.log('code', { children, className, ...rest });
+const Code = glamorous(({ children, className, lang, ...rest }) => {
+  // console.log('code', { children, className, lang, ...rest });
   const f = 4;
   return (
-    <code {...{ className }}>
-      {children}
-    </code>
+    <div {...{ className }}>
+      <pre>
+        {JSON.stringify(rest, null, 2)}
+      </pre>
+      <Lowlight value={children[0]} language={lang} />
+    </div>
   );
 })({
   background: 'hotpink',

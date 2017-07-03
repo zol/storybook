@@ -1,6 +1,5 @@
 import React from 'react';
 
-import Link from 'next/link';
 import Page from '../components/Page';
 
 import { parser } from '../lib/reactRenderer';
@@ -18,7 +17,4 @@ export default () =>
     <Content>
       {content}
     </Content>
-    <Link prefetch href="/">
-      <a>I bet next has more stars (?)</a>
-    </Link>
   </Page>;

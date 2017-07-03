@@ -46,6 +46,9 @@ const Content = ({ children }) => {
         <Split>
           <nav>
             <Toc toc={toc} />
+            <MarkdownContent>
+              <h2>Other navigation</h2>
+            </MarkdownContent>
           </nav>
           <MarkdownContent>
             {body}

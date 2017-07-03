@@ -11,7 +11,6 @@ const simplifyPocAst = node => {
   if (node.loose === false) {
     node.loose = true;
   }
-  console.log(node);
   return node;
 };
 

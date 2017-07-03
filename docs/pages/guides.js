@@ -31,8 +31,8 @@ export default () =>
       </p>
     </PageTitle>
     <MarkdownContent>
-      <Container width={800} vSpacing={30} hPadding={10}>
-        <h1>User guides</h1>
+      <Container width={1000} vSpacing={30} hPadding={10}>
+        <h1>For using storybook</h1>
         <Blocks aligned={false} variant={'masked'}>
           <section>
             <h2>Why Storybook</h2>
@@ -76,7 +76,7 @@ export default () =>
           </section>
         </Blocks>
       </Container>
-      <Container width={800} vSpacing={30} hPadding={10}>
+      <Container width={1000} vSpacing={30} hPadding={10}>
         <h1>Setup storybook for your framework</h1>
         <Blocks
           max={6}
@@ -103,8 +103,8 @@ export default () =>
         hPadding={30}
         background={'linear-gradient(135deg, rgb(109, 171, 245) 0%, rgb(162, 224, 94) 100%)'}
       >
-        <h1>Storybook Developement Guides</h1>
-        <Blocks colors={['rgba(0,0,0,0.08)']}>
+        <h1>For development</h1>
+        <Blocks colors={['rgba(0,0,0,0.08)']} max={4}>
           <p>bootstrapping the monorepo</p>
           <p>app architecture</p>
           <p>addon architecture</p>

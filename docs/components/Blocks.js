@@ -96,7 +96,7 @@ const Item = glamorous.div(
     boxSizing: 'border-box',
     '&:hover': {
       // boxShadow: '0 1px 8px rgba(0,0,0,0.57)',
-      boxShadow: 'inset 0 0 0 3px rgba(0,0,0,0.15)',
+      boxShadow: 'inset 0 0 0 3px rgba(0,0,0,0.08)',
       // boxShadow: '0 1px 8px currentColor',
     },
   },

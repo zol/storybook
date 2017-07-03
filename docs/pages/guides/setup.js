@@ -18,3 +18,4 @@ export default () =>
       {content}
     </Content>
   </Page>;
+    

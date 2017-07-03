@@ -5,6 +5,7 @@ import Head from 'next/head';
 import PageTitle from '../components/PageTitle';
 import Container from '../components/Container';
 import Split from '../components/Split';
+import MarkdownContent from '../components/MarkdownContent';
 import Toc from '../components/Toc';
 
 const headingRegexp = /^h[1-6]$/;
@@ -46,7 +47,9 @@ const Content = ({ children }) => {
           <nav>
             <Toc toc={toc} />
           </nav>
-          {body}
+          <MarkdownContent>
+            {body}
+          </MarkdownContent>
         </Split>
       </Container>
     </div>

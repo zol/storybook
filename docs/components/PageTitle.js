@@ -29,7 +29,7 @@ const Root = glamorous.section(
       marginTop: 0,
       marginBottom: 20,
     },
-    '@media screen and (min-width: 600px)': {
+    '@media screen and (min-width: 900px)': {
       '& h1': {
         float: 'left',
         maxWidth: '40vw',

@@ -16,12 +16,12 @@ const Aside = glamorous.aside(
   {
     position: 'relative',
     padding: 30,
-    background: 'rgba(0, 0, 0, .06)',
-    minWidth: 320,
+    background: 'rgba(109, 171, 245, 0.1)',
+    maxWidth: 320,
     boxSizing: 'border-box',
     borderRadius: 3,
-    boxShadow: 'inset 2px 2px 9px 0 rgba(0,0,0,0.3)',
     margin: '0 20px',
+    color: '#6dabf5',
   },
   ({ flip }) => ({
     order: flip ? -1 : 1,

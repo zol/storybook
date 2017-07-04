@@ -9,7 +9,7 @@ import Content from '../../components/Content';
 import Blocks from '../../components/Blocks';
 import Container from '../../components/Container';
 
-import markdown from '../../content/docs/api.md';
+import markdown from '../../content/docs/api1.md';
 
 const content = parser(markdown);
 

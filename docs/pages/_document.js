@@ -26,7 +26,7 @@ export default class MyDocument extends Document {
 
           <link
             rel="stylesheet"
-            href="https://cdn.rawgit.com/isagalaev/highlight.js/887f042d99d99aeeee94119d4cd4dcdb8d667bbf/src/styles/vs2015.css"
+            href="https://cloud.typography.com/7039052/7606172/css/fonts.css"
           />
           <style dangerouslySetInnerHTML={{ __html: this.props.css }} />
         </Head>

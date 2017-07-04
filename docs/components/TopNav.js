@@ -162,7 +162,7 @@ const TopNav = class extends Component {
                 </Link>
               </NavItem>
               <NavItem>
-                <Link href="/guides">
+                <Link href="/docs">
                   <a>Docs</a>
                 </Link>
               </NavItem>

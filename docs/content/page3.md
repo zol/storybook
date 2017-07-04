@@ -32,7 +32,7 @@ throw new Rock({ size: 'medium' });
 :::Test { test: true }
 
 ```js // human.js
-thow new Rock({ size: 'medium' });
+throw new Rock({ size: 'medium' });
 ```
 
 :::

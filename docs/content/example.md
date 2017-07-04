@@ -25,7 +25,7 @@ import addonAPI from '@storybook/addons';
 
 // Register the addon with a unique name.
 addonAPI.register('my-organisation/my-addon', storybookAPI => {
-
+  // do something! 
 });
 ```
 

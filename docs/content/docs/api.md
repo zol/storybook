@@ -17,7 +17,7 @@ import { storiesOf } from '@storybook/react'
 usage:
 
 ```js
-storyKind = storiesOf(storyName, module)
+const storyKind = storiesOf(storyName, module)
 ```
 
 Return [storyKind](api#storykind) object.

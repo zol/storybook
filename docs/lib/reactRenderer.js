@@ -15,133 +15,158 @@ import { css } from 'glamor';
 
 css.global('.prism-code', {
   display: 'block',
-  // whiteSpace: 'pre',
-  backgroundColor: '#1D1F21',
   color: '#C5C8C6',
   padding: '0.5rem',
-  // margin: '0',
   boxSizing: 'border-box',
   verticalAlign: 'baseline',
   outline: 'none',
   textShadow: 'none',
-  WebkitHyphens: 'none',
-  MsHyphens: 'none',
-  MozHyphens: 'none',
   hyphens: 'none',
   wordWrap: 'normal',
   wordBreak: 'normal',
   textAlign: 'left',
   wordSpacing: 'normal',
-  MozTabSize: '2',
-  OTabSize: '2',
   tabSize: '2',
-  background: '#1d1f27',
+  background: 'rgba(0, 0, 0, 0.7)',
   fontSize: '0.8rem',
   fontFamily: '"Operator Mono SSm A", "Operator Mono SSm B", monospace',
   fontWeight: 300,
   whiteSpace: 'pre-wrap',
-  borderRadius: '0.16666666666666666rem',
+  borderRadius: '3px',
   boxShadow: '1px 1px 20px rgba(20, 20, 20, 0.27)',
-  margin: '1.9444444444444444rem 0',
   overflowX: 'hidden',
 });
-css.global('.token.comment', {
-  fontStyle: 'italic',
-});
-css.global('.token.prolog', {
-  color: 'hsl(30, 20%, 50%)',
-});
-css.global('.token.doctype', {
-  color: 'hsl(30, 20%, 50%)',
-});
-css.global('.token.cdata', {
-  color: 'hsl(30, 20%, 50%)',
-});
+
+css.global(
+  `.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata`,
+  {
+    color: '#5C6370',
+  }
+);
+
 css.global('.token.punctuation', {
-  opacity: '.7',
+  color: '#abb2bf',
 });
-css.global('.namespace', {
-  opacity: '.7',
+
+css.global(
+  `.token.selector,
+.token.tag`,
+  {
+    color: '#e06c75',
+  }
+);
+
+css.global(
+  `.token.property,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.attr-name,
+.token.deleted`,
+  {
+    color: '#d19a66',
+  }
+);
+
+css.global(
+  `.token.string,
+.token.char,
+.token.attr-value,
+.token.builtin,
+.token.inserted`,
+  {
+    color: '#98c379',
+  }
+);
+
+css.global(
+  `.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string`,
+  {
+    color: '#56b6c2',
+  }
+);
+
+css.global(
+  `.token.atrule,
+.token.keyword`,
+  {
+    color: '#c678dd',
+  }
+);
+
+css.global('.token.function', {
+  color: '#61afef',
 });
-css.global('.token.property', {
-  color: 'hsl(350, 40%, 70%)',
-});
-css.global('.token.tag', {
-  color: 'hsl(350, 40%, 70%)',
-});
-css.global('.token.boolean', {
-  color: 'hsl(350, 40%, 70%)',
-});
-css.global('.token.number', {
-  color: 'hsl(350, 40%, 70%)',
-});
-css.global('.token.constant', {
-  color: 'hsl(350, 40%, 70%)',
-});
-css.global('.token.symbol', {
-  color: 'hsl(350, 40%, 70%)',
-});
-css.global('.token.selector', {
-  color: 'hsl(75, 70%, 60%)',
-});
-css.global('.token.attr-name', {
-  color: 'hsl(75, 70%, 60%)',
-});
-css.global('.token.string', {
-  color: 'hsl(75, 70%, 60%)',
-});
-css.global('.token.char', {
-  color: 'hsl(75, 70%, 60%)',
-});
-css.global('.token.builtin', {
-  color: 'hsl(75, 70%, 60%)',
-});
-css.global('.token.inserted', {
-  color: 'hsl(75, 70%, 60%)',
-});
-css.global('.token.operator', {
-  color: 'hsl(40, 90%, 60%)',
-});
-css.global('.token.entity', {
-  cursor: 'help',
-});
-css.global('.token.url', {
-  color: 'hsl(40, 90%, 60%)',
-});
-css.global('.language-css .token.string', {
-  color: 'hsl(40, 90%, 60%)',
-});
-css.global('.style .token.string', {
-  color: 'hsl(40, 90%, 60%)',
-});
-css.global('.token.variable', {
-  color: 'hsl(40, 90%, 60%)',
-});
-css.global('.token.atrule', {
-  color: 'hsl(350, 40%, 70%)',
-});
-css.global('.token.attr-value', {
-  color: 'hsl(350, 40%, 70%)',
-});
-css.global('.token.keyword', {
-  color: 'hsl(350, 40%, 70%)',
-});
-css.global('.token.regex', {
-  color: '#e90',
-});
-css.global('.token.important', {
-  fontWeight: 'bold',
-});
-css.global('.token.bold', {
-  fontWeight: 'bold',
-});
+
+css.global(
+  `.token.regex,
+.token.important,
+.token.variable`,
+  {
+    color: '#c678dd',
+  }
+);
+
+css.global(
+  `.token.important,
+.token.bold`,
+  {
+    fontWeight: 'bold',
+  }
+);
+
 css.global('.token.italic', {
   fontStyle: 'italic',
 });
-css.global('.token.deleted', {
-  color: 'red',
+
+css.global('.token.entity', {
+  cursor: 'help',
 });
-//
+
+css.global('pre.line-numbers', {
+  position: 'relative',
+  paddingLeft: '3.8em',
+  counterReset: 'linenumber',
+});
+
+css.global('pre.line-numbers > code', {
+  position: 'relative',
+});
+
+css.global('.line-numbers .line-numbers-rows', {
+  position: 'absolute',
+  pointerEvents: 'none',
+  top: 0,
+  fontSize: '100%',
+  left: '-3.8em',
+  width: '3em' /* works for line-numbers below 1000 lines */,
+  letterSpacing: -1,
+  borderRight: 0,
+
+  userSelect: 'none',
+});
+
+css.global('.line-numbers-rows > span', {
+  pointerEvents: 'none',
+  display: 'block',
+  counterIncrement: 'linenumber',
+});
+
+css.global('.line-numbers-rows > span:before', {
+  content: 'counter(linenumber)',
+  color: '#5C6370',
+  display: 'block',
+  paddingRight: '0.8em',
+  textAlign: 'right',
+});
 
 const splitLang = /([\w#+]+)(?:\s\/\/\s(.+\.\w+)?(?:\s\|\s)?(\w+)?)?/;
 const code = (h, node) => {
@@ -164,10 +189,13 @@ const Code = glamorous(({ children, className, lang, ...rest }) => {
     </span>
   );
 })({
-  background: 'rgb(241, 97, 97)',
   whiteSpace: 'pre',
   'p > &': {
     display: 'inline-block',
+    verticalAlign: 'middle',
+    marginTop: 0,
+    marginBottom: 0,
+    padding: 0,
   },
   'div > &': {
     display: 'block',

@@ -4,7 +4,8 @@ import glamorous from 'glamorous';
 
 const MarkdownContent = glamorous.div({
   '& h1, & h2, & h3, & h4, & h5, & h6': {
-    marginTop: 0,
+    marginTop: -80, // this will make browser scroll-to behavior to be 80px off
+    paddingTop: 80, // ensuring the header will not be covered by the sticky header
     marginBottom: '0.6em',
   },
   '& h1': {

@@ -70,10 +70,9 @@ const NavItem = glamorous.li({
   },
 });
 
-const NavToggle = glamorous(({ children, ...props }) =>
-  <button {...props} title="open navigation">
+const NavToggle = glamorous(({ children = 'open navigation', active, ...props }) =>
+  <button {...props} title={children}>
     <MenuIcon />
-    {children}
   </button>
 )({
   background: 'none',
@@ -201,8 +200,5 @@ const TopNav = class extends Component {
 };
 
 TopNav.displayName = 'TopNav';
-TopNav.propTypes = {
-  children: PropTypes.node.isRequired,
-};
 
 export default TopNav;

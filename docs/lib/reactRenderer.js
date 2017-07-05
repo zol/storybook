@@ -37,91 +37,51 @@ css.global('.prism-code', {
   overflowX: 'hidden',
 });
 
-css.global(
-  `.token.comment,
-.token.prolog,
-.token.doctype,
-.token.cdata`,
-  {
-    color: '#5C6370',
-  }
-);
+css.global('.token.comment, .token.prolog, .token.doctype, .token.cdata', {
+  color: '#5C6370',
+});
 
 css.global('.token.punctuation', {
   color: '#abb2bf',
 });
 
-css.global(
-  `.token.selector,
-.token.tag`,
-  {
-    color: '#e06c75',
-  }
-);
+css.global('.token.selector, .token.tag', {
+  color: '#e06c75',
+});
 
 css.global(
-  `.token.property,
-.token.boolean,
-.token.number,
-.token.constant,
-.token.symbol,
-.token.attr-name,
-.token.deleted`,
+  '.token.property, .token.boolean, .token.number, .token.constant, .token.symbol, .token.attr-name, .token.deleted',
   {
     color: '#d19a66',
   }
 );
 
-css.global(
-  `.token.string,
-.token.char,
-.token.attr-value,
-.token.builtin,
-.token.inserted`,
-  {
-    color: '#98c379',
-  }
-);
+css.global('.token.string, .token.char, .token.attr-value, .token.builtin, .token.inserted', {
+  color: '#98c379',
+});
 
 css.global(
-  `.token.operator,
-.token.entity,
-.token.url,
-.language-css .token.string,
-.style .token.string`,
+  '.token.operator, .token.entity, .token.url, .language-css .token.string, .style .token.string',
   {
     color: '#56b6c2',
   }
 );
 
-css.global(
-  `.token.atrule,
-.token.keyword`,
-  {
-    color: '#c678dd',
-  }
-);
+css.global('.token.atrule, .token.keyword', {
+  color: '#c678dd',
+});
 
 css.global('.token.function', {
   color: '#61afef',
 });
 
-css.global(
-  `.token.regex,
-.token.important,
-.token.variable`,
-  {
-    color: '#c678dd',
-  }
-);
+css.global('.token.regex, .token.important, .token.variable', {
+  color: '#c678dd',
+});
 
-css.global(
-  `.token.important,
-.token.bold`,
-  {
-    fontWeight: 'bold',
-  }
-);
+css.global('.token.important, .token.bold', {
+  fontWeight: 'bold',
+});
 
 css.global('.token.italic', {
   fontStyle: 'italic',
@@ -129,43 +89,6 @@ css.global('.token.italic', {
 
 css.global('.token.entity', {
   cursor: 'help',
-});
-
-css.global('pre.line-numbers', {
-  position: 'relative',
-  paddingLeft: '3.8em',
-  counterReset: 'linenumber',
-});
-
-css.global('pre.line-numbers > code', {
-  position: 'relative',
-});
-
-css.global('.line-numbers .line-numbers-rows', {
-  position: 'absolute',
-  pointerEvents: 'none',
-  top: 0,
-  fontSize: '100%',
-  left: '-3.8em',
-  width: '3em' /* works for line-numbers below 1000 lines */,
-  letterSpacing: -1,
-  borderRight: 0,
-
-  userSelect: 'none',
-});
-
-css.global('.line-numbers-rows > span', {
-  pointerEvents: 'none',
-  display: 'block',
-  counterIncrement: 'linenumber',
-});
-
-css.global('.line-numbers-rows > span:before', {
-  content: 'counter(linenumber)',
-  color: '#5C6370',
-  display: 'block',
-  paddingRight: '0.8em',
-  textAlign: 'right',
 });
 
 const splitLang = /([\w#+]+)(?:\s\/\/\s(.+\.\w+)?(?:\s\|\s)?(\w+)?)?/;

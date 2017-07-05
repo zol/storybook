@@ -30,7 +30,7 @@ const Bar = glamorous.nav(
 
 Bar.displayName = 'Bar';
 Bar.propTypes = {
-  active: PropTypes.boolean,
+  active: PropTypes.bool,
   children: PropTypes.node,
 };
 Bar.defaultProps = {

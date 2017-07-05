@@ -36,7 +36,7 @@ const Components = {
       borderLeft: hasMany ? '1px solid rgba(200, 200, 200, 1)' : '1px solid transparent',
     })
   ),
-  a: glamorous(({ children, path, ...rest }) =>
+  a: glamorous(({ children, path, hasMany, ...rest }) =>
     <a {...rest}>
       <SectionNr>
         {path}

@@ -1,4 +1,7 @@
 const fs = require('fs');
+const path = require('path');
+const tree = require('./lib/dirToTree');
+
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const { ANALYZE, NODE_ENV } = process.env;
@@ -26,6 +29,13 @@ module.exports = {
 };
 
 if (isDev) {
+  const pages = tree(path.join(__dirname, 'pages')).then(data => {
+    console.log('pages', JSON.stringify(data, null, 2));
+  });
+  const content = tree(path.join(__dirname, 'content')).then(data => {
+    console.log('content', JSON.stringify(data, null, 2));
+  });
+
   const handler = path => {
     const file = `${__dirname}/${path.replace('content', 'pages').replace('.md', '.js')}`;
     fs.appendFileSync(file, ' ');

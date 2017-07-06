@@ -27,6 +27,7 @@
     "global": "^4.3.2",
     "isomorphic-fetch": "^2.2.1",
     "markdown-loader": "^2.0.0",
+    "md5": "^2.2.1",
     "mdast-util-to-hast": "^2.4.1",
     "mdast-util-toc": "^2.0.1",
     "next": "^3.0.0-beta16",

@@ -1,31 +1,12 @@
 const Promise = require('bluebird');
 const fs = Promise.promisifyAll(require('fs'));
-const exec = require('child_process').exec;
+const md5 = require('md5');
 
-function promiseFromChildProcess(child) {
-  return new Promise((resolve, reject) => {
-    const stdout = [];
-    const stderr = [];
-    child.stdout.on('data', data => {
-      stdout.push(JSON.stringify(data));
-    });
-    child.stderr.on('data', data => {
-      stderr.push(data.toString());
-    });
-
-    child.addListener('error', () => reject(stderr.join('.')));
-    child.addListener('exit', () => resolve(stdout.join('.')));
-  });
-}
+const promiseFromCommand = require('./promiseFromCommand');
 
 function File(name) {
   this.name = name;
   this.size = 0;
-  this.hidden = false;
-
-  if (name.substr(0, 1) === '.') {
-    this.hidden = true;
-  }
 }
 
 function Directory(path) {
@@ -33,14 +14,9 @@ function Directory(path) {
   this.path = path;
   this.files = [];
   this.length = 0;
-  this.hidden = false;
 
   const dirArray = path.split('/');
   this.name = dirArray[dirArray.length - 1];
-
-  if (this.name.substr(0, 1) === '.') {
-    this.hidden = true;
-  }
 }
 
 const authorRegexp = /author (.+?)\\nauthor-mail (.+?)\\n/g;
@@ -54,29 +30,41 @@ const readDir = inputDir => {
         if (stat.isFile()) {
           const file = new File(fileName);
           file.size = stat.size;
-          file.ctime = stat.ctime;
-          file.birthtime = stat.birthtime;
+          file.modified = stat.ctime;
+          file.created = stat.birthtime;
+          file.path = `${inputDir.split('/docs/content')[1]}/${fileName}`;
 
-          const child = exec(`git blame -etp ${inputDir}/${fileName}`, {});
+          return promiseFromCommand(
+            [
+              `git blame -etp ${inputDir}/${fileName}`,
+              `git blame -etp --reverse ${inputDir}/${fileName}`,
+            ].join(' && ')
+          )
+            .then(result => {
+              const contributors = result.match(authorRegexp) || [];
+              return contributors
+                .map(string => {
+                  const [, name, email] = string.match(/author (.+?)\\nauthor-mail <(.+?)>\\n/);
+                  const hash = md5(email);
 
-          return promiseFromChildProcess(child)
-            .then(
-              result => {
-                // console.log(fileName, `promise complete: ${result}`);
-                const edits = result.match(authorRegexp) || [];
-                return edits.map(string => {
-                  const [, name, email] = string.match(/author (.+?)\\nauthor-mail (.+?)\\n/);
-                  return { name, email };
-                });
-              },
-              err => []
-              // console.log(`promise rejected: ${err}`);
-            )
+                  return { name, hash, email };
+                })
+                .reduce((acc, { name, hash, email }, index, list) => {
+                  if (index < list.length - 1) {
+                    acc[hash] = { name, email };
+                    return acc;
+                  }
+                  return Object.keys(acc).map(key => ({
+                    hash: key,
+                    name: acc[key].name,
+                    email: acc[key].email,
+                    // TODO: add github accountname
+                  }));
+                }, {});
+            })
+            .catch(() => ({}))
             .then(contributors => {
-              file.contributors = contributors.reduce((acc, { name, email }) => {
-                acc[name] = email;
-                return acc;
-              }, {});
+              file.contributors = contributors;
               return file;
             });
         }

@@ -19,7 +19,7 @@ function Directory(path) {
   this.name = dirArray[dirArray.length - 1];
 }
 
-const authorRegexp = /author (.+?)\\nauthor-mail (.+?)\\n/g;
+const authorRegexp = /Author: (.+?) <(.+?)>/g;
 
 const readDir = inputDir => {
   const dir = new Directory(inputDir);
@@ -35,16 +35,13 @@ const readDir = inputDir => {
           file.path = `${inputDir.split('/docs/content')[1]}/${fileName}`;
 
           return promiseFromCommand(
-            [
-              `git blame -etp ${inputDir}/${fileName}`,
-              `git blame -etp --reverse ${inputDir}/${fileName}`,
-            ].join(' && ')
+            [`git --no-pager log --summary -p -- ${inputDir}/${fileName}`].join(' && ')
           )
             .then(result => {
               const contributors = result.match(authorRegexp) || [];
               return contributors
                 .map(string => {
-                  const [, name, email] = string.match(/author (.+?)\\nauthor-mail <(.+?)>\\n/);
+                  const [, name, email] = string.match(/Author: (.+?) <(.+?)>/);
                   const hash = md5(email);
 
                   return { name, hash, email };
@@ -62,7 +59,10 @@ const readDir = inputDir => {
                   }));
                 }, {});
             })
-            .catch(() => ({}))
+            .catch(error => {
+              console.log(error);
+              return {};
+            })
             .then(contributors => {
               file.contributors = contributors;
               return file;

@@ -17,3 +17,4 @@ docs/public
 packs/*.tgz
 package-lock.json
 docs/.next
+docs/lib/sitemap.js

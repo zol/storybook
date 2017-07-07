@@ -1,20 +1,20 @@
 import React from 'react';
 
 import Head from 'next/head';
-import Page from '../components/Page';
+import Page from '../../components/Page';
 
-import TopNav from '../components/TopNav';
-import PageTitle from '../components/PageTitle';
-import Blocks from '../components/Blocks';
-import Container from '../components/Container';
-import MarkdownContent from '../components/MarkdownContent';
+import TopNav from '../../components/TopNav';
+import PageTitle from '../../components/PageTitle';
+import Blocks from '../../components/Blocks';
+import Container from '../../components/Container';
+import MarkdownContent from '../../components/MarkdownContent';
 
-import ReactLogo from '../components/logos/React';
-import AngularLogo from '../components/logos/Angular';
-import VueLogo from '../components/logos/Vue';
-import EmberLogo from '../components/logos/Ember';
-import PolymerLogo from '../components/logos/Polymer';
-import AureliaLogo from '../components/logos/Aurelia';
+import ReactLogo from '../../components/logos/React';
+import AngularLogo from '../../components/logos/Angular';
+import VueLogo from '../../components/logos/Vue';
+import EmberLogo from '../../components/logos/Ember';
+import PolymerLogo from '../../components/logos/Polymer';
+import AureliaLogo from '../../components/logos/Aurelia';
 
 export default () =>
   <Page>

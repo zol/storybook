@@ -69,7 +69,11 @@ const readDir = inputDir => {
             });
         }
         if (stat.isDirectory()) {
-          return readDir(`${inputDir}/${fileName}`).then(directory => directory);
+          return readDir(`${inputDir}/${fileName}`).then(directory => {
+            directory.path = `${inputDir.split('/docs/content')[1]}/${fileName}`;
+
+            return directory;
+          });
         }
         return undefined;
       })

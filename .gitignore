@@ -16,3 +16,4 @@ yarn.lock
 docs/public
 package-lock.json
 docs/.next
+docs/lib/sitemap.js

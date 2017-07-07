@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import glamorous from 'glamorous';

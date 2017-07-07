@@ -1,14 +1,15 @@
-import React, { Children, cloneElement } from 'react';
+import React, { Children } from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 
-import PageTitle from '../components/PageTitle';
-import Container from '../components/Container';
-import Split from '../components/Split';
-import MarkdownContent from '../components/MarkdownContent';
-import Toc from '../components/Toc';
+import sitemap from '../lib/sitemap';
 
-const headingRegexp = /^h[1-6]$/;
+import PageTitle from './PageTitle';
+import Container from './Container';
+import Split from './Split';
+import MarkdownContent from './MarkdownContent';
+import Toc from './Toc';
+import SideNav from './SideNav';
 
 const Content = ({ children }) => {
   const { toc, body, intro, header } = Children.toArray(children).reduce(
@@ -48,6 +49,7 @@ const Content = ({ children }) => {
             <Toc toc={toc} />
             <MarkdownContent>
               <h2>Other navigation</h2>
+              <SideNav sitemap={sitemap} />
             </MarkdownContent>
           </nav>
           <MarkdownContent>
@@ -57,6 +59,11 @@ const Content = ({ children }) => {
       </Container>
     </div>
   );
+};
+
+Content.displayName = 'Content';
+Content.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export default Content;

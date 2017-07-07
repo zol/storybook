@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Head from 'next/head';
 import Page from '../components/Page';
@@ -15,7 +16,7 @@ import EmberLogo from '../components/logos/Ember';
 import PolymerLogo from '../components/logos/Polymer';
 import AureliaLogo from '../components/logos/Aurelia';
 
-export default () =>
+const Response = ({ query, pathname }) =>
   <Page>
     <Head>
       <title>Storybook docs</title>
@@ -23,7 +24,8 @@ export default () =>
     <TopNav />
     <Hero>
       <h1>
-        The extendible component explorer<br />you'll ♥️ to use
+        The extendible component explorer<br />you'll ♥️ to use {JSON.stringify(query, null, 2)}{' '}
+        {JSON.stringify(pathname, null, 2)}
       </h1>
       <button>Start</button>
     </Hero>
@@ -89,3 +91,20 @@ export default () =>
       </Blocks>
     </Container>
   </Page>;
+
+Response.displayName = 'Response';
+Response.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  query: PropTypes.object,
+  pathname: PropTypes.string.isRequired,
+};
+Response.defaultProps = {
+  query: {},
+};
+
+Response.getInitialProps = ({ req, query }) => ({
+  pathname: req.path,
+  query,
+});
+
+export default Response;

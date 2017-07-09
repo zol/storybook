@@ -17,14 +17,14 @@ humans.map(human => new Slave(human));
 
 ```js
 // human.js
-thow new Rock({ size: 'medium' });
+throw new Rock({ size: 'medium' });
 ```
 
 ::: Test click me _content_
 
 ```js
 // human.js
-thow new Rock({ size: 'medium' });
+throw new Rock({ size: 'medium' });
 ```
 
 :::

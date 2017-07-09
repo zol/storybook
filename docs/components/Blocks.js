@@ -107,7 +107,7 @@ const Item = glamorous.div(
 const Blocks = ({ children, colors, variant, aligned, ...rest }) =>
   <Root {...rest} count={Children.count(children)}>
     {Children.toArray(children).map((child, index) =>
-      <Item key={index} variant={variant} aligned={aligned} color={getColor(colors, index)}>
+      <Item key={child.key} variant={variant} aligned={aligned} color={getColor(colors, index)}>
         {child}
       </Item>
     )}
@@ -115,6 +115,7 @@ const Blocks = ({ children, colors, variant, aligned, ...rest }) =>
 
 Blocks.displayName = 'Blocks';
 Blocks.propTypes = {
+  aligned: PropTypes.bool,
   children: PropTypes.node.isRequired,
   vSpacing: PropTypes.number,
   hSpacing: PropTypes.number,
@@ -123,6 +124,7 @@ Blocks.propTypes = {
   colors: PropTypes.arrayOf(PropTypes.string),
 };
 Blocks.defaultProps = {
+  aligned: true,
   vSpacing: undefined,
   hSpacing: undefined,
   max: undefined,

@@ -21,6 +21,7 @@ function Directory(path) {
 
 const authorRegexp = /Author: (.+?) <(.+?)>/g;
 
+// TODO: refactor to pure functions
 const readDir = inputDir => {
   const dir = new Directory(inputDir);
   return fs
@@ -70,6 +71,7 @@ const readDir = inputDir => {
         }
         if (stat.isDirectory()) {
           return readDir(`${inputDir}/${fileName}`).then(directory => {
+            // eslint-disable-next-line no-param-reassign
             directory.path = `${inputDir.split('/docs/content')[1]}/${fileName}`;
 
             return directory;

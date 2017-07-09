@@ -2,21 +2,22 @@ import slug from 'remark-slug';
 import util from 'mdast-util-toc';
 
 const simplifyPocAst = node => {
-  if (node.ordered === false) {
-    node.ordered = true;
+  const localNode = Object.assign({}, node);
+  if (localNode.ordered === false) {
+    localNode.ordered = true;
   }
-  if (node.children) {
-    node.children = node.children.map(simplifyPocAst);
+  if (localNode.children) {
+    localNode.children = localNode.children.map(simplifyPocAst);
   }
-  if (node.loose === false) {
-    node.loose = true;
+  if (localNode.loose === false) {
+    localNode.loose = true;
   }
-  return node;
+  return localNode;
 };
 
 export default function toc(options) {
-  const settings = options || {};
-  const heading = settings.heading || 'toc|table[ -]of[ -]contents?';
+  const settings = Object.assign(options || {});
+  // const heading = settings.heading || 'toc|table[ -]of[ -]contents?';
   const depth = settings.maxDepth || 6;
   const tight = settings.tight;
 
@@ -47,8 +48,10 @@ export default function toc(options) {
     };
 
     if (index >= 0) {
+      // eslint-disable-next-line no-param-reassign
       node.children = [].concat(node.children.slice(0, index), map, node.children.slice(endIndex));
     } else {
+      // eslint-disable-next-line no-param-reassign
       node.children = [].concat(map).concat(node.children);
     }
   }

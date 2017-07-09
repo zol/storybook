@@ -1,5 +1,3 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import glamorous from 'glamorous';
 
 const MarkdownContent = glamorous.div({

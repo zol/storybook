@@ -1,19 +1,28 @@
-node_modules
-*.log
-.idea
-npm-shrinkwrap.json
-dist
-.tern-port
-*.DS_Store
+# output & cache
 .cache
-junit.xml
 coverage/
-*.lerna_backup
+dist
 build
-packages/examples/automated-*
+
+# package-managers lockfiles
+*.lerna_backup
 yarn.lock
-/**/LICENSE
-docs/public
 package-lock.json
+npm-shrinkwrap.json
+
+# packages not under ource control
+packs/*.tgz
+node_modules
+packages/examples/automated-*
+
+/**/LICENSE
+
+docs/public
 docs/.next
 docs/lib/sitemap.js
+
+*.log
+.idea
+.tern-port
+*.DS_Store
+junit.xml

@@ -56,20 +56,19 @@ import Button from './button';
 const styles = {
   textAlign: 'center',
 };
-const CenterDecorator = (storyFn) => (
+const CenterDecorator = (storyFn) => 
   <div style={styles}>
-    { storyFn() }
-  </div>
-);
+    {storyFn()}
+  </div>;
 
 storiesOf('Button', module)
   .addDecorator(CenterDecorator)
-  .add('with text', () => (
+  .add('with text', () => 
     <Button onClick={action('clicked')}>Hello Button</Button>
-  ))
-  .add('with some emojies', () => (
+  )
+  .add('with some emojies', () => 
     <Button onClick={action('clicked')}>😀 😎 👍 💯</Button>
-  ));
+  );
 ```
 
 You can also add a decorator globally for all stories like this:
@@ -85,25 +84,22 @@ import Welcome from './welcome';
 const styles = {
   textAlign: 'center',
 };
-const CenterDecorator = (storyFn) => (
+const CenterDecorator = (storyFn) => 
   <div style={styles}>
     { storyFn() }
-  </div>
-);
+  </div>;
 addDecorator(CenterDecorator);
 
 storiesOf('Welcome', module)
-  .add('to Storybook', () => (
-    <Welcome showApp={linkTo('Button')}/>
-  ));
+  .add('to Storybook', () => <Welcome showApp={linkTo('Button')}/>);
 
 storiesOf('Button', module)
-  .add('with text', () => (
+  .add('with text', () => 
     <Button onClick={action('clicked')}>Hello Button</Button>
-  ))
-  .add('with some emojies', () => (
+  )
+  .add('with some emojies', () => 
     <Button onClick={action('clicked')}>😀 😎 👍 💯</Button>
-  ));
+  );
 ```
 
 > You can call `addDecorator()` inside the story definition file as shown above. But adding it to the Storybook config file is a much better option.

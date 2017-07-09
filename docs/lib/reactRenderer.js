@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import glamorous from 'glamorous';
+import { css } from 'glamor';
 
 import Prism from 'prismjs';
 
@@ -8,10 +9,9 @@ import unified from 'unified';
 import u from 'unist-builder';
 import remarkParse from 'remark-parse';
 import reactRenderer from 'remark-react';
+
 import myCustomBlocks from './myCustomBlocks';
 import myCustomToc from './myCustomToc';
-
-import { css } from 'glamor';
 
 css.global('.prism-code', {
   display: 'block',

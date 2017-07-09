@@ -217,6 +217,28 @@ const value = select(label, options, defaultValue);
 
 > You can also provide options as an array like this: `['red', 'blue', 'yellow']`
 
+### selectV2
+
+Future replacement for `select`. The value from the select now uses the values from the `options` object.
+
+```js
+import { selectV2 } from '@storybook/addon-knobs';
+
+const label = 'Colors';
+const options = {
+  Red: 'red',
+  Blue: 'blue',
+  Yellow: 'yellow',
+  Rainbow: ['red', 'orange', 'etc'],
+  Black: null,
+};
+const defaultValue = 'Red';
+
+const value = select(label, options, defaultValue);
+```
+
+> You can also provide options as an array like this: `['red', 'blue', 'yellow']`
+
 ### date
 
 Allow you to get date (and time) from the user.

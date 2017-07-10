@@ -3,246 +3,48 @@
 # Add your account in this format:
 Your name here <yourname@example.com> # github:my-github-account, npm:my-npm-account, twitter:my-twitter-handle
 
+# supported:
+# github, npm, twitter, website
 
 # --- list ----------- #
 
-Aaron Mc Adam <aaron@aaronmcadam.com>  Aaron Mc Adam <aaron@aaronmcadam.com> 
-Aaron Ranard <aaronranard@gmail.com>  Aaron Ranard <aaronranard@gmail.com> 
-abhiaiyer91 <abhiaiyer91@gmail.com>  abhiaiyer91 <abhiaiyer91@gmail.com> 
-Adam Donahue <adam.donahue@loan-street.com>  Adam Donahue <adam.donahue@loan-street.com> 
-Alan Rubin <alan@frubin.com>  Alan Rubin <alan@frubin.com> 
-Alexander Nilsson <alexander@alxoptr.se>  Alexander Nilsson <alexander@alxoptr.se> 
-Alexey <li0liq@gmail.com>  Alexey <li0liq@gmail.com> 
-Allan Lukwago <epicallan.al@gmail.com>  Allan Lukwago <epicallan.al@gmail.com> 
-Alvaro Pinot <apinot@noon.com>  Alvaro Pinot <apinot@noon.com> 
-Andrés <andresin87@gmail.com>  Andrés <andresin87@gmail.com> 
-Andrew Hyndman <ajhyndman@hotmail.com>  Andrew Hyndman <ajhyndman@hotmail.com> 
-Andrew Murray <radarhere@gmail.com>  Andrew Murray <radarhere@gmail.com> 
-Andy Wermke <andy@dev.next-step-software.com>  Andy Wermke <andy@dev.next-step-software.com> 
-Antoine Rey <126362@supinfo.com>  Antoine Rey <126362@supinfo.com> 
-ArtyomResh <artyomresh@gmail.com>  ArtyomResh <artyomresh@gmail.com> 
+Aaron Mc Adam <aaron@aaronmcadam.com> 
 Aruna Herath <aruna@kadira.io> <arunabherath@gmail.com> 
 Arunoda Susiripala <arunoda.susiripala@gmail.com>  Arunoda Susiripala <arunoda.susiripala@gmail.com> 
-Ashley Blurton <de-monkeyz@users.noreply.github.com>  Ashley Blurton <de-monkeyz@users.noreply.github.com> 
-Augustin Le Fèvre <aulefevre@kilix.fr>  Augustin Le Fèvre <aulefevre@kilix.fr> 
-Bamieh <ahmadbamieh@gmail.com>  Bamieh <ahmadbamieh@gmail.com> 
-barakcoh <barakcoh@gmail.com>  barakcoh <barakcoh@gmail.com> 
 Benedikt D Valdez <benediktvaldez@users.noreply.github.com>  Benedikt D Valdez <benediktvaldez@users.noreply.github.com> 
-Benjamin Kagia <benjamin.kagia@andela.com>  Benjamin Kagia <benjamin.kagia@andela.com> 
-Blair Anderson <blair81@gmail.com>  Blair Anderson <blair81@gmail.com> 
-Brandon Lorenz <blorenz@gmail.com>  Brandon Lorenz <blorenz@gmail.com> 
-Brian Douglas <bdougie@users.noreply.github.com>  Brian Douglas <bdougie@users.noreply.github.com> 
-Bryan J. Ross <github@rossipedia.com>  Bryan J. Ross <github@rossipedia.com> 
-Cameron Little <cameron@camlittle.com>  Cameron Little <cameron@camlittle.com> 
-Carlos Andreu <candreu@spredfast.com>  Carlos Andreu <candreu@spredfast.com> 
-Carlos Andreu <cnandreu@gmail.com>  Carlos Andreu <cnandreu@gmail.com> 
-Chasen Le Hara <chasen@chasenlehara.com>  Chasen Le Hara <chasen@chasenlehara.com> 
-Chris Corwin <chris.corwin@gmail.com>  Chris Corwin <chris.corwin@gmail.com> 
-Christian Vadalà <chr.vadala@gmail.com>  Christian Vadalà <chr.vadala@gmail.com> 
-Colby Williams <colby@colbycheeze.com>  Colby Williams <colby@colbycheeze.com> 
-Corey Frang <gnarf@gnarf.net>  Corey Frang <gnarf@gnarf.net> 
-Cory House <housecor@gmail.com>  Cory House <housecor@gmail.com> 
 Daniel Duan <dduan@squarespace.com> <dduan@yahoo.com> 
-Daniel Forster <daniel.forster@temando.com>  Daniel Forster <daniel.forster@temando.com> 
 Daniel James <daniel@thzinc.com> <djames@syncromatics.com> 
-Daniel K <FredyC@users.noreply.github.com>  Daniel K <FredyC@users.noreply.github.com> 
-Daniel Schmidt <thelink64@hotmail.com>  Daniel Schmidt <thelink64@hotmail.com> 
 Danny Andrews <danny-andrews@users.noreply.github.com>  danny@ownlocal.com> 
-Darek Rossman <subpopular@users.noreply.github.com>  Darek Rossman <subpopular@users.noreply.github.com> 
-David Konsumer <konsumer@jetboystudio.com>  David Konsumer <konsumer@jetboystudio.com> 
-David Mason <drdmason@gmail.com>  David Mason <drdmason@gmail.com> 
-Denis Evgrafov <stereodenis@gmail.com>  Denis Evgrafov <stereodenis@gmail.com> 
-Dmitry Naumov <nezed@ya.ru>  Dmitry Naumov <nezed@ya.ru> 
-Duncan Beevers <duncan@dweebd.com>  Duncan Beevers <duncan@dweebd.com> 
 Dustin Kane <dkane@athenahealth.com> <dustinpkane@gmail.com> 
-Dylan Kirby <djkirby@users.noreply.github.com>  Dylan Kirby <djkirby@users.noreply.github.com> 
-Edvins Antonovs <ummahusla@gmail.com>  Edvins Antonovs <ummahusla@gmail.com> 
-Eli Sherer <eli.sherer@gmail.com> <elish@payoneer.com> 
-Eli Sherer <eli.sherer@gmail.com>  elish <eli.sherer@gmail.com> 
-Elin Angelov <zetxx@belogradchik.biz>  Elin Angelov <zetxx@belogradchik.biz> 
-Eloy Toro <eloytoro@gmail.com>  Eloy Toro <eloytoro@gmail.com> 
-Eric Clemmons <eric@smarterspam.com>  Eric Clemmons <eric@smarterspam.com> 
-Eric Schaefer <omg@eric-schaefer.com>  Eric Schaefer <omg@eric-schaefer.com> 
-Eric Wooley <ericwooley@gmail.com>  Eric Wooley <ericwooley@gmail.com> 
-Espen Hovlandsdal <espen@hovlandsdal.com>  Espen Hovlandsdal <espen@hovlandsdal.com> 
-Evgeny Zaytsev <overhawlin@gmail.com>  Evgeniy Zaitsev <overhawlin@gmail.com> 
+Eli Sherer <eli.sherer@gmail.com>  elish <elish@payoneer.com> 
 Evgeny Kochetkov <evgeny.kochetkov@me.com>  Evgeny Kochetkov <evgenykochetkov@users.noreply.github.com> 
-Ezekiel <theatlasroom@users.noreply.github.com>  Ezekiel <theatlasroom@users.noreply.github.com> 
 Fabien Bernard <fabien0102@hotmail.com>  Fabien BERNARD <fabien0102@hotmail.com> 
-fabien0102 <fabien0102@planee.fr>  fabien0102 <fabien0102@planee.fr> 
 Fernando Daciuk <f.daciuk@gmail.com> <fdaciuk@users.noreply.github.com> 
-Florian Goße <flo@essog.de>  Florian Goße <flo@essog.de> 
-Frederick Fogerty <frederick.fogerty@gmail.com>  Frederick Fogerty <frederick.fogerty@gmail.com> 
-Gawron <TGawron@poland.luxoft.com>  Gawron <TGawron@poland.luxoft.com> 
-Gerard Meijer <gerard@meijer.gs>  Gerard Meijer <gerard@meijer.gs> 
-Gianni Valdambrini <aleister@develer.com>  Gianni Valdambrini <aleister@develer.com> 
 Greenkeeper <support@greenkeeper.io>  greenkeeper[bot] <greenkeeper[bot]@users.noreply.github.com> 
 Greenkeeper <support@greenkeeper.io>  greenkeeperio-bot <support@greenkeeper.io> 
-Guylian Cox <guylian.cox@pictawall.com>  Guylian Cox <guylian.cox@pictawall.com> 
-Gytis Vinclovas <gytis.vinclovas@gmail.com>  Gytis Vinclovas <gytis.vinclovas@gmail.com> 
-Haroen Viaene <fingebimus@me.com>  Haroen Viaene <fingebimus@me.com> 
-Heloá Meneses <she-dev@users.noreply.github.com>  Heloá Meneses <she-dev@users.noreply.github.com> 
-Ind <thinkholic@users.noreply.github.com>  Ind <thinkholic@users.noreply.github.com> 
-inuscript <inuscript@users.noreply.github.com>  inuscript <inuscript@users.noreply.github.com> 
-Isaac Snow <isaacjsnow@gmail.com>  Isaac Snow <isaacjsnow@gmail.com> 
-Ivan Nieto <ivan.n.s@tuta.io>  Ivan Nieto <ivan.n.s@tuta.io> 
-Izzi Bikun <izzi.bikun@kroger.com>  Izzi Bikun <izzi.bikun@kroger.com> 
-Jake Hiller <jakemhiller@gmail.com>  Jake Hiller <jakemhiller@gmail.com> 
-Jake Lazaroff <yo@jake.nyc>  Jake Lazaroff <yo@jake.nyc> 
-James Baxley <james.baxley@newspring.cc>  James Baxley <james.baxley@newspring.cc> 
-James Hush <james.hush@nfl.com>  James Hush <james.hush@nfl.com> 
-Jamie Holliday <jamie@jamieholliday.com>  Jamie Holliday <jamie@jamieholliday.com> 
-Jason Schloer <jschloer@Jasons-Mac-Pro.local>  Jason Schloer <jschloer@Jasons-Mac-Pro.local> 
-Jason T. Wong <developer@jasontwong.com>  Jason T. Wong <developer@jasontwong.com> 
-Jasper Moelker <j.b.moelker@activeids.nl>  Jasper Moelker <j.b.moelker@activeids.nl> 
-Jean-Michel FRANCOIS <jmfrancois@talend.com>  Jean-Michel FRANCOIS <jmfrancois@talend.com> 
-Jeff Carbonella <jeff.carbonella@gmail.com>  Jeff Carbonella <jeff.carbonella@gmail.com> 
-Jeff Carbonella <jeff@contactually.com>  Jeff Carbonella <jeff@contactually.com> 
+Jason Schloer <jschloer@Jasons-Mac-Pro.local>  jschloer <jschloer@terragotech.com> 
+Jean-Michel Francois <jmfrancois@talend.com>  Jean-Michel FRANCOIS <jmfrancois@talend.com> 
+Jeff Carbonella <jeff.carbonella@gmail.com> <jeff@contactually.com> 
 Jeff Knaggs <jeef3@users.noreply.github.com> <mail@jeef3.com> 
-Jidé <jide.fr@gmail.com>  Jidé <jide.fr@gmail.com> 
-jide <julien.deluca@synchronized.tv>  jide <julien.deluca@synchronized.tv> 
-Joe Kohlmann <kohlmannj@gmail.com>  Joe Kohlmann <kohlmannj@gmail.com> 
-Joey Baker <joey@byjoeybaker.com>  Joey Baker <joey@byjoeybaker.com> 
-John McLaughlin <john.mjhm@gmail.com>  John McLaughlin <john.mjhm@gmail.com> 
-Jonny Buchanan <jonathan.buchanan@gmail.com>  Jonny Buchanan <jonathan.buchanan@gmail.com> 
 Jordan Gensler <jordan.gensler@airbnb.com> <jordangens@gmail.com> 
-Joscha Feth <joscha@feth.com>  Joscha Feth <joscha@feth.com> 
-jschloer <jschloer@terragotech.com>  jschloer <jschloer@terragotech.com> 
-Jurgo Boemo <jurgo.boemo@gmail.com>  Jurgo Boemo <jurgo.boemo@gmail.com> 
 Kanitkorn Sujautra <k.sujautra@gmail.com>  Kanitkorn S <lukyth@users.noreply.github.com> 
-Karl O'Keeffe <karl@geckoboard.com>  Karl O'Keeffe <karl@geckoboard.com> 
-Kees Kluskens <kees@webduck.nl>  Kees Kluskens <kees@webduck.nl> 
-Keith Yao <i@yaofur.com>  Keith Yao <i@yaofur.com> 
 Kent C. Dodds <kent@doddsfamily.us> <kent+github@doddsfamily.us> 
-Kevin Østerkilde <kevin@oesterkilde.dk>  Kevin Østerkilde <kevin@oesterkilde.dk> 
-Kitze <kristijan.mkd@gmail.com>  Kitze <kristijan.mkd@gmail.com> 
-Koen Punt <koen@koenpunt.nl>  Koen Punt <koen@koenpunt.nl> 
-Kyle Truong <ktruong008@gmail.com>  Kyle Truong <ktruong008@gmail.com> 
 larry <bshy522@gmail.com> <larry@yunify.com> 
-Leon Aves <leonaves1@gmail.com>  Leon Aves <leonaves1@gmail.com> 
-lewisf <lchung@coursera.org>  lewisf <lchung@coursera.org> 
-Li0liQ <li0liq@gmail.com>  Li0liQ <li0liq@gmail.com> 
-Lochlan Bunn <bunn@lochlan.io>  Lochlan Bunn <bunn@lochlan.io> 
-Loren Sands-Ramshaw <lorensr@gmail.com>  Loren Sands-Ramshaw <lorensr@gmail.com> 
-Louis Acresti <louis.acresti@gmail.com>  Louis Acresti <louis.acresti@gmail.com> 
-Lucas Constantino Silva <lucasconstantinosilva@gmail.com>  Lucas Constantino Silva <lucasconstantinosilva@gmail.com> 
-Lucas Motta <mail@lucasmotta.com>  Lucas Motta <mail@lucasmotta.com> 
-Lucjan Suski <lucjansuski@gmail.com>  Lucjan Suski <lucjansuski@gmail.com> 
-Luis Herranz <luisherranz@gmail.com>  Luis Herranz <luisherranz@gmail.com> 
-Luke Sneeringer <luke@sneeringer.com>  Luke Sneeringer <luke@sneeringer.com> 
 Madushan Nishantha <j.l.madushan@gmail.com> <madushan1000@users.noreply.github.com> 
-madzhup <madzhup@gmail.com>  madzhup <madzhup@gmail.com> 
-Marc Fallows <marc@canva.com>  Marc Fallows <marc@canva.com> 
 Marie-Laure Thuret <mthuret@users.noreply.github.com>  mthuret <marielaure.thuret@algolia.com> 
-Mark Dalgleish <mark.john.dalgleish@gmail.com>  Mark Dalgleish <mark.john.dalgleish@gmail.com> 
-Martin Rädlinger <mr@formatlos.de>  Martin Rädlinger <mr@formatlos.de> 
-martinerko <martinerko@gmail.com>  martinerko <martinerko@gmail.com> 
-Mateuspv <mateuspatzlaff@gmail.com>  Mateuspv <mateuspatzlaff@gmail.com> 
-Matias Olivera <moliverafreire@gmail.com>  Matias Olivera <moliverafreire@gmail.com> 
-Matt <mdg408@nyu.edu>  Matt <mdg408@nyu.edu> 
-Matt Oakes <hello@mattoakes.net>  Matt Oakes <hello@mattoakes.net> 
-Matt Parrilla <matthew.parrilla@gmail.com>  Matt Parrilla <matthew.parrilla@gmail.com> 
-Matteo Mazzarolo <mazzarolomatteo@gmail.com>  Matteo Mazzarolo <mazzarolomatteo@gmail.com> 
-Matthew Clemens <matt.d.clemens@gmail.com>  Matthew Clemens <matt.d.clemens@gmail.com> 
-Matthew Kime <matt@mattki.me>  Matthew Kime <matt@mattki.me> 
-Matthew Vargeson <matt.vargeson@outreach.io>  Matthew Vargeson <matt.vargeson@outreach.io> 
-Matthias Christoph Munder <matthiasmunder@gmail.com>  Matthias Christoph Munder <matthiasmunder@gmail.com> 
-Max Hodges <max@whiterabbitjapan.com>  Max Hodges <max@whiterabbitjapan.com> 
-Max Sysoev <colouredchalkmelky@gmail.com>  Max Sysoev <colouredchalkmelky@gmail.com> 
-MaxHodges <max@whiterabbitjapan.com>  MaxHodges <max@whiterabbitjapan.com> 
-Michael Biebl <michael.biebl@mug-linz.at>  Michael Biebl <michael.biebl@mug-linz.at> 
-Michael Caputo <me@mikecaputo.com>  Michael Caputo <me@mikecaputo.com> 
-Michael Hsu (徐承志) <evenchange4@gmail.com>  Michael Hsu <evenchange4@gmail.com> 
-Michael McGahan <mikem@meetup.com>  Michael McGahan <mikem@meetup.com> 
-Michael Scott Hertzberg <mshertzberg@gmail.com>  Michael Scott Hertzberg <mshertzberg@gmail.com> 
+Max Hodges <max@whiterabbitjapan.com>  MaxHodges <max@whiterabbitjapan.com> 
 Michael Shilman <shilman@lab80.co> <shilman@users.noreply.github.com> 
 Michael Shilman <shilman@lab80.co> <michael@lab80.co> 
-Michael Terry <michael@michaelterry.org>  Michael Terry <michael@michaelterry.org> 
-michele <michele@gumgum.com>  michele <michele@gumgum.com> 
-mkamakura <kamakura.masaya@gmail.com>  mkamakura <kamakura.masaya@gmail.com> 
-MofeLee <mofe@me.com>  MofeLee <mofe@me.com> 
 Muhammed Thanish <mnmtanish@gmail.com> <mnmtanish@users.noreply.github.com> 
-Nadav Dav <nadavik@gmail.com>  Nadav Dav <nadavik@gmail.com> 
-Nathan Arthur <nathan@simpleupdates.com>  Nathan Arthur <nathan@simpleupdates.com> 
-Natsathorn <y.natsathorn@gmail.com>  Natsathorn <y.natsathorn@gmail.com> 
 Ned Schwartz <ned@theinterned.net>  Ned Schwartz <ned@theinterned.net> 
-Nelson, Joe <Joe.Nelson@regence.com>  Nelson, Joe <Joe.Nelson@regence.com> 
-Nick <nick@honestbuildings.com>  Nick <nick@honestbuildings.com> 
-Nick De Frangh <nick.defrangh@protime.eu>  Nick De Frangh <nick.defrangh@protime.eu> 
-Nick Plekhanov <nickatgit@yandex.com>  Nick Plekhanov <nickatgit@yandex.com> 
-Nicklas Utgaard <nicklas.utgaard@bekk.no>  Nicklas Utgaard <nicklas.utgaard@bekk.no> 
-Nickman87 <nick.defrangh@gmail.com>  Nickman87 <nick.defrangh@gmail.com> 
-Nikolay <Nikolay.Kozhuharenko@gmail.com>  Nikolay <Nikolay.Kozhuharenko@gmail.com> 
+Joe Nelson <Joe.Nelson@regence.com>  Nelson, Joe <Joe.Nelson@regence.com> 
+Nikolay Kozhuharenko <Nikolay.Kozhuharenko@gmail.com>  Nikolay <Nikolay.Kozhuharenko@gmail.com> 
 Norbert de Langen <ndelangen@me.com>  # github:ndelangen, npm:ndelangen, twitter:norbertdelangen
-Olcay Konuskan <olcay@konuskan.se>  Olcay Konuskan <olcay@konuskan.se> 
-Oleg Proskurin <regx@usul.su>  Oleg Proskurin <regx@usul.su> 
-Olena Sovyn <olenasovyn@gmail.com>  Olena Sovyn <olenasovyn@gmail.com> 
+Oleg Proskurin <regx@usul.su>  UsulPro <regx@usul.su> 
 Orta <orta.therox@gmail.com>  orta <orta.therox@gmail.com> 
-pahans <pahan123@gmail.com>  pahans <pahan123@gmail.com> 
-Panos Voudouris <panosvoudouris@gmail.com>  Panos Voudouris <panosvoudouris@gmail.com> 
-Pascal Duez <pascalduez@users.noreply.github.com>  Pascal Duez <pascalduez@users.noreply.github.com> 
-Paul Carduner <paulcarduner@gmail.com>  Paul Carduner <paulcarduner@gmail.com> 
-Pavel Birukov <birukov.pavel@gmail.com>  Pavel Birukov <birukov.pavel@gmail.com> 
-Pedro Canterini <pedro@pcanterini.com>  Pedro Canterini <pedro@pcanterini.com> 
-Phil Cockfield <phil@cockfield.net>  Phil Cockfield <phil@cockfield.net> 
-Rajeev Karamcheti <rkaramc@gmail.com>  Rajeev Karamcheti <rkaramc@gmail.com> 
-Remon Oldenbeuving <remon@hackerone.com>  Remon Oldenbeuving <remon@hackerone.com> 
-Renato Ribeiro <renatoribroman@gmail.com>  Renato Ribeiro <renatoribroman@gmail.com> 
-Richard Hallows <jeddy3@users.noreply.github.com>  Richard Hallows <jeddy3@users.noreply.github.com> 
-Richard Herrera <richard.herrera@nfl.com>  Richard Herrera <richard.herrera@nfl.com> 
 Ritesh Kumar <ritz078@users.noreply.github.com>  Ritesh Kumar <rkritesh078@gmail.com> 
-Ro Savage <rowan.savage@gmail.com>  Ro Savage <rowan.savage@gmail.com> 
-Ron ChanOu <rchanou@users.noreply.github.com>  Ron ChanOu <rchanou@users.noreply.github.com> 
-Rory O’Kane <rory@roryokane.com>  Rory O’Kane <rory@roryokane.com> 
-Roy Sutton <pre101@pre101.com>  Roy Sutton <pre101@pre101.com> 
-SachaG <info@sachagreif.com>  SachaG <info@sachagreif.com> 
-Sébastien Lorber <slorber@users.noreply.github.com>  Sébastien Lorber <slorber@users.noreply.github.com> 
-Seth Kinast <seth@sethkinast.com>  Seth Kinast <seth@sethkinast.com> 
-Shu Uesugi <shu@chibicode.com>  Shu Uesugi <shu@chibicode.com> 
-Stefan <stefanmirck@gmail.com>  Stefan <stefanmirck@gmail.com> 
-Stefan Huynh <huynh.stefan@gmail.com>  Stefan Huynh <huynh.stefan@gmail.com> 
-Stephen Wyatt Bush <stephen.wyatt@gmail.com>  Stephen Wyatt Bush <stephen.wyatt@gmail.com> 
-Stewart Duffy <duffy.stewart@gmail.com>  Stewart Duffy <duffy.stewart@gmail.com> 
-Stupid <sunfeng32@qq.com>  Stupid <sunfeng32@qq.com> 
-sureshraj <m.s.suresh100@gmail.com>  sureshraj <m.s.suresh100@gmail.com> 
-Sylvain BANNIER <sylvain.bannier@smile.fr>  Sylvain BANNIER <sylvain.bannier@smile.fr> 
-Tarjei Huse <tarjei.huse@gmail.com>  Tarjei Huse <tarjei.huse@gmail.com> 
-Tay Yang Shun <tay.yang.shun@gmail.com>  Tay Yang Shun <tay.yang.shun@gmail.com> 
-thinkholic <mailtokasun@gmail.com>  thinkholic <mailtokasun@gmail.com> 
-Thomas Bertet <thomas.bertet@mirakl.com>  Thomas Bertet <thomas.bertet@mirakl.com> 
-Thomas Rix <tom@rixth.org>  Thomas Rix <tom@rixth.org> 
-TigerC10 <TigerC10@gmail.com>  TigerC10 <TigerC10@gmail.com> 
-Tim Kindberg <tim.kindberg@kroger.com>  Tim Kindberg <tim.kindberg@kroger.com> 
-Tim Kindberg <timkindberg@gmail.com>  Tim Kindberg <timkindberg@gmail.com> 
-Tim Oxley <secoif@gmail.com>  Tim Oxley <secoif@gmail.com> 
+Sylvain Bannier <sylvain.bannier@smile.fr>  Sylvain BANNIER <sylvain.bannier@smile.fr> 
 Tom Coleman <tom@percolatestudio.com>  Tom Coleman <tom@thesnail.org> 
-Tom Crockett <pelotom@gmail.com>  Tom Crockett <pelotom@gmail.com> 
-Tom Cunningham <tom.cunningham@lonelyplanet.com>  Tom Cunningham <tom.cunningham@lonelyplanet.com> 
-Tomas Trescak <tomi.trescak@gmail.com>  Tomas Trescak <tomi.trescak@gmail.com> 
-Tommi Komulainen <tommi.komulainen@iki.fi>  Tommi Komulainen <tommi.komulainen@iki.fi> 
-Tommy <tleunen@users.noreply.github.com>  Tommy <tleunen@users.noreply.github.com> 
-tomracia <tomasz.racia@gmail.com>  tomracia <tomasz.racia@gmail.com> 
-Trevor Eyre <trevoreyre@gmail.com>  Trevor Eyre <TrevorEyre@users.noreply.github.com> 
-uk-ar <yuuki.ari@gmail.com>  uk-ar <yuuki.ari@gmail.com> 
-UsulPro <regx@usul.su>  UsulPro <regx@usul.su> 
-Valentin Agachi <github-com@agachi.name>  Valentin Agachi <github-com@agachi.name> 
-Valeriy <valeriy.sorokobatko@gmail.com>  Valeriy <valeriy.sorokobatko@gmail.com> 
-Vesa Laakso <laakso.vesa@gmail.com>  Vesa Laakso <laakso.vesa@gmail.com> 
-Ville Immonen <ville.immonen@iki.fi>  Ville Immonen <ville.immonen@iki.fi> 
-voiceup <minfa.wang@gmail.com>  voiceup <minfa.wang@gmail.com> 
+Trevor Eyre <trevoreyre@gmail.com> # github:TrevorEyre, twitter:trevor_eyre
 William Castandet <wcastand@gmail.com>  wcastand <wcastand@gmail.com> 
-William Castandet <wcastand@gmail.com>  William <wcastand@gmail.com> 
-William Monk <will@williammonk.co.uk>  William Monk <will@williammonk.co.uk> 
-witnessmenow <ecenuig@gmail.com>  witnessmenow <ecenuig@gmail.com> 
-xavcz <xavier.cazalot@gmail.com>  xavcz <xavier.cazalot@gmail.com> 
-Xavier Cazalot <xavier.cazalot@gmail.com>  Xavier Cazalot <xavier.cazalot@gmail.com> 
-Xavier Damman <xdamman@gmail.com>  Xavier Damman <xdamman@gmail.com> 
-Yang Li <yangli1990@live.com.au>  Yang Li <yangli1990@live.com.au> 
-Yuki nakamura <nayu.fizzbot@gmail.com>  Yuki nakamura <nayu.fizzbot@gmail.com> 
-Yury Tarabanko <tarabanko.yury@gmail.com>  Yury Tarabanko <tarabanko.yury@gmail.com> 
-yuuki arisawa <yuuki.ari@gmail.com>  yuuki arisawa <yuuki.ari@gmail.com> 
-Zac Kwan <Zaccc123@users.noreply.github.com>  Zac Kwan <Zaccc123@users.noreply.github.com> 
-Zach Reed <zreed@bluetideproductions.com>  Zach Reed <zreed@bluetideproductions.com> 
-Zill Ding <zilldzy@gmail.com>  Zill Ding <zilldzy@gmail.com> 
-zVictor <zvictor@users.noreply.github.com>  zVictor <zvictor@users.noreply.github.com> 
-偏右 <afc163@gmail.com>  偏右 <afc163@gmail.com> 
+Xavier Cazalot <xavier.cazalot@gmail.com>  xavcz <xavier.cazalot@gmail.com> 

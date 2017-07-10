@@ -50,7 +50,6 @@ const mailmapData = fs
           Object.assign(acc, {
             [item.email]: {
               name: item.name || acc[item.email].name,
-              email: item.email || acc[item.email].email,
               meta: Object.assign({}, item.meta, (acc[item.email] || {}).meta),
             },
           }),
@@ -91,7 +90,6 @@ const getContributors = item =>
               {
                 hash: key,
                 name: acc[key].name,
-                email: acc[key].email,
               },
               mailmap[acc[key].email]
             )
@@ -144,46 +142,3 @@ const run = appFolder =>
 run(path.join(__dirname, '..', '..'));
 
 module.exports = run;
-
-/* We can try to enricht this data with data from github:
- * https://developer.github.com/v4/explorer/
-
-// This will query for 2 users based on email
-query UserSearch($user1: String!, $user2: String!){ 
-  user1: search( query: $user1, type: USER, first: 1) { 
-    userCount,
-    nodes {
-      ... on User {
-        name,
-        email,
-        id,
-        login,
-        avatarUrl,
-        websiteUrl,
-        url
-      }
-    }
-  },
-  user2: search( query: $user2, type: USER, first: 1) { 
-    userCount,
-    nodes {
-      ... on User {
-        name,
-        email,
-        id,
-        login,
-        avatarUrl,
-        url,
-        websiteUrl
-      }
-    }
-  }
-}
-
-// variables:
-{ 
-  "user1": "ndelangen@me.com in:email",
-  "user2": "regx@usul.su in:email"
-}
-
- */

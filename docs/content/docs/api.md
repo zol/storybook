@@ -140,12 +140,18 @@ Adds single story to a `stories` object.
 Syntax:
 
 ```js
-stories = stories.add(storyName, function storyfn() { /* Return a new story */ })
+stories = stories.add(storyName, function storyfn(context) { /* Return a new story */ })
 ```
 
 -   **storyName** [`string`] Name of adding story. Will be shown at the [stories](/structure#stories_panel) panel. Each storyName must be unique within this `stories` object.
 
--   **storyfn** [`function`] a function representing a story. Should return a valid React Component.
+-   **storyfn** [`function`] a function representing a story. Should return a valid React Component. Taking one argument:
+
+-   -   context - an object with information about specified story and storiesObject. Containing fields:
+
+-   -   -   kind - current **storyKindName** 
+
+-   -   -   story - current **storyName**
 
 Return value:
 

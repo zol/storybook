@@ -29,6 +29,9 @@ const authorMatchString = 'Author: (.+?) <(.+?)>';
 const allAuthorsRegexp = new RegExp(authorMatchString, 'g');
 const authorRegexp = new RegExp(authorMatchString);
 
+const appFolder = path.join(__dirname, '..', '..');
+const contentFolder = path.join(appFolder, 'content');
+
 const mailmapLineSplitter = /([^<]*) <([^>]*)>[^#\n]*(?:#\s?(.*))?/;
 const mailmapData = fs
   .readFileAsync(path.join(__dirname, '..', '..', '..', '.mailmap'), 'utf8')
@@ -71,7 +74,10 @@ const normalize = (list, acc = {}) =>
   }, acc);
 
 const getContributors = item =>
-  Promise.all([mailmapData, promiseFromCommand(`git --no-pager log --summary -p -- ${item.path}`)])
+  Promise.all([
+    mailmapData,
+    promiseFromCommand(`git --no-pager log --summary -p -- ${contentFolder}/${item.path}`),
+  ])
     .then(([mailmap, result]) =>
       (result.match(allAuthorsRegexp) || [])
         .map(string => {
@@ -102,8 +108,8 @@ const getContributors = item =>
     })
     .then(contributors => Object.assign(item, { contributors }));
 
-const run = appFolder =>
-  folderToTree(path.join(appFolder, 'content'))
+const run = () =>
+  folderToTree(contentFolder, contentFolder)
     .then(data => {
       const localData = normalize(data.files);
 

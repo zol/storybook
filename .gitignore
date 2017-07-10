@@ -19,7 +19,6 @@ packages/examples/automated-*
 
 docs/public
 docs/.next
-docs/lib/sitemap.js
 
 *.log
 .idea

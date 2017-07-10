@@ -1,7 +1,7 @@
 const Promise = require('bluebird');
 const fs = Promise.promisifyAll(require('fs'));
 
-function File({ size, ctime, birthtime }, { inputDir, fileName }) {
+function File({ size = 0, ctime = 0, birthtime = 0 }, { inputDir, fileName }) {
   this.id = fileName;
   this.size = size;
   this.modified = ctime;

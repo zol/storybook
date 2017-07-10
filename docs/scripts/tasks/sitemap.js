@@ -9,7 +9,14 @@ const prettier = require('prettier');
 
 const promiseFromCommand = require('../../lib/promiseFromCommand');
 
-const existingSitemap = require('../../lib/sitemap');
+const existingSitemap = (() => {
+  try {
+    // eslint-disable-next-line global-require
+    return require('../../lib/sitemap');
+  } catch (error) {
+    return {};
+  }
+})();
 
 /* 
  * This script detects markdown-files in /content

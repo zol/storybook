@@ -142,7 +142,7 @@ module.exports = {
   '/guides/index.md': {
     id: 'index.md',
     size: 1242,
-    modified: '2017-07-10T13:39:21.000Z',
+    modified: '2017-07-10T20:14:52.000Z',
     created: '2017-07-10T13:39:21.000Z',
     path: '/guides/index.md',
     isFile: true,

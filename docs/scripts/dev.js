@@ -1,4 +1,5 @@
-const fs = require('fs');
+const Promise = require('bluebird');
+const fs = Promise.promisifyAll(require('fs'));
 const path = require('path');
 
 const fileWatch = require('chokidar');
@@ -14,7 +15,11 @@ const contentFolder = path.join(appFolder, 'content');
  */
 const generateSitemap = require('./tasks/sitemap');
 
-const sitemapReady = generateSitemap().then(() => console.log('🗺 ', 'Sitemap generated'));
+const logSitemapCreated = () => console.log('🗺 ', 'Sitemap generated');
+const logSitemapUpdated = () => console.log('🗺 ', 'Sitemap re-generated');
+const logSitemapFail = error => console.log('🛑 ', 'FAILED sitemap: ', error);
+
+const sitemapReady = generateSitemap().then(logSitemapCreated, logSitemapFail);
 
 /* 
  * This script detects watches on markdown files and appends a white-space char at the end of the file
@@ -26,26 +31,28 @@ const sitemapReady = generateSitemap().then(() => console.log('🗺 ', 'Sitemap 
  */
 const markdownChanged = fileLocation => {
   // TODO: find actual usage of markdown files
-  const file = `${appFolder}/${fileLocation.replace('content', 'pages').replace('.md', '.js')}`;
-  console.log('📄 ', 'Updated markdown: ', fileLocation);
-  fs.appendFileSync(file, ' ');
+  const file = fileLocation.replace('content', 'pages').replace('.md', '.js');
+  return fs.appendFileAsync(file, ' ').then(() => fileLocation);
 };
+
+const logFilewatchFail = () => console.log('🛑 ', 'FAILED Filewatcher');
+const logFilewatchCreated = () => console.log('🔭 ', 'Filewatcher ready');
+const logMarkdownUpdated = location => console.log('📄 ', 'Updated markdown: ', location);
+const logMarkdownFail = error => console.log('🛑 ', 'FAILED markdown: ', error);
 
 const fileWatchReady = new Promise((resolve, reject) => {
   fileWatch
     .watch(contentFolder, { ignoreInitial: true })
     .on('add', fileLocation => {
-      markdownChanged(fileLocation);
-      generateSitemap();
+      markdownChanged(fileLocation).then(logMarkdownUpdated, logMarkdownFail);
+      generateSitemap().then(logSitemapUpdated, logSitemapFail);
     })
     .on('change', fileLocation => {
-      markdownChanged(fileLocation);
+      markdownChanged(fileLocation).then(logMarkdownUpdated, logMarkdownFail);
     })
     .on('ready', resolve)
     .on('error', reject);
-}).then(() => {
-  console.log('🔭 ', 'Filewatcher ready');
-});
+}).then(logFilewatchCreated, logFilewatchFail);
 
 /* 
  * This script invokes the next binary

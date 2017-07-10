@@ -14,7 +14,7 @@ const contentFolder = path.join(appFolder, 'content');
  */
 const generateSitemap = require('./tasks/sitemap');
 
-const sitemapReady = generateSitemap(appFolder).then(() => console.log('🗺 ', 'Sitemap generated'));
+const sitemapReady = generateSitemap().then(() => console.log('🗺 ', 'Sitemap generated'));
 
 /* 
  * This script detects watches on markdown files and appends a white-space char at the end of the file

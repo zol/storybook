@@ -20,6 +20,7 @@
     "babili-webpack-plugin": "^0.1.2",
     "bluebird": "^3.5.0",
     "chokidar": "^1.7.0",
+    "deepmerge": "^1.5.0",
     "directory-tree": "^2.0.0",
     "fs": "^0.0.1-security",
     "glamor": "^2.20.25",

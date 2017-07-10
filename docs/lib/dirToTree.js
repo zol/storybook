@@ -1,12 +1,14 @@
 const Promise = require('bluebird');
 const fs = Promise.promisifyAll(require('fs'));
-const md5 = require('md5');
 
-const promiseFromCommand = require('./promiseFromCommand');
+function File({ size, ctime, birthtime }, { inputDir, fileName }) {
+  this.id = fileName;
+  this.size = size;
+  this.modified = ctime;
+  this.created = birthtime;
 
-function File(name) {
-  this.name = name;
-  this.size = 0;
+  this.path = `${inputDir}/${fileName}`;
+  this.isFile = true;
 }
 
 function Directory(path) {
@@ -19,8 +21,6 @@ function Directory(path) {
   this.name = dirArray[dirArray.length - 1];
 }
 
-const authorRegexp = /Author: (.+?) <(.+?)>/g;
-
 // TODO: refactor to pure functions
 const readDir = inputDir => {
   const dir = new Directory(inputDir);
@@ -29,50 +29,16 @@ const readDir = inputDir => {
     .map(fileName =>
       fs.statAsync(`${inputDir}/${fileName}`).then(stat => {
         if (stat.isFile()) {
-          const file = new File(fileName);
-          file.size = stat.size;
-          file.modified = stat.ctime;
-          file.created = stat.birthtime;
-          file.path = `${inputDir.split('/docs/content')[1]}/${fileName}`;
-
-          return promiseFromCommand(
-            [`git --no-pager log --summary -p -- ${inputDir}/${fileName}`].join(' && ')
-          )
-            .then(result => {
-              const contributors = result.match(authorRegexp) || [];
-              return contributors
-                .map(string => {
-                  const [, name, email] = string.match(/Author: (.+?) <(.+?)>/);
-                  const hash = md5(email);
-
-                  return { name, hash, email };
-                })
-                .reduce((acc, { name, hash, email }, index, list) => {
-                  if (index < list.length - 1) {
-                    acc[hash] = { name, email };
-                    return acc;
-                  }
-                  return Object.keys(acc).map(key => ({
-                    hash: key,
-                    name: acc[key].name,
-                    email: acc[key].email,
-                    // TODO: add github accountname
-                  }));
-                }, {});
-            })
-            .catch(error => {
-              console.log(error);
-              return {};
-            })
-            .then(contributors => {
-              file.contributors = contributors;
-              return file;
-            });
+          return new File(stat, { fileName, inputDir });
         }
         if (stat.isDirectory()) {
           return readDir(`${inputDir}/${fileName}`).then(directory => {
             // eslint-disable-next-line no-param-reassign
-            directory.path = `${inputDir.split('/docs/content')[1]}/${fileName}`;
+            directory.path = `${inputDir}/${fileName}`;
+            // eslint-disable-next-line no-param-reassign
+            directory.id = fileName;
+            // eslint-disable-next-line no-param-reassign
+            directory.isFile = false;
 
             return directory;
           });

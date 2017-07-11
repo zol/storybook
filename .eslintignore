@@ -5,6 +5,7 @@ node_modules
 **/example/**
 app/**/demo/**
 docs/public
+docs/out
 
 *.bundle.js
 *.js.map

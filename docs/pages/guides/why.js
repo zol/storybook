@@ -19,4 +19,3 @@ export default generator('GuidesIndex', ({ path, query }) =>
     </Content>
   </Page>
 );
-                    

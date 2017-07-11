@@ -1,6 +1,6 @@
 # Issues
 
-TODO
+**TODO**
 
 ## TODO: write this page
 

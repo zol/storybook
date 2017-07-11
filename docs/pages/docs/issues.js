@@ -19,4 +19,3 @@ export default generator('DocsIssues', ({ path, query }) =>
     </Content>
   </Page>
 );
- 

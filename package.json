@@ -60,7 +60,7 @@
     "jest": "^20.0.4",
     "jest-enzyme": "^3.2.0",
     "lerna": "2.0.0",
-    "lint-staged": "^4.0.0",
+    "staged": "^4.0.0",
     "nodemon": "^1.11.0",
     "npmc": "^5.1.0-canary.2",
     "prettier": "^1.5.2",
@@ -81,10 +81,16 @@
   },
   "lint-staged": {
     "*.js": [
-      "npm run lint:js -- --fix"
+      "npm run lint:js -- --fix",
+      "git add"
+    ],
+    "*.json": [
+      "npm run lint:js -- --fix",
+      "git add"
     ],
     "*.md": [
-      "npm run lint:md -- -o"
+      "npm run lint:md -- -o",
+      "git add"
     ]
   },
   "pr-log": {

@@ -19,4 +19,3 @@ export default generator('DocsStructure', ({ path, query }) =>
     </Content>
   </Page>
 );
- 

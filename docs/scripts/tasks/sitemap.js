@@ -32,6 +32,7 @@ const authorRegexp = new RegExp(authorMatchString);
 const appFolder = path.join(__dirname, '..', '..');
 const contentFolder = path.join(appFolder, 'content');
 
+/* Read the git '.mailmap' file and parse it and the metadata */
 const mailmapLineSplitter = /([^<]*) <([^>]*)>[^#\n]*(?:#\s?(.*))?/;
 const mailmapData = fs
   .readFileAsync(path.join(__dirname, '..', '..', '..', '.mailmap'), 'utf8')
@@ -60,23 +61,32 @@ const mailmapData = fs
       )
   );
 
+/* Convert a deeply nested tree into a flat structure */
 const normalize = (list, acc = {}) =>
   list.reduce((localAcc, item) => {
     const localItem = Object.assign({}, item, { files: [] });
     if (item.files && item.files.length) {
       normalize(item.files, localAcc); // recursion
-      const keys = item.files.map(i => i.path);
+      const keys = item.files.map(i => i.route);
       localItem.files = keys;
     }
     // eslint-disable-next-line no-param-reassign
-    localAcc[item.path] = localItem;
+    localAcc[item.route] = localItem;
     return localAcc;
   }, acc);
 
+/* Extend a file object with a list of contributors from git log
+ * 1. Get git mailmap (a file mapping email to proper name & metadata)
+ * 2. Get git log and find contributors
+ * 3. Make contributors unique and extend with metadata
+ * 4. Error handling
+ * 5. Return extended file */
 const getContributors = item =>
   Promise.all([
     mailmapData,
-    promiseFromCommand(`git --no-pager log --summary -p -- ${contentFolder}/${item.path}`),
+    promiseFromCommand(
+      `git --no-pager log --summary -p -- ${contentFolder}/${item.route}${item.extention}`
+    ),
   ])
     .then(([mailmap, result]) =>
       (result.match(allAuthorsRegexp) || [])
@@ -108,6 +118,13 @@ const getContributors = item =>
     })
     .then(contributors => Object.assign(item, { contributors }));
 
+/* Main sequence - write a sitemap
+ * 1. get a data-tree representation of the content-folder
+ * 2. normalize data into flat structure
+ * 3. add contributors
+ * 4. deepmerge with existing sitemap
+ *    (This way a partial git history won't break a old contributors list)
+ * 5. Write into file (formatted by prettier) */
 const run = () =>
   folderToTree(contentFolder, contentFolder)
     .then(data => {
@@ -119,7 +136,7 @@ const run = () =>
           .map(item => (item.isFile ? getContributors(item) : Promise.resolve(item)))
       );
     })
-    .then(list => list.reduce((acc, item) => Object.assign(acc, { [item.path]: item }), {}))
+    .then(list => list.reduce((acc, item) => Object.assign(acc, { [item.route]: item }), {}))
     .then(data => merge(existingSitemap, data))
     .then(data => {
       let result;
@@ -144,7 +161,5 @@ const run = () =>
     .catch(error => {
       console.log(error);
     });
-
-run(path.join(__dirname, '..', '..'));
 
 module.exports = run;

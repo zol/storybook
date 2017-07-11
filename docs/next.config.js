@@ -2,9 +2,18 @@ const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const { ANALYZE } = process.env;
 
+const sitemap = (() => {
+  try {
+    // eslint-disable-next-line global-require
+    return require('./lib/sitemap');
+  } catch (error) {
+    return {};
+  }
+})();
+
 module.exports = {
-  distDir: 'build',
   poweredByHeader: false,
+  exportPathMap: () => Object.assign({ '/': { page: '/' } }, sitemap),
   webpack: config => {
     config.module.rules.push({ test: /\.md$/, use: 'raw-loader' });
 

@@ -40,3 +40,26 @@ Page.propTypes = {
 };
 
 export { Page as default };
+
+export const generator = (name, getChildren) => {
+  const Component = props =>
+    <Page {...props}>
+      {getChildren}
+    </Page>;
+  Component.displayName = name;
+  Component.propTypes = {
+    // eslint-disable-next-line react/forbid-prop-types
+    query: PropTypes.object,
+    path: PropTypes.string.isRequired,
+  };
+  Component.defaultProps = {
+    query: {},
+  };
+
+  Component.getInitialProps = ({ asPath, query }) => ({
+    path: asPath,
+    query,
+  });
+
+  return Component;
+};

@@ -10,9 +10,6 @@ const getIndex = directory =>
 function File({ size = 0, ctime = 0, birthtime = 0 }, { workDir, baseDir, fileName }) {
   const extention = path.extname(fileName);
   this.id = fileName;
-  this.size = size;
-  this.modified = ctime;
-  this.created = birthtime;
 
   this.extention = extention;
   this.route = getPath(`${workDir}/${path.basename(fileName, extention)}`, baseDir);
@@ -68,7 +65,6 @@ const readDir = (workDir, baseDir) => {
       })
     )
     .map(files => {
-      dir.length += 1;
       dir.files.push(files);
       return undefined;
     })

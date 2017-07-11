@@ -13,7 +13,7 @@ const sitemap = (() => {
 
 module.exports = {
   poweredByHeader: false,
-  exportPathMap: () => Object.assign({ '/': { page: '/' } }, sitemap),
+  exportPathMap: () => Object.assign({ '/': { page: '/' }, '/demo': { page: '/demo' } }, sitemap),
   webpack: config => {
     config.module.rules.push({ test: /\.md$/, use: 'raw-loader' });
 

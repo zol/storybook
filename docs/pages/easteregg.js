@@ -2,7 +2,7 @@ import React from 'react';
 
 import { parser } from '../lib/reactRenderer';
 
-import { generator } from '../components/Page';
+import Page, { generator } from '../components/Page';
 import TopNav from '../components/TopNav';
 import Content from '../components/Content';
 
@@ -10,9 +10,12 @@ import markdown from '../content/example.md';
 
 const content = parser(markdown);
 
-export default generator('RootExample', [
-  <TopNav />,
-  <Content>
-    {content}
-  </Content>,
-]);
+export default generator('RootEasterEgg', ({ path, query }) =>
+  <Page>
+    <TopNav {...{ path }} />
+    <Content {...{ path, query }}>
+      {content}
+    </Content>
+  </Page>
+);
+ 

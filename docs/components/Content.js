@@ -20,7 +20,10 @@ const Content = ({ children }) => {
         }
         if (item.type.displayName === 'MarkdownReactComponent' && item.props.component === 'Toc') {
           acc.toc = item.props.children;
-        } else if (acc.body.length === 0 && item.type !== 'h2') {
+        } else if (
+          acc.body.length === 0 &&
+          (acc.intro.length === 0 || !`${item.type}`.match(/^h\d$/))
+        ) {
           acc.intro.push(item);
         } else {
           acc.body.push(item);

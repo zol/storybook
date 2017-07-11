@@ -1,7 +1,8 @@
 import React from 'react';
 
 import Head from 'next/head';
-import Page from '../../components/Page';
+import Link from 'next/link';
+import Page, { generator } from '../../components/Page';
 
 import TopNav from '../../components/TopNav';
 import PageTitle from '../../components/PageTitle';
@@ -16,12 +17,12 @@ import EmberLogo from '../../components/logos/Ember';
 import PolymerLogo from '../../components/logos/Polymer';
 import AureliaLogo from '../../components/logos/Aurelia';
 
-export default () =>
+export default generator('GuidesIndex', ({ path }) =>
   <Page>
     <Head>
       <title>Storybook Guides</title>
     </Head>
-    <TopNav />
+    <TopNav {...{ path }} />
     <PageTitle minHeight={'auto'}>
       <h1>Guides</h1>
       <p>
@@ -37,9 +38,26 @@ export default () =>
           <section>
             <h2>Why Storybook</h2>
             <ol>
-              <li>Concept</li>
-              <li>Addons</li>
-              <li>Integration</li>
+              <li>
+                <Link href="/guides/why">
+                  <a>Concept</a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/guides/why#decorators">
+                  <a>Decorators</a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/guides/why#addons">
+                  <a>Addons</a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/guides/why#integration">
+                  <a>Integration</a>
+                </Link>
+              </li>
             </ol>
           </section>
           <section>
@@ -114,4 +132,6 @@ export default () =>
         </Blocks>
       </Container>
     </MarkdownContent>
-  </Page>;
+  </Page>
+);
+ 

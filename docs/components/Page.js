@@ -41,11 +41,8 @@ Page.propTypes = {
 
 export { Page as default };
 
-export const generator = (name, getChildren) => {
-  const Component = props =>
-    <Page {...props}>
-      {getChildren}
-    </Page>;
+export const generator = (name, content) => {
+  const Component = props => content(props);
   Component.displayName = name;
   Component.propTypes = {
     // eslint-disable-next-line react/forbid-prop-types

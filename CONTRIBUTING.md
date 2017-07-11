@@ -49,6 +49,7 @@ git clone https://github.com/storybooks/storybook.git
 cd storybook
 npm install
 npm run bootstrap
+npm run bootstrap:test-cra
 
 cd examples/test-cra
 

@@ -1,8 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import Head from 'next/head';
-import Page from '../components/Page';
+import Page, { generator } from '../components/Page';
 
 import TopNav from '../components/TopNav';
 import Hero from '../components/Hero';
@@ -16,7 +15,7 @@ import EmberLogo from '../components/logos/Ember';
 import PolymerLogo from '../components/logos/Polymer';
 import AureliaLogo from '../components/logos/Aurelia';
 
-const Response = ({ query, path }) =>
+export default generator('RootIndex', ({ path, query }) =>
   <Page>
     <Head>
       <title>Storybook docs</title>
@@ -90,21 +89,5 @@ const Response = ({ query, path }) =>
         <p>Nuxt (planned)</p>
       </Blocks>
     </Container>
-  </Page>;
-
-Response.displayName = 'Response';
-Response.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
-  query: PropTypes.object,
-  path: PropTypes.string.isRequired,
-};
-Response.defaultProps = {
-  query: {},
-};
-
-Response.getInitialProps = ({ asPath, query }) => ({
-  path: asPath,
-  query,
-});
-
-export default Response;
+  </Page>
+);

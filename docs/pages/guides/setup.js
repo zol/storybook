@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Page from '../../components/Page';
+import Page, { generator } from '../../components/Page';
 
 import { parser } from '../../lib/reactRenderer';
 
@@ -11,10 +11,12 @@ import markdown from '../../content/guides/setup.md';
 
 const content = parser(markdown);
 
-export default () =>
+export default generator('GuidesIndex', ({ path, query }) =>
   <Page>
-    <TopNav />
-    <Content>
+    <TopNav {...{ path }} />
+    <Content {...{ path, query }}>
       {content}
     </Content>
-  </Page>;
+  </Page>
+);
+ 

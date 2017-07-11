@@ -10,12 +10,6 @@ import markdown from '../content/example.md';
 
 const content = parser(markdown);
 
-/* WORKLOG:
- * all pages should be written like this
- * (using the page generator)
- * this will remove quite a bit of boiletplate
- */
-
 export default generator('RootExample', [
   <TopNav />,
   <Content>

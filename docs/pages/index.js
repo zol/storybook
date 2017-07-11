@@ -16,7 +16,7 @@ import EmberLogo from '../components/logos/Ember';
 import PolymerLogo from '../components/logos/Polymer';
 import AureliaLogo from '../components/logos/Aurelia';
 
-const Response = ({ query, pathname }) =>
+const Response = ({ query, path }) =>
   <Page>
     <Head>
       <title>Storybook docs</title>
@@ -25,7 +25,7 @@ const Response = ({ query, pathname }) =>
     <Hero>
       <h1>
         The extendible component explorer<br />you'll ♥️ to use {JSON.stringify(query, null, 2)}{' '}
-        {JSON.stringify(pathname, null, 2)}
+        {JSON.stringify(path, null, 2)}
       </h1>
       <button>Start</button>
     </Hero>
@@ -96,14 +96,14 @@ Response.displayName = 'Response';
 Response.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   query: PropTypes.object,
-  pathname: PropTypes.string.isRequired,
+  path: PropTypes.string.isRequired,
 };
 Response.defaultProps = {
   query: {},
 };
 
-Response.getInitialProps = ({ req, query }) => ({
-  pathname: req.path,
+Response.getInitialProps = ({ asPath, query }) => ({
+  path: asPath,
   query,
 });
 

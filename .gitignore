@@ -19,6 +19,7 @@ packages/examples/automated-*
 
 docs/public
 docs/.next
+docs/out
 
 *.log
 .idea

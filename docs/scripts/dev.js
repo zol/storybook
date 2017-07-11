@@ -54,7 +54,7 @@ const fileWatchReady = new Promise((resolve, reject) => {
     .on('error', reject);
 }).then(logFilewatchCreated, logFilewatchFail);
 
-/* 
+/*
  * This script invokes the next binary
  * Since it's a node module, we can just require it.
  * We wait for the sitemap and filewatch to complete

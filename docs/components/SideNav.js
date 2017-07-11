@@ -17,9 +17,16 @@ const Item = glamorous(({ name, path, ...props }) =>
   color: 'orangered',
 });
 
+/* WORKLOG:
+ * get current route
+ * find matching route in sitemap
+ * get route siblings || children
+ */
+
 const SideNav = glamorous(({ sitemap, ...props }) =>
   <ul {...props}>
-    {sitemap.map(item =>
+    {/* temp disabled */}
+    {([] || sitemap).map(item =>
       <li>
         <Item {...item} />
       </li>

@@ -1,19 +1,15 @@
 import React from 'react';
 
-import { parser } from '../lib/reactRenderer';
-
 import Page, { generator } from '../components/Page';
 import TopNav from '../components/TopNav';
-import Content from '../components/Content';
+import { Content, MarkdownReactComponent as ReactComponent } from '../components/Content';
 
-import markdown from '../content/example.md';
-
-const content = parser(markdown);
+import content from '../content/easteregg.md';
 
 export default generator('RootEasterEgg', ({ path, query }) =>
   <Page>
     <TopNav {...{ path }} />
-    <Content {...{ path, query }}>
+    <Content {...{ path, query, ReactComponent }}>
       {content}
     </Content>
   </Page>

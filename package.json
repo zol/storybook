@@ -24,7 +24,9 @@
     "lint:js": "eslint . --cache --cache-location=.cache/eslint --ext .js,.jsx,.json",
     "lint:md": "remark .",
     "publish": "lerna publish",
-    "test": "jest --projects ./ ./examples/react-native-vanilla"
+    "test": "jest --projects ./ ./examples/react-native-vanilla",
+    "build": "npm run bootstrap:docs && npm run docs:build",
+    "start": "serve ./docs/out --single"
   },
   "engines": {
     "node": "node"

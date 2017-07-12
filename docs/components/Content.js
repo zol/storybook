@@ -1,4 +1,4 @@
-import React, { Children } from 'react';
+import React, { Children, cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 
@@ -7,34 +7,69 @@ import sitemap from '../lib/sitemap';
 import PageTitle from './PageTitle';
 import Container from './Container';
 import Split from './Split';
-import MarkdownContent from './MarkdownContent';
-import Toc from './Toc';
+import MarkdownContainer, { ReactComponent as MarkdownReactComponent } from './MarkdownContent';
+// import Toc from './Toc';
 import SideNav from './SideNav';
 
+const childrenToString = children => {
+  switch (true) {
+    case typeof children === 'string': {
+      return children;
+    }
+    case Array.isArray(children): {
+      return children.reduce((acc, item) => acc + childrenToString(item), '');
+    }
+    default: {
+      return '';
+    }
+  }
+};
+
+const Toc = () => null;
+
+const isHeaderMatch = {
+  any: /^h\d$/,
+  1: /^h1$/,
+  2: /^h2$/,
+  3: /^h3$/,
+  4: /^h4$/,
+  5: /^h5$/,
+  6: /^h6$/,
+};
+const isHeader = (t, depth) =>
+  t &&
+  t.type &&
+  t.type.match &&
+  (depth ? t.type.match(isHeaderMatch[depth]) : t.type.match(isHeaderMatch.any));
+
 const Content = ({ children }) => {
-  const { toc, body, intro, header } = Children.toArray(children).reduce(
+  const { toc, body, intro, header } = Children.toArray(children.props.children).reduce(
     (acc, item) => {
       try {
-        if (acc.body.length === 0 && item.type === 'h1') {
-          acc.header = item.props.children[0];
+        if (acc.header === '' && isHeader(item, 1)) {
+          acc.header = childrenToString(item.props.children);
         }
-        if (item.type.displayName === 'MarkdownReactComponent' && item.props.component === 'Toc') {
-          acc.toc = item.props.children;
-        } else if (
-          acc.body.length === 0 &&
-          (acc.intro.length === 0 || !`${item.type}`.match(/^h\d$/))
-        ) {
+        if (isHeader(item.type)) {
+          acc.toc = acc.toc.concat({
+            props: { ...item.props, depth: item.type },
+            text: childrenToString(item.props.children),
+          });
+        }
+
+        if (acc.body.length === 0 && (acc.intro.length === 0 || !`${item.type}`.match(/^h\d$/))) {
           acc.intro.push(item);
         } else {
           acc.body.push(item);
         }
       } catch (error) {
-        // debugger;
+        console.log(error);
       }
       return acc;
     },
     { toc: [], body: [], intro: [], header: '' }
   );
+
+  console.log(toc);
 
   return (
     <div>
@@ -50,14 +85,14 @@ const Content = ({ children }) => {
         <Split>
           <nav>
             <Toc toc={toc} />
-            <MarkdownContent>
+            <MarkdownContainer>
               <h2>Other navigation</h2>
               <SideNav sitemap={sitemap} />
-            </MarkdownContent>
+            </MarkdownContainer>
           </nav>
-          <MarkdownContent>
+          <MarkdownContainer>
             {body}
-          </MarkdownContent>
+          </MarkdownContainer>
         </Split>
       </Container>
     </div>
@@ -69,4 +104,4 @@ Content.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default Content;
+export { Content as default, Content, MarkdownReactComponent };

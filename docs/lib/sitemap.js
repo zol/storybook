@@ -9,6 +9,15 @@ module.exports = {
     files: [],
     contributors: [
       {
+        hash: '537eed32d6998089dd5aa6a7e6ea2691',
+        name: 'Norbert de Langen',
+        meta: {
+          github: 'ndelangen',
+          npm: 'ndelangen',
+          twitter: 'norbertdelangen',
+        },
+      },
+      {
         hash: 'f9b12bc1aa320b434dff7ae42be6c561',
         name: 'Oleg Proskurin',
         meta: {},

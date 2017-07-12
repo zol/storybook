@@ -2,20 +2,15 @@ import React from 'react';
 
 import Page, { generator } from '../../components/Page';
 
-import { parser } from '../../lib/reactRenderer';
-
 import TopNav from '../../components/TopNav';
 import Content from '../../components/Content';
 
-import markdown from '../../content/docs/cli.md';
-
-const content = parser(markdown);
+import content from '../../content/docs/cli.md';
 
 export default generator('DocsCli', ({ path, query }) =>
   <Page>
     <TopNav {...{ path }} />
-    <Content {...{ path, query }}>
-      {content}
-    </Content>
+    <Content {...{ path, query }}>{content}</Content>!
   </Page>
 );
+ 

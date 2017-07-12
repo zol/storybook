@@ -134,3 +134,4 @@ export default generator('GuidesIndex', ({ path }) =>
     </MarkdownContent>
   </Page>
 );
+ 

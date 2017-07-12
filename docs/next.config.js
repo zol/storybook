@@ -25,6 +25,7 @@ module.exports = {
           openAnalyzer: true,
         })
       );
+      config.devtool = 'source-map';
     }
 
     return config;

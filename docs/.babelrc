@@ -11,6 +11,6 @@
       "polyfill": false,
       "regenerator": true
     }],
-    "transform-md-import-to-string"
+    "./lib/myMarkdownBabelPlugin"
   ]
 }

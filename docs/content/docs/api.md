@@ -218,7 +218,7 @@ Decorators composition:
 You can add several decorators to a `stories` object. They will wrap each other in a nesting way.
 **Note**: Next added decorator will wrap the previous ones. 
 
-// todo: check the decorators order
+TODO: check the decorators order
 
 Example:
 
@@ -247,7 +247,7 @@ See also:
 
 -   [.add](api#add)
 
-##### .<addonFn>
+##### `.<addonFn>`
 
 ### setAddon(addon)
 

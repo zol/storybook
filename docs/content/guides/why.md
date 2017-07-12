@@ -9,7 +9,7 @@ We're going to discuss the core concepts of Storybook which will list Storybook'
 
 ## Isolated Component Driven Development
 
-lalala **TODO** lalala
+lalala **TODO** lalala..
 
 ## Manager
 

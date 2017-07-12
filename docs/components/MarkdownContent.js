@@ -1,6 +1,7 @@
+import React from 'react';
 import glamorous from 'glamorous';
 
-const MarkdownContent = glamorous.div({
+const Container = glamorous.div({
   '& h1, & h2, & h3, & h4, & h5, & h6': {
     marginTop: -80, // this will make browser scroll-to behavior to be 80px off
     paddingTop: 80, // ensuring the header will not be covered by the sticky header
@@ -43,6 +44,8 @@ const MarkdownContent = glamorous.div({
     lineHeight: '1.4em',
   },
 });
-MarkdownContent.displayName = 'MarkdownContent';
+Container.displayName = 'MarkdownContainer';
 
-export { MarkdownContent as default };
+const ReactComponent = () => <div>OMG!</div>;
+
+export { Container as default, Container, ReactComponent };

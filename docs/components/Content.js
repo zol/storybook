@@ -7,7 +7,7 @@ import sitemap from '../lib/sitemap';
 import PageTitle from './PageTitle';
 import Container from './Container';
 import Split from './Split';
-import MarkdownContent from './MarkdownContent';
+import MarkdownContainer, { ReactComponent as MarkdownReactComponent } from './MarkdownContent';
 import Toc from './Toc';
 import SideNav from './SideNav';
 
@@ -50,14 +50,14 @@ const Content = ({ children }) => {
         <Split>
           <nav>
             <Toc toc={toc} />
-            <MarkdownContent>
+            <MarkdownContainer>
               <h2>Other navigation</h2>
               <SideNav sitemap={sitemap} />
-            </MarkdownContent>
+            </MarkdownContainer>
           </nav>
-          <MarkdownContent>
+          <MarkdownContainer>
             {body}
-          </MarkdownContent>
+          </MarkdownContainer>
         </Split>
       </Container>
     </div>
@@ -69,4 +69,4 @@ Content.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default Content;
+export { Content as default, Content, MarkdownReactComponent };

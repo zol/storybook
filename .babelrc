@@ -4,7 +4,6 @@
     ["transform-runtime", {
       "polyfill": false,
       "regenerator": true
-    }],
-    "transform-md-import-to-string"
+    }]
   ]
 }

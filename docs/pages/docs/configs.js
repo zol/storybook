@@ -2,14 +2,10 @@ import React from 'react';
 
 import Page, { generator } from '../../components/Page';
 
-import { parser } from '../../lib/reactRenderer';
-
 import TopNav from '../../components/TopNav';
 import Content from '../../components/Content';
 
-import markdown from '../../content/docs/configs.md';
-
-const content = parser(markdown);
+import content from '../../content/docs/configs.md';
 
 export default generator('DocsConfigs', ({ path, query }) =>
   <Page>
@@ -19,3 +15,4 @@ export default generator('DocsConfigs', ({ path, query }) =>
     </Content>
   </Page>
 );
+ 

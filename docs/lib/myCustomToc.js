@@ -1,5 +1,5 @@
-import slug from 'remark-slug';
-import util from 'mdast-util-toc';
+const slug = require('remark-slug');
+const util = require('mdast-util-toc');
 
 const simplifyPocAst = node => {
   const localNode = Object.assign({}, node);
@@ -15,7 +15,7 @@ const simplifyPocAst = node => {
   return localNode;
 };
 
-export default function toc(options) {
+module.exports = function toc(options) {
   const settings = Object.assign(options || {});
   // const heading = settings.heading || 'toc|table[ -]of[ -]contents?';
   const depth = settings.maxDepth || 6;
@@ -57,4 +57,4 @@ export default function toc(options) {
   }
 
   return transformer;
-}
+};

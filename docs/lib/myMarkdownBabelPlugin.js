@@ -30,9 +30,6 @@ module.exports = function({ types: t }) {
       children && children.length === 0
     );
 
-  const getKey = i =>
-    `${i.position.start.line}${i.position.start.column}${i.position.start.offset}`;
-
   const mapChildren = (children, context = { definitions: {} }) =>
     children
       .reduce((acc, item) => {
@@ -60,21 +57,21 @@ module.exports = function({ types: t }) {
     listItem: ({ children }, context) => R('li', null, mapChildren(children, context)),
     thematicBreak: () => R('hr', null, []),
     html: ({ value }) => t.jSXText(value),
-    text: ({ value }) => (value ? t.jSXText(value) : undefined),
+    text: ({ value }) => t.jSXText(value),
     code: () => t.jSXText('todo'),
     inlineCode: ({ value }) => t.jSXText(value),
-    link: ({ children, title, url }, context) =>
-      R('a', { title, url }, mapChildren(children, context)),
+    link: ({ children, title, url: href }, context) =>
+      R('a', { title, href }, mapChildren(children, context)),
     linkReference: ({ children, identifier }, context) => {
-      const { title, url } = context.definitions[identifier] || { url: '/' };
-      return R('a', { title, url }, mapChildren(children, context));
+      const { title, url: href } = context.definitions[identifier] || { url: '/' };
+      return R('a', { title, href }, mapChildren(children, context));
     },
     strong: ({ children }, context) => R('strong', null, mapChildren(children, context)),
     emphasis: ({ children }, context) => R('em', null, mapChildren(children, context)),
-    image: () => t.jSXText('todo'),
-    imageReference: ({ children, identifier }, context) => {
-      const { title, url } = context.definitions[identifier] || { url: '/' };
-      return R('img', { title, src: url }, []);
+    image: ({ title, url: src }) => R('img', { title, src }, []),
+    imageReference: ({ identifier }, context) => {
+      const { title, url: src } = context.definitions[identifier] || { url: '/' };
+      return R('img', { title, src }, []);
     },
     table: ({ children, align }, context) => {
       const [head, ...tail] = children;
@@ -86,8 +83,8 @@ module.exports = function({ types: t }) {
     tableRow: ({ children }, context) => R('tr', null, mapChildren(children, context)),
     tableCell: ({ children }, context) => R('td', null, mapChildren(children, context)),
 
-    ReactComponent: ({ children }, context) =>
-      R('ReactComponent', null, mapChildren(children, context)),
+    ReactComponent: ({ children, options }, context) =>
+      R('ReactComponent', options, mapChildren(children, context)),
   };
 
   function endsWith(str, search) {

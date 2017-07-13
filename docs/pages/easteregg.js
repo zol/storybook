@@ -14,4 +14,4 @@ export default generator('RootEasterEgg', ({ path, query }) =>
     </Content>
   </Page>
 );
- 
+   

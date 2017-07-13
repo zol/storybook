@@ -21,7 +21,7 @@ lalala **TODO** lalala
 
 # Decorators
 
-:::Note
+:::Note { amazingly: true }
 currently React only
 :::
 

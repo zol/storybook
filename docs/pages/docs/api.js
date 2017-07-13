@@ -15,4 +15,3 @@ export default generator('DocsApi', ({ path, query }) =>
     </Content>
   </Page>
 );
- 

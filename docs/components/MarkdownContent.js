@@ -46,6 +46,10 @@ const Container = glamorous.div({
 });
 Container.displayName = 'MarkdownContainer';
 
-const ReactComponent = () => <div>OMG!</div>;
+const ReactComponent = ({ children, ...rest }) =>
+  <div>
+    {JSON.stringify(rest, null, 2)}
+    {children}
+  </div>;
 
 export { Container as default, Container, ReactComponent };

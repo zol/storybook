@@ -10,9 +10,9 @@ import content from '../../content/guides/why.md';
 export default generator('GuidesIndex', ({ path, query }) =>
   <Page>
     <TopNav {...{ path }} />
-    <Content {...{ path, query }}>
+    <Content {...{ path, query, ReactComponent }}>
       {content}
     </Content>
   </Page>
 );
- 
+  

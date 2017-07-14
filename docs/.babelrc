@@ -1,7 +1,13 @@
 {
   "presets": [
     "next/babel",
-    "env",
+    ["env", {
+      "targets": {
+        "chrome": 52
+      },
+      "modules": false,
+      "loose": true
+    }],
     "react"
   ],
   "plugins": [
@@ -11,6 +17,7 @@
       "polyfill": false,
       "regenerator": true
     }],
+    "lodash",
     "./lib/myMarkdownBabelPlugin"
   ]
 }

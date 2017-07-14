@@ -20,7 +20,7 @@ humans.map(human => new Slave(human));
 throw new Rock({ size: 'medium' });
 ```
 
-::: Test click me _content_
+:::Test click me _content_
 
 ```js
 // human.js
@@ -28,3 +28,5 @@ throw new Rock({ size: 'medium' });
 ```
 
 :::
+
+😃

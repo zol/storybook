@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "babel-literal-to-ast": "^0.1.2",
+    "babel-plugin-lodash": "^3.2.11",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-plugin-transform-runtime": "^6.23.0",
@@ -25,11 +26,13 @@
     "chokidar": "^1.7.0",
     "deepmerge": "^1.5.0",
     "directory-tree": "^2.0.0",
+    "docsearch.js": "^2.3.3",
     "fs": "^0.0.1-security",
     "glamor": "^2.20.25",
     "glamorous": "^3.23.2",
     "global": "^4.3.2",
     "isomorphic-fetch": "^2.2.1",
+    "lodash-webpack-plugin": "^0.11.4",
     "markdown-loader": "^2.0.0",
     "md5": "^2.2.1",
     "mdast-util-to-hast": "^2.4.1",
@@ -37,6 +40,8 @@
     "next": "^3.0.0-beta16",
     "node-hook": "^0.6.1",
     "node-raw": "^0.2.3",
+    "preact": "^8.2.1",
+    "preact-compat": "^3.16.0",
     "prismjs": "^1.6.0",
     "prop-types": "^15.5.10",
     "raw-loader": "^0.5.1",
@@ -49,6 +54,7 @@
     "unified": "^6.1.5",
     "unist-builder": "^1.0.2",
     "webpack-bundle-analyzer": "^2.8.2",
+    "webpack-visualizer-plugin": "^0.1.11",
     "webpack-watch": "^0.2.0"
   },
   "private": true

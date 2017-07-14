@@ -3,7 +3,7 @@ const t = require('babel-types');
 const serialize = require('babel-literal-to-ast');
 
 const markdown = fs.readFileSync(
-  '/Users/dev/Projects/GitHub/storybook/react-storybook/docs/content/guides/why.md',
+  '/Users/dev/Projects/GitHub/storybook/react-storybook/docs/content/easteregg.md',
   'utf8'
 );
 
@@ -57,7 +57,7 @@ const mapChildren = (children, context = { definitions: {} }) =>
         item,
       });
     }, [])
-    .map(({ fn, item }, index) => fn(item, context));
+    .map(({ fn, item }) => fn(item, context));
 
 const elementMap = {
   heading: ({ depth, children }, context) => R(`h${depth}`, null, mapChildren(children, context)),
@@ -67,8 +67,9 @@ const elementMap = {
   listItem: ({ children }, context) => R('li', null, mapChildren(children, context)),
   thematicBreak: () => R('hr', null, []),
   html: ({ value }) => t.jSXText(value),
-  text: ({ value }) => (value ? t.jSXText(value) : undefined),
-  code: () => t.jSXText('todo'),
+  text: ({ value }) => t.jSXText(value || 'SOMETHING IS WRONG'),
+  code: () => t.jSXText('todo: code'),
+  blockquote: () => t.jSXText('todo: quote'),
   inlineCode: ({ value }) => t.jSXText(value),
   link: ({ children, title, url }, context) =>
     R('a', { title, url }, mapChildren(children, context)),

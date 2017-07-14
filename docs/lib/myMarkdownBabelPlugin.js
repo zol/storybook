@@ -50,15 +50,17 @@ module.exports = function({ types: t }) {
       .map(({ fn, item }, index) => fn(item, context));
 
   const elementMap = {
-    heading: ({ depth, children }, context) => R(`h${depth}`, null, mapChildren(children, context)),
+    heading: ({ depth, children }, context) =>
+      R(`h${depth}`, { id: children }, mapChildren(children, context)),
     paragraph: ({ children }, context) => R('p', null, mapChildren(children, context)),
     list: ({ children, ordered }, context) =>
       R(ordered ? 'ol' : 'ul', null, mapChildren(children, context)),
     listItem: ({ children }, context) => R('li', null, mapChildren(children, context)),
     thematicBreak: () => R('hr', null, []),
     html: ({ value }) => t.jSXText(value),
-    text: ({ value }) => t.jSXText(value),
-    code: () => t.jSXText('todo'),
+    text: ({ value }) => t.jSXText(value || 'SOMETHING IS WRONG'),
+    code: () => t.jSXText('todo: code'),
+    blockquote: () => t.jSXText('todo: quote'),
     inlineCode: ({ value }) => t.jSXText(value),
     link: ({ children, title, url: href }, context) =>
       R('a', { title, href }, mapChildren(children, context)),

@@ -15,7 +15,7 @@ import EmberLogo from '../components/logos/Ember';
 import PolymerLogo from '../components/logos/Polymer';
 import AureliaLogo from '../components/logos/Aurelia';
 
-export default generator('RootIndex', ({ path, query }) =>
+export default generator('RootIndex', () =>
   <Page>
     <Head>
       <title>Storybook docs</title>
@@ -23,7 +23,8 @@ export default generator('RootIndex', ({ path, query }) =>
     <TopNav />
     <Hero>
       <HeroTitle>
-        The extendible component explorer<br />you'll ♥️ to use
+        The extendible component explorer<br />
+        you'll ️<span style={{ color: 'red', fontSize: '0.8em' }}>💖</span> to use
       </HeroTitle>
       <button>Start</button>
     </Hero>

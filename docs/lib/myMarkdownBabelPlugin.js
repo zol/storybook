@@ -38,16 +38,18 @@ module.exports = function({ types: t }) {
         }
         // remove definitions from flow and add to context
         if (item.type === 'definition') {
+          // eslint-disable-next-line no-param-reassign
           context.definitions[item.identifier] = item;
           return acc;
         }
         // continue flow & map to type
         return acc.concat({
+          // eslint-disable-next-line no-use-before-define
           fn: elementMap[item.type] || elementMap.text,
           item,
         });
       }, [])
-      .map(({ fn, item }, index) => fn(item, context));
+      .map(({ fn, item }) => fn(item, context));
 
   const elementMap = {
     heading: ({ depth, children }, context) =>

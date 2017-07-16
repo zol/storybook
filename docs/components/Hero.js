@@ -7,6 +7,18 @@ const gradients = {
   blue: 'linear-gradient(135deg, #2ab5bb 8%, #2a7bbb)',
   pink: 'linear-gradient(135deg, rgb(241,97,140) 0%, rgb(181,126,229) 100%)',
 };
+const getKey = i => i;
+
+const flowIn = css.keyframes({
+  '0%': {
+    transform: 'translate(10px, 100%)',
+    opacity: 0,
+  },
+  '100%': {
+    transform: 'translate(0, 0)',
+    opacity: 1,
+  },
+});
 
 const Root = glamorous.section(
   {
@@ -37,17 +49,6 @@ Hero.displayName = 'Hero';
 Hero.propTypes = {
   children: PropTypes.node.isRequired,
 };
-
-const flowIn = css.keyframes({
-  '0%': {
-    transform: 'translate(10px, 100%)',
-    opacity: 0,
-  },
-  '100%': {
-    transform: 'translate(0, 0)',
-    opacity: 1,
-  },
-});
 
 const H1 = glamorous.h1({
   overflow: 'hidden',
@@ -81,6 +82,7 @@ const Section = glamorous.span(
     animationDelay: `${index / 14}s`,
   })
 );
+
 const HeroTitle = ({ children }) =>
   <H1>
     {Children.toArray(children)
@@ -89,10 +91,14 @@ const HeroTitle = ({ children }) =>
         (item, index) =>
           item.type === 'br'
             ? item
-            : <Section index={index} key={index}>
+            : <Section index={index} key={getKey(index)}>
                 {item}
               </Section>
       )}
   </H1>;
+HeroTitle.displayName = 'HeroTitle';
+HeroTitle.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export { Hero as default, HeroTitle };

@@ -19,7 +19,6 @@ module.exports = {
   poweredByHeader: false,
   exportPathMap: () => Object.assign({ '/': { page: '/' }, '/demo': { page: '/demo' } }, sitemap),
   webpack: (config, { dev }) => {
-    console.log(type);
     // Loaders
     // config.module.rules.push({ test: /\.md$/, use: 'raw-loader' });
 

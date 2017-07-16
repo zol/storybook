@@ -4,7 +4,7 @@ import Head from 'next/head';
 import Page, { generator } from '../components/Page';
 
 import TopNav from '../components/TopNav';
-import Hero from '../components/Hero';
+import Hero, { HeroTitle } from '../components/Hero';
 import Blocks from '../components/Blocks';
 import Container from '../components/Container';
 
@@ -22,10 +22,9 @@ export default generator('RootIndex', ({ path, query }) =>
     </Head>
     <TopNav />
     <Hero>
-      <h1>
-        The extendible component explorer<br />you'll ♥️ to use {JSON.stringify(query, null, 2)}{' '}
-        {JSON.stringify(path, null, 2)}
-      </h1>
+      <HeroTitle>
+        The extendible component explorer<br />you'll ♥️ to use
+      </HeroTitle>
       <button>Start</button>
     </Hero>
     <Container width={800} vSpacing={30} hPadding={10}>

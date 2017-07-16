@@ -1,8 +1,9 @@
+/* eslint-disable no-param-reassign */
+
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const VisualizerPlugin = require('webpack-visualizer-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const webpack = require('webpack');
-const BabiliPlugin = require('babili-webpack-plugin');
 
 const { ANALYZE } = process.env;
 
@@ -19,9 +20,6 @@ module.exports = {
   poweredByHeader: false,
   exportPathMap: () => Object.assign({ '/': { page: '/' }, '/demo': { page: '/demo' } }, sitemap),
   webpack: (config, { dev }) => {
-    // Loaders
-    // config.module.rules.push({ test: /\.md$/, use: 'raw-loader' });
-
     if (dev) {
       config.module.rules = config.module.rules.map(rule => {
         if (rule.loader === 'babel-loader') {
@@ -39,7 +37,18 @@ module.exports = {
         }
         return rule;
       });
+    } else {
+      config.plugins.push(
+        new webpack.DefinePlugin({
+          'process.env': {
+            NODE_ENV: JSON.stringify('production'),
+          },
+        })
+      );
+      config.plugins.push(new LodashModuleReplacementPlugin());
+    }
 
+    if (ANALYZE) {
       config.devtool = 'source-map';
 
       config.plugins.push(
@@ -58,15 +67,6 @@ module.exports = {
           filename: './statistics.html',
         })
       );
-    } else {
-      config.plugins.push(
-        new webpack.DefinePlugin({
-          'process.env': {
-            NODE_ENV: JSON.stringify('production'),
-          },
-        })
-      );
-      config.plugins.push(new LodashModuleReplacementPlugin());
     }
 
     // config.plugins.push(new webpack.optimize.UglifyJsPlugin());

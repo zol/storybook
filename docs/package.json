@@ -54,6 +54,7 @@
     "remark-toc": "^4.0.1",
     "unified": "^6.1.5",
     "unist-builder": "^1.0.2",
+    "webpack": "^3.3.0",
     "webpack-bundle-analyzer": "^2.8.2",
     "webpack-visualizer-plugin": "^0.1.11",
     "webpack-watch": "^0.2.0"

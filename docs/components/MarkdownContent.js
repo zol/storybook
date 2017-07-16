@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import glamorous from 'glamorous';
 
 const Container = glamorous.div({
@@ -51,5 +52,13 @@ const ReactComponent = ({ children, ...rest }) =>
     {JSON.stringify(rest, null, 2)}
     {children}
   </div>;
-
+ReactComponent.propTypes = {
+  children: PropTypes.node,
+  component: PropTypes.string.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  props: PropTypes.object.isRequired,
+};
+ReactComponent.defaultProps = {
+  children: '',
+};
 export { Container as default, Container, ReactComponent };

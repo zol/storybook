@@ -1,7 +1,8 @@
----
+* * *
+
 id: 'custom-babel-config'
-title: 'Custom Babel Config'
----
+
+## title: 'Custom Babel Config'
 
 By default, Storybook loads your root `.babelrc` file and load those configurations.
 But sometimes some of those options may cause Storybook to throw errors.

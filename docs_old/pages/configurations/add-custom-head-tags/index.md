@@ -1,7 +1,8 @@
----
+* * *
+
 id: 'add-custom-head-tags'
-title: 'Add Custom Head Tags'
----
+
+## title: 'Add Custom Head Tags'
 
 Sometimes, you may need to add different tags to the HTML head. This is useful for adding web fonts or some external scripts.
 

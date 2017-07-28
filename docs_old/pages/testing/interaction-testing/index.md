@@ -1,7 +1,8 @@
----
+* * *
+
 id: 'interaction-testing'
-title: 'Interaction Testing'
----
+
+## title: 'Interaction Testing'
 
 For the interaction testing, [Enzyme](https://github.com/airbnb/enzyme) is the best tool we can use. With that, we can [simulate](http://airbnb.io/enzyme/docs/api/ReactWrapper/simulate.html) user inputs and see what they are doing.
 

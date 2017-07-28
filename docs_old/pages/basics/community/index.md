@@ -1,7 +1,8 @@
----
+* * *
+
 id: 'community'
-title: 'Community'
----
+
+## title: 'Community'
 
 Storybook is maintained by a [community of users](https://github.com/storybooks/storybook/graphs/contributors). It's easy to get involved and all contributions are welcome!
 

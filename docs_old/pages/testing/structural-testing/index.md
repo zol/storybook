@@ -1,7 +1,8 @@
----
+* * *
+
 id: 'structural-testing'
-title: 'Structural Testing'
----
+
+## title: 'Structural Testing'
 
 For React, [Jest's snapshot testing](https://facebook.github.io/jest/blog/2016/07/27/jest-14.html) is the best way to do Structural Testing.
 It's painless to use and maintain.

@@ -1,7 +1,8 @@
----
+* * *
+
 id: 'cli-options'
-title: 'CLI Options'
----
+
+## title: 'CLI Options'
 
 React Storybook comes with two CLI utilities. They are `start-storybook` and `build-storybook`.
 

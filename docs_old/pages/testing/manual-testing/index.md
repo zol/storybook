@@ -1,7 +1,8 @@
----
+* * *
+
 id: 'manual-testing'
-title: 'Manual Testing'
----
+
+## title: 'Manual Testing'
 
 Now we arrive at the most interesting (but also hardest) part of UI testing.
 We usually do this as a team.

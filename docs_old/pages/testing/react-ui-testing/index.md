@@ -1,7 +1,8 @@
----
+* * *
+
 id: 'react-ui-testing'
-title: 'Introduction: React UI Testing'
----
+
+## title: 'Introduction: React UI Testing'
 
 There are different aspects we need to look at when testing UI.
 There are also a lot of tools and techniques we can use. 

@@ -1,7 +1,8 @@
----
+* * *
+
 id: 'writing-addons'
-title: 'Writing Addons'
----
+
+## title: 'Writing Addons'
 
 This is a complete guide on how to create addons for Storybook.
 

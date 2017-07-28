@@ -1,7 +1,8 @@
----
+* * *
+
 id: 'css-style-testing'
-title: 'CSS/Style Testing'
----
+
+## title: 'CSS/Style Testing'
 
 We can also use Storybook as the base for CSS/Style testing with stories as the base. For information on how to correctly apply all of your styles as well as styles from CSS frameworks like Boostrap, Semantic UI or similar check the [configurations section](https://storybook.js.org/configurations/default-config/#css-support). Back to CSS/Style testing: let's have a look at the following Storybook.
 

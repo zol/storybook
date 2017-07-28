@@ -1,7 +1,8 @@
----
+* * *
+
 id: 'serving-static-files'
-title: 'Serving Static Files'
----
+
+## title: 'Serving Static Files'
 
 It's often useful to load static files like images and videos when creating components and stories.
 

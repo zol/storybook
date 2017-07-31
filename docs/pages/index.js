@@ -1,11 +1,14 @@
 import React from 'react';
 
 import Head from 'next/head';
+import Link from 'next/link';
 import Page, { generator } from '../components/Page';
 
 import TopNav from '../components/TopNav';
-import Hero, { HeroTitle } from '../components/Hero';
-import Blocks from '../components/Blocks';
+import Hero, { HeroTitle, HeroActions } from '../components/Hero';
+import MarkdownContent, { H1 } from '../components/MarkdownContent';
+import Blocks, { BlockActions, BlockLink, BlockDescription } from '../components/Blocks';
+import Button from '../components/Button';
 import Container from '../components/Container';
 
 import ReactLogo from '../components/logos/React';
@@ -14,6 +17,17 @@ import VueLogo from '../components/logos/Vue';
 import EmberLogo from '../components/logos/Ember';
 import PolymerLogo from '../components/logos/Polymer';
 import AureliaLogo from '../components/logos/Aurelia';
+
+import StorybookLogo from '../components/logos/Storybook';
+import AirbnbLogo from '../components/logos/Airbnb';
+import SlackLogo from '../components/logos/Slack';
+import SquarespaceLogo from '../components/logos/Squarespace';
+import LonelyplanetLogo from '../components/logos/Lonelyplanet';
+import CourseraLogo from '../components/logos/Coursera';
+
+import PercyLogo from '../components/logos/Percy';
+import NuxtLogo from '../components/logos/Nuxt';
+import ZeitLogo from '../components/logos/Zeit';
 
 export default generator('RootIndex', () =>
   <Page>
@@ -26,68 +40,193 @@ export default generator('RootIndex', () =>
         The extendible component explorer<br />
         you'll ️<span style={{ color: 'red', fontSize: '0.8em' }}>💖</span> to use
       </HeroTitle>
-      <button>Start</button>
+      <HeroActions>
+        <Button href="/guides/why" size={3}>
+          What is Storybook
+        </Button>
+        <Button href="/guides/setup" size={3}>
+          Add to your project
+        </Button>
+        <Button href="/examples" size={3}>
+          See examples
+        </Button>
+        <Button href="/guides/talks" size={3}>
+          Watch talks
+        </Button>
+      </HeroActions>
     </Hero>
-    <Container width={800} vSpacing={30} hPadding={10}>
-      <Blocks>
+    <Container width={1000} vSpacing={30} hPadding={30}>
+      <Blocks padded>
         <section>
-          <h1>Quick documentation</h1>
-          <ol>
-            <li>Automatic setup</li>
-            <li>Add storybook manually</li>
-            <li>Writing stories</li>
-          </ol>
+          <MarkdownContent colored={false}>
+            <h1>Quick documentation</h1>
+            <ol>
+              <li>
+                <Link href="/guides/setup">
+                  <a>Automatic setup</a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/guides/setup">
+                  <a>Add storybook manually</a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/guides/setup">
+                  <a>Writing stories</a>
+                </Link>
+              </li>
+            </ol>
+          </MarkdownContent>
         </section>
         <section>
-          <h1>Custom configuration</h1>
-          <ol>
-            <li>Customise webpack config</li>
-            <li>Custom babel config</li>
-            <li>Adding global CSS & fonts</li>
-          </ol>
+          <MarkdownContent colored={false}>
+            <h1>Custom configuration</h1>
+            <ol>
+              <li>
+                <Link href="/guides/setup">
+                  <a>Customise webpack config</a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/guides/setup">
+                  <a>Custom babel config</a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/guides/setup">
+                  <a>Adding global CSS & fonts</a>
+                </Link>
+              </li>
+            </ol>
+          </MarkdownContent>
         </section>
         <section>
-          <h1>Try it now</h1>
-          <code>
-            <pre>
-              npm i -g @storybook/cli<br />cd my-react-app<br />getstorybook
-            </pre>
-          </code>
+          <MarkdownContent colored={false}>
+            <h1>Try it now</h1>
+            <code>
+              <pre>
+                npm i -g @storybook/cli<br />cd my-react-app<br />getstorybook
+              </pre>
+            </code>
+          </MarkdownContent>
         </section>
       </Blocks>
     </Container>
     <Container vPadding={30} hPadding={30}>
-      <h1>Supported UI libraries / frameworks</h1>
-      <Blocks max={6}>
-        <ReactLogo />
-        <VueLogo />
-        <AngularLogo />
-        <EmberLogo />
-        <PolymerLogo />
-        <AureliaLogo />
+      <H1>Supported UI libraries / frameworks</H1>
+      <Blocks
+        max={6}
+        colors={[
+          'rgba(83, 193, 222, 0.3)',
+          'rgba(65, 184, 131, 0.3)',
+          'rgba(195, 0, 47, 0.3)',
+          'rgba(226, 75, 49, 0.3)',
+          'rgba(48, 63, 159, 0.3)',
+          'rgba(126, 46, 122, 0.3)',
+        ]}
+      >
+        <BlockLink href="http://example.com">
+          <ReactLogo />
+        </BlockLink>
+        <BlockLink href="http://example.com">
+          <VueLogo />
+        </BlockLink>
+        <BlockLink href="http://example.com">
+          <AngularLogo />
+        </BlockLink>
+        <BlockLink href="http://example.com">
+          <EmberLogo />
+        </BlockLink>
+        <BlockLink href="http://example.com">
+          <PolymerLogo />
+        </BlockLink>
+        <BlockLink href="http://example.com">
+          <AureliaLogo />
+        </BlockLink>
       </Blocks>
     </Container>
-    <Container width={1000} vPadding={30} hPadding={30} background={'silver'}>
-      <h1>Live examples</h1>
-      <Blocks>
-        <p>storybook</p>
-        <p>airbnb</p>
-        <p>slack</p>
-        <p>lonely planet</p>
-        <p>squarespace</p>
-        <p>coursera</p>
+    <Container width={1000} vPadding={30} hPadding={30} background={'white'}>
+      <H1>
+        Used by <small>(live examples)</small>
+      </H1>
+      <Blocks max={5} colors={['rgba(245, 245, 245, 1)']} vSpacing={10}>
+        <BlockLink href="http://example.com">
+          <AirbnbLogo />
+        </BlockLink>
+        <BlockLink href="http://example.com">
+          <SlackLogo />
+        </BlockLink>
+        <BlockLink href="http://example.com">
+          <SquarespaceLogo />
+        </BlockLink>
+        <BlockLink href="http://example.com">
+          <LonelyplanetLogo />
+        </BlockLink>
+        <BlockLink href="http://example.com">
+          <CourseraLogo />
+        </BlockLink>
       </Blocks>
-      <button>More...</button>
+      <BlockActions>
+        <Button variant="gray" href="/examples">
+          More...
+        </Button>
+      </BlockActions>
     </Container>
     <Container vPadding={30} hPadding={30}>
-      <h1>Integrations</h1>
-      <Blocks max={6}>
-        <p>Percy</p>
-        <p>Screener</p>
-        <p>Create React App</p>
-        <p>NextJS (planned)</p>
-        <p>Nuxt (planned)</p>
+      <H1>Integrations</H1>
+      <Blocks
+        max={6}
+        colors={[
+          'rgba(92,0,123,0.3)',
+          'rgba(26,35,43,0.6)',
+          'rgba(83,193,222,0.3)',
+          'radial-gradient(ellipse at center, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 1%, rgba(255,255,255,1) 38%, rgb(224, 224, 224) 100%)',
+          '#dbdfe1',
+          'silver',
+          'silver',
+        ]}
+      >
+        <BlockLink href="http://percy.io">
+          <PercyLogo />
+          <BlockDescription>
+            <strong>Percy</strong>
+            <br />visual regression testing
+          </BlockDescription>
+        </BlockLink>
+        <BlockLink href="http://screener.io">
+          <p>?</p>
+          <BlockDescription>
+            <strong>Screener</strong>
+            <br />visual regression testing
+          </BlockDescription>
+        </BlockLink>
+        <BlockLink href="https://github.com/facebookincubator/create-react-app">
+          <ReactLogo />
+          <BlockDescription>
+            <strong>Create React App</strong>
+            <br />official. No Setup. Minimal.
+          </BlockDescription>
+        </BlockLink>
+        <BlockLink href="https://github.com/zeit/next.js">
+          <ZeitLogo />
+          <BlockDescription>
+            <strong>Next.js</strong>
+            <br />framework for SSR react
+          </BlockDescription>
+        </BlockLink>
+        <BlockLink href="https://nuxtjs.org">
+          <NuxtLogo />
+          <BlockDescription>
+            <strong>Nuxt</strong>
+            <br />a Versatile Vue.js Framework
+          </BlockDescription>
+        </BlockLink>
       </Blocks>
+    </Container>
+    <Container vSpacing={50} hPadding={30} style={{ textAlign: 'center' }}>
+      <StorybookLogo width={300} />
+      <p>You have reached the bottom of the page</p>
     </Container>
   </Page>
 );

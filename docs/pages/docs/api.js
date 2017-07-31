@@ -5,7 +5,7 @@ import Page from '../../components/Page';
 import { parser } from '../../lib/reactRenderer';
 
 import TopNav from '../../components/TopNav';
-import Content from '../../components/Content';
+import { Content } from '../../components/Content';
 import Blocks from '../../components/Blocks';
 import Container from '../../components/Container';
 

@@ -6,6 +6,9 @@ import { css } from 'glamor';
 const gradients = {
   blue: 'linear-gradient(135deg, #2ab5bb 8%, #2a7bbb)',
   pink: 'linear-gradient(135deg, rgb(241,97,140) 0%, rgb(181,126,229) 100%)',
+  orange: 'linear-gradient(135deg, rgb(241, 97, 97) 0%, rgb(243, 173, 56) 100%)',
+  black: 'linear-gradient(135deg, rgb(109, 109, 109) 0%, rgb(10, 10, 10) 100%)',
+  bluepurple: 'linear-gradient(135deg, rgb(109, 171, 245) 0%, rgb(181, 126, 229) 100%)',
 };
 const getKey = i => i;
 
@@ -52,14 +55,13 @@ Hero.propTypes = {
 
 const H1 = glamorous.h1({
   overflow: 'hidden',
-  // textAlign: 'center',
   lineHeight: 1.3,
   display: 'block',
   textShadow: '1px 1px 2px rgba(0,0,0,0.5)',
   fontSize: '3em',
   fontWeight: 200,
   marginTop: 0,
-  marginBottom: 20,
+  marginBottom: 50,
   color: '#fff',
 });
 const Section = glamorous.span(
@@ -83,22 +85,31 @@ const Section = glamorous.span(
   })
 );
 
+const toSections = (item, index) =>
+  item.type === 'br'
+    ? item
+    : <Section index={index} key={getKey(index)}>
+        {item}
+      </Section>;
+
 const HeroTitle = ({ children }) =>
   <H1>
     {Children.toArray(children)
       .reduce((acc, item) => acc.concat(item.split ? item.split(' ') : item), [])
-      .map(
-        (item, index) =>
-          item.type === 'br'
-            ? item
-            : <Section index={index} key={getKey(index)}>
-                {item}
-              </Section>
-      )}
+      .map(toSections)}
   </H1>;
+
 HeroTitle.displayName = 'HeroTitle';
 HeroTitle.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export { Hero as default, HeroTitle };
+const HeroActions = glamorous.div({
+  color: 'white',
+  '& > *': {
+    marginRight: 10,
+    marginBottom: 10,
+  },
+});
+
+export { Hero as default, HeroTitle, HeroActions };

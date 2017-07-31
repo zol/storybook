@@ -1,8 +1,13 @@
 import React, { Children } from 'react';
 import PropTypes from 'prop-types';
 import glamorous from 'glamorous';
+import Link from 'next/link';
 
 const getColor = (list, index) => list[index] || getColor(list, index - list.length);
+
+const itemPadding = {
+  padding: '40px 30px 45px',
+};
 
 const Root = glamorous.div(
   {
@@ -38,7 +43,7 @@ const variance = ({ color = 'silver', variant }) => {
   switch (variant) {
     case 'background': {
       return {
-        backgroundColor: color,
+        background: color,
       };
     }
     case 'inverted': {
@@ -85,44 +90,62 @@ const variance = ({ color = 'silver', variant }) => {
     }
   }
 };
+const padding = ({ padded = false }) => (padded ? itemPadding : {});
 
-const Item = glamorous.div(
+const BlockItem = glamorous.div(
   {
     position: 'relative',
-    padding: '40px 30px 45px',
+    overflow: 'hidden',
     borderRadius: '3px',
     display: 'flex',
     transition: 'all .5s',
     boxSizing: 'border-box',
     '&:hover': {
-      // boxShadow: '0 1px 8px rgba(0,0,0,0.57)',
       boxShadow: 'inset 0 0 0 3px rgba(0,0,0,0.08)',
-      // boxShadow: '0 1px 8px currentColor',
     },
   },
   alignment,
-  variance
+  variance,
+  padding
 );
+export const BlockLink = glamorous(({ children, href, className }) =>
+  <Link href={href}>
+    <a className={className}>
+      {children}
+    </a>
+  </Link>
+)(itemPadding, {
+  boxSizing: 'border-box',
+  height: '100%',
+  maxHeight: 170,
 
-const Blocks = ({ children, colors, variant, aligned, ...rest }) =>
+  '& svg': {
+    height: '100%',
+    width: '100%',
+  },
+});
+
+const Blocks = ({ children, colors, variant, padded, ...rest }) =>
   <Root {...rest} count={Children.count(children)}>
     {Children.toArray(children).map((child, index) =>
-      <Item key={index} variant={variant} aligned={aligned} color={getColor(colors, index)}>
+      <BlockItem key={index} {...{ variant, padded }} color={getColor(colors, index)}>
         {child}
-      </Item>
+      </BlockItem>
     )}
   </Root>;
 
 Blocks.displayName = 'Blocks';
 Blocks.propTypes = {
+  padded: PropTypes.bool,
   children: PropTypes.node.isRequired,
   vSpacing: PropTypes.number,
   hSpacing: PropTypes.number,
   max: PropTypes.number,
-  variant: PropTypes.oneOf('background', 'inverted', 'bordered'),
+  variant: PropTypes.oneOf(['background', 'inverted', 'bordered']),
   colors: PropTypes.arrayOf(PropTypes.string),
 };
 Blocks.defaultProps = {
+  padded: false,
   vSpacing: undefined,
   hSpacing: undefined,
   max: undefined,
@@ -131,3 +154,40 @@ Blocks.defaultProps = {
 };
 
 export default Blocks;
+
+export const BlockActions = glamorous.div(
+  {
+    position: 'relative',
+    display: 'flex',
+    flexWrap: 'wrap',
+    overflow: 'hidden',
+    justifyContent: 'flex-end',
+  },
+  ({ vSpacing = 0, hSpacing = 10 }) => ({
+    marginLeft: -hSpacing / 2,
+    marginRight: -hSpacing / 2,
+    top: -hSpacing / 2,
+    marginBottom: vSpacing - hSpacing,
+    '& > *': {
+      margin: hSpacing / 2,
+    },
+  })
+);
+
+export const BlockDescription = glamorous.p({
+  position: 'absolute',
+  zIndex: 1,
+  bottom: -16,
+  left: 0,
+  right: 0,
+  textAlign: 'center',
+  padding: 16,
+  // color: 'rgba(255,255,255,1)',
+  color: 'black',
+  fontWeight: 300,
+  // textShadow: '0 0 3px rgba(0,0,0,1)',
+  background: 'rgba(0, 0, 0, 0.15)',
+  // background: 'rgba(255, 255, 255, 0.45)',
+
+  transition: 'background 0.2s',
+});

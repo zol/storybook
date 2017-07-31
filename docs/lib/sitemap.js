@@ -251,4 +251,10 @@ module.exports = {
     id: 'guides',
     isDirectory: true,
   },
+  undefined: {
+    name: 'guides',
+    path: '/guides',
+    files: [null, null, null, null, null, null],
+    length: 3,
+  },
 };

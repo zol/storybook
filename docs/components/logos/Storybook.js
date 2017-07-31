@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Logo = ({ children, ...rest }) =>
-  <svg version="1.1" viewBox="0 0 2040 576" {...rest} width="100%">
+const Logo = ({ children, width = '100%', ...rest }) =>
+  <svg version="1.1" viewBox="0 0 2040 576" {...rest} width={width}>
     <desc>
       {children}
     </desc>
@@ -44,9 +44,11 @@ const Logo = ({ children, ...rest }) =>
 
 Logo.propTypes = {
   children: PropTypes.string,
+  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 Logo.defaultProps = {
   children: 'Storybook',
+  width: '100%',
 };
 
 export { Logo as default };

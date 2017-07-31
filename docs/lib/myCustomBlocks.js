@@ -21,7 +21,6 @@ module.exports = function blockPlugin() {
       // either slice until next NEWLINE or slice until end of string
       const lineToEat = next !== -1 ? value.slice(idx + 1, next) : value.slice(idx + 1);
       if (lineToEat.match(regexClose)) {
-        const line = lineToEat;
         linesToEat.push(lineToEat);
         break;
       }

@@ -7,7 +7,12 @@ import Page, { generator } from '../components/Page';
 import TopNav from '../components/TopNav';
 import Hero, { HeroTitle, HeroActions } from '../components/Hero';
 import MarkdownContent, { H1 } from '../components/MarkdownContent';
-import Blocks, { BlockActions, BlockLink, BlockDescription } from '../components/Blocks';
+import Blocks, {
+  BlockActions,
+  BlockLink,
+  BlockDescription,
+  BlockLabel,
+} from '../components/Blocks';
 import Button from '../components/Button';
 import Container from '../components/Container';
 
@@ -28,6 +33,7 @@ import CourseraLogo from '../components/logos/Coursera';
 import PercyLogo from '../components/logos/Percy';
 import NuxtLogo from '../components/logos/Nuxt';
 import ZeitLogo from '../components/logos/Zeit';
+import ScreenerLogo from '../components/logos/Screener';
 
 export default generator('RootIndex', () =>
   <Page>
@@ -133,15 +139,19 @@ export default generator('RootIndex', () =>
           <VueLogo />
         </BlockLink>
         <BlockLink href="http://example.com">
+          <BlockLabel>next release</BlockLabel>
           <AngularLogo />
         </BlockLink>
         <BlockLink href="http://example.com">
+          <BlockLabel>on roadmap</BlockLabel>
           <EmberLogo />
         </BlockLink>
         <BlockLink href="http://example.com">
+          <BlockLabel>consideration</BlockLabel>
           <PolymerLogo />
         </BlockLink>
         <BlockLink href="http://example.com">
+          <BlockLabel>consideration</BlockLabel>
           <AureliaLogo />
         </BlockLink>
       </Blocks>
@@ -179,7 +189,7 @@ export default generator('RootIndex', () =>
         max={6}
         colors={[
           'rgba(92,0,123,0.3)',
-          'rgba(26,35,43,0.6)',
+          'rgba(55, 134, 200, 0.3)',
           'rgba(83,193,222,0.3)',
           'radial-gradient(ellipse at center, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 1%, rgba(255,255,255,1) 38%, rgb(224, 224, 224) 100%)',
           '#dbdfe1',
@@ -195,7 +205,7 @@ export default generator('RootIndex', () =>
           </BlockDescription>
         </BlockLink>
         <BlockLink href="http://screener.io">
-          <p>?</p>
+          <ScreenerLogo />
           <BlockDescription>
             <strong>Screener</strong>
             <br />visual regression testing
@@ -210,6 +220,7 @@ export default generator('RootIndex', () =>
         </BlockLink>
         <BlockLink href="https://github.com/zeit/next.js">
           <ZeitLogo />
+          <BlockLabel>on roadmap</BlockLabel>
           <BlockDescription>
             <strong>Next.js</strong>
             <br />framework for SSR react
@@ -217,6 +228,7 @@ export default generator('RootIndex', () =>
         </BlockLink>
         <BlockLink href="https://nuxtjs.org">
           <NuxtLogo />
+          <BlockLabel>on roadmap</BlockLabel>
           <BlockDescription>
             <strong>Nuxt</strong>
             <br />a Versatile Vue.js Framework

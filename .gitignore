@@ -26,3 +26,4 @@ docs/lib/sitemap.js
 .tern-port
 *.DS_Store
 junit.xml
+docs/out

@@ -100,6 +100,7 @@ const BlockItem = glamorous.div(
     display: 'flex',
     transition: 'all .5s',
     boxSizing: 'border-box',
+    minWidth: 120,
     '&:hover': {
       boxShadow: 'inset 0 0 0 3px rgba(0,0,0,0.08)',
     },
@@ -195,11 +196,12 @@ export const BlockLabel = glamorous.p({
   right: -31,
   width: '154px',
   background: 'rgba(212, 212, 212, 0.62)',
-  height: 30,
+  height: 24,
   transform: 'rotateZ(30deg)',
   textAlign: 'center',
-  lineHeight: '28px',
+  lineHeight: '24px',
   paddingLeft: 50,
   mixBlendMode: 'darken',
   color: 'black',
+  fontSize: 12,
 });

@@ -77,26 +77,27 @@ const Container = glamorous.div(
 );
 Container.displayName = 'Markdown.Container';
 
-const ReactComponent = ({ children, type }) =>
-  <div>
+const ReactComponent = glamorous(({ children, type, className }) =>
+  <div className={className}>
     {children}
     {type}
-  </div>;
-
+  </div>
+)({
+  border: '1px solid orangered',
+});
 ReactComponent.displayName = 'Markdown.ReactComponent';
 ReactComponent.propTypes = {
   children: PropTypes.node.isRequired,
   type: PropTypes.string.isRequired,
 };
 
-const Code = glamorous(({ children, className, lang, ...rest }) => {
-  console.log('code', { children, className, lang, ...rest });
-  const html = Prism.highlight(children, Prism.languages.javascript);
+const Code = glamorous(({ children, className, language, fileName, framework, ...rest }) => {
+  const html = Prism.highlight(children, Prism.languages[language]);
   return (
     <span {...{ className }}>
       {Object.keys(rest).length
         ? <pre>
-            {JSON.stringify(rest, null, 2)}
+            {JSON.stringify({ language, fileName, framework, ...rest }, null, 2)}
           </pre>
         : null}
       <code className="prism-code" dangerouslySetInnerHTML={{ __html: html }} />
@@ -119,7 +120,7 @@ const Code = glamorous(({ children, className, lang, ...rest }) => {
 });
 Code.displayName = 'Markdown.Code';
 Code.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.string.isRequired,
 };
 
 export { Container, H1, H2, H3, Code, ReactComponent };

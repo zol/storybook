@@ -14,7 +14,7 @@ available:
 import { storiesOf } from '@storybook/react'
 ```
 
-usage:
+usage: 
 
 ```js
 const storyKind = storiesOf(storyName, module)

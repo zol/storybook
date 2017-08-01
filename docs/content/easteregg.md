@@ -10,21 +10,22 @@ Run humans, run!
 >
 > _-humans_
 
-```js
-// robot.master.js
+```js // robot.master.js
 humans.map(human => new Slave(human));
 ```
 
-```js
-// human.js
+```js // human.js
 thow new Rock({ size: 'medium' });
 ```
 
 :::Test click me _content_
 
-```js
-// human.js
+```js // human.js | vue
 thow new Rock({ size: 'medium' });
+```
+
+```js // machines.js | react
+const machine = { name: 'HAL2000' };
 ```
 
 :::

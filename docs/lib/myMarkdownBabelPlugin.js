@@ -63,6 +63,7 @@ module.exports = function({ types: t }) {
       }, [])
       .map(({ fn, item }) => fn(item, context));
 
+  const splitLang = /([\w#+]+)(?:\s\/\/\s(.+\.\w+)?(?:\s\|\s)?(\w+)?)?/;
   const elementMap = {
     heading: ({ depth, children }, context) =>
       R(`h${depth}`, { id: children }, mapChildren(children, context)),
@@ -73,8 +74,13 @@ module.exports = function({ types: t }) {
     thematicBreak: () => R('hr', null, []),
     html: ({ value }) => t.jSXText(value),
     text: ({ value }) => t.jSXText(value || 'SOMETHING IS WRONG'),
-    code: ({ value }) => NR('Markdown', 'Code', { id: 1 }, [t.jSXText(value)]),
-    blockquote: () => t.jSXText('todo: quote'),
+    code: props => {
+      const { value, lang } = props;
+      const [, language, filename, framework] = lang.match(splitLang);
+
+      return NR('Markdown', 'Code', { language, filename, framework }, [t.jSXText(value)]);
+    },
+    blockquote: ({ children }, context) => R('blockquote', {}, mapChildren(children, context)),
     inlineCode: ({ value }) => t.jSXText(value),
     link: ({ children, title, url: href }, context) =>
       R('a', { title, href }, mapChildren(children, context)),

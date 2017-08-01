@@ -1,3 +1,5 @@
+/* eslint-disable consistent-return, no-cond-assign, no-param-reassign */
+
 const C_NEWLINE = '\n';
 
 module.exports = function blockPlugin() {

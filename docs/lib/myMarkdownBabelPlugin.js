@@ -1,8 +1,9 @@
+/* eslint-disable consistent-return, no-cond-assign, no-param-reassign */
+
 const fs = require('fs');
 const p = require('path');
 const serialize = require('babel-literal-to-ast');
 
-// const babylon = require('babylon');
 const unified = require('unified');
 const remarkParse = require('remark-parse');
 const myCustomBlocks = require('./myCustomBlocks');
@@ -61,7 +62,7 @@ module.exports = function({ types: t }) {
     thematicBreak: () => R('hr', null, []),
     html: ({ value }) => t.jSXText(value),
     text: ({ value }) => t.jSXText(value || 'SOMETHING IS WRONG'),
-    code: () => t.jSXText('todo: code'),
+    code: ({ value }) => t.jSXText(value),
     blockquote: () => t.jSXText('todo: quote'),
     inlineCode: ({ value }) => t.jSXText(value),
     link: ({ children, title, url: href }, context) =>
@@ -77,7 +78,7 @@ module.exports = function({ types: t }) {
       const { title, url: src } = context.definitions[identifier] || { url: '/' };
       return R('img', { title, src }, []);
     },
-    table: ({ children, align }, context) => {
+    table: ({ children }, context) => {
       const [head, ...tail] = children;
       return R('table', null, [
         R('thead', null, mapChildren([head], context)),

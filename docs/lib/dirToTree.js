@@ -1,89 +1,41 @@
 const Promise = require('bluebird');
 const fs = Promise.promisifyAll(require('fs'));
-const md5 = require('md5');
+const path = require('path');
 
-const promiseFromCommand = require('./promiseFromCommand');
+function File(stat, fileName, workingDir, baseDir) {
+  const name = path.basename(fileName, path.extname(fileName));
+  const routeFile = name.replace('index', '');
+  const routeBase = workingDir.replace(baseDir, '') || path.sep;
 
-function File(name) {
+  this.size = stat.size;
+  this.modified = stat.ctime;
+  this.created = stat.birthtime;
+
   this.name = name;
-  this.size = 0;
+  this.isFile = true;
+  this.route = path.join(routeBase, routeFile);
 }
 
-function Directory(path) {
-  this.name = '';
-  this.path = path;
-  this.files = [];
-  this.length = 0;
-
-  const dirArray = path.split('/');
-  this.name = dirArray[dirArray.length - 1];
+function Directory(items, localWorkingDir, baseDir) {
+  this.route = localWorkingDir.replace(baseDir, '');
+  this.length = items.length;
+  this.files = items;
 }
 
-const authorRegexp = /Author: (.+?) <(.+?)>/g;
-
-const readDir = inputDir => {
-  const dir = new Directory(inputDir);
-  return fs
-    .readdirAsync(inputDir)
-    .map(fileName =>
-      fs.statAsync(`${inputDir}/${fileName}`).then(stat => {
-        if (stat.isFile()) {
-          const file = new File(fileName);
-          file.size = stat.size;
-          file.modified = stat.ctime;
-          file.created = stat.birthtime;
-          file.path = `${inputDir.split('/docs/content')[1]}/${fileName}`;
-
-          return promiseFromCommand(
-            [`git --no-pager log --summary -p -- ${inputDir}/${fileName}`].join(' && ')
-          )
-            .then(result => {
-              const contributors = result.match(authorRegexp) || [];
-              return contributors
-                .map(string => {
-                  const [, name, email] = string.match(/Author: (.+?) <(.+?)>/);
-                  const hash = md5(email);
-
-                  return { name, hash, email };
-                })
-                .reduce((acc, { name, hash, email }, index, list) => {
-                  if (index < list.length - 1) {
-                    acc[hash] = { name, email };
-                    return acc;
-                  }
-                  return Object.keys(acc).map(key => ({
-                    hash: key,
-                    name: acc[key].name,
-                    email: acc[key].email,
-                    // TODO: add github accountname
-                  }));
-                }, {});
-            })
-            .catch(error => {
-              console.log(error);
-              return {};
-            })
-            .then(contributors => {
-              file.contributors = contributors;
-              return file;
-            });
-        }
-        if (stat.isDirectory()) {
-          return readDir(`${inputDir}/${fileName}`).then(directory => {
-            directory.path = `${inputDir.split('/docs/content')[1]}/${fileName}`;
-
-            return directory;
-          });
-        }
-        return undefined;
-      })
-    )
-    .map(files => {
-      dir.length += 1;
-      dir.files.push(files);
+const readDir = (workingDir, baseDir) =>
+  fs.readdirAsync(workingDir).filter(n => !n.match(/^[._]/)).map(fileName =>
+    fs.statAsync(path.join(workingDir, fileName)).then(stat => {
+      if (stat.isFile()) {
+        return new File(stat, fileName, workingDir, baseDir);
+      }
+      if (stat.isDirectory()) {
+        const localWorkingDir = path.join(workingDir, fileName);
+        return readDir(localWorkingDir, baseDir).then(
+          items => new Directory(items, localWorkingDir, baseDir)
+        );
+      }
       return undefined;
     })
-    .then(() => dir);
-};
+  );
 
 module.exports = readDir;

@@ -128,7 +128,7 @@ export const BlockLink = glamorous(({ children, href, className }) =>
 const Blocks = ({ children, colors, variant, padded, ...rest }) =>
   <Root {...rest} count={Children.count(children)}>
     {Children.toArray(children).map((child, index) =>
-      <BlockItem key={index} {...{ variant, padded }} color={getColor(colors, index)}>
+      <BlockItem key={child.key} {...{ variant, padded }} color={getColor(colors, index)}>
         {child}
       </BlockItem>
     )}

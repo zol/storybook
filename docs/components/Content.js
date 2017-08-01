@@ -7,7 +7,7 @@ import sitemap from '../lib/sitemap';
 import PageTitle from './PageTitle';
 import Container from './Container';
 import Split from './Split';
-import MarkdownContainer, { ReactComponent as MarkdownReactComponent } from './MarkdownContent';
+import MarkdownContainer, { MarkdownReactComponent } from './MarkdownContent';
 // import Toc from './Toc';
 import SideNav from './SideNav';
 
@@ -68,8 +68,6 @@ const Content = ({ children }) => {
     },
     { toc: [], body: [], intro: [], header: '' }
   );
-
-  console.log(toc);
 
   return (
     <div>

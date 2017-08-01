@@ -1,3 +1,5 @@
+import React from 'react';
+import PropTypes from 'prop-types';
 import glamorous from 'glamorous';
 
 const substyles = {
@@ -73,4 +75,15 @@ const MarkdownContent = glamorous.div(
 );
 MarkdownContent.displayName = 'MarkdownContent';
 
-export { MarkdownContent as default, H1, H2, H3 };
+const MarkdownReactComponent = ({ children, type }) =>
+  <div>
+    {children}
+    {type}
+  </div>;
+
+MarkdownReactComponent.propTypes = {
+  children: PropTypes.node.isRequired,
+  type: PropTypes.string.isRequired,
+};
+
+export { MarkdownContent as default, H1, H2, H3, MarkdownReactComponent };

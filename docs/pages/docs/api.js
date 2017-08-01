@@ -2,16 +2,12 @@ import React from 'react';
 
 import Page from '../../components/Page';
 
-import { parser } from '../../lib/reactRenderer';
-
 import TopNav from '../../components/TopNav';
 import { Content } from '../../components/Content';
 import Blocks from '../../components/Blocks';
 import Container from '../../components/Container';
 
-import markdown from '../../content/docs/api.md';
-
-const content = parser(markdown);
+import content from '../../content/docs/api.md';
 
 export default () =>
   <Page>

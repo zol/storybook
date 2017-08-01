@@ -119,7 +119,9 @@ const Search = class extends Component {
     return (
       <Form novalidate="novalidate" onSubmit={this.submitHandler}>
         <Input
-          ref={el => (this.input = el)}
+          ref={el => {
+            this.input = el;
+          }}
           autoComplete="off"
           onFocus={onFocus}
           onBlur={onBlur}

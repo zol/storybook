@@ -8,7 +8,7 @@ import TopNav from '../../components/TopNav';
 import PageTitle from '../../components/PageTitle';
 import Blocks, { BlockLink, BlockLabel } from '../../components/Blocks';
 import Container from '../../components/Container';
-import MarkdownContent, { H1 } from '../../components/MarkdownContent';
+import { Container as MarkdownContainer, H1 } from '../../components/Markdown';
 
 import ReactLogo from '../../components/logos/React';
 import AngularLogo from '../../components/logos/Angular';
@@ -35,7 +35,7 @@ export default generator('GuidesIndex', ({ path }) =>
       <h1>For using storybook</h1>
       <Blocks aligned={false} variant={'masked'} padded>
         <section>
-          <MarkdownContent>
+          <MarkdownContainer>
             <h2>Why Storybook</h2>
             <ol>
               <li>
@@ -59,47 +59,47 @@ export default generator('GuidesIndex', ({ path }) =>
                 </Link>
               </li>
             </ol>
-          </MarkdownContent>
+          </MarkdownContainer>
         </section>
         <section>
-          <MarkdownContent>
+          <MarkdownContainer>
             <h2>Setup Storybook</h2>
             <ol>
               <li>Automatic setup</li>
               <li>Add storybook manually</li>
               <li>Writing stories</li>
             </ol>
-          </MarkdownContent>
+          </MarkdownContainer>
         </section>
         <section>
-          <MarkdownContent>
+          <MarkdownContainer>
             <h2>Organising your storybook</h2>
             <ol>
               <li>Building a styleguide / component library</li>
               <li>Hierarchy</li>
               <li>Providing documentation</li>
             </ol>
-          </MarkdownContent>
+          </MarkdownContainer>
         </section>
         <section>
-          <MarkdownContent>
+          <MarkdownContainer>
             <h2>Adding and using addons</h2>
             <ol>
               <li>Addons as decorators</li>
               <li>Addon panels</li>
               <li>List of addons available</li>
             </ol>
-          </MarkdownContent>
+          </MarkdownContainer>
         </section>
         <section>
-          <MarkdownContent>
+          <MarkdownContainer>
             <h2>Customising configuration</h2>
             <ol>
               <li>Customise webpack config</li>
               <li>Custom babel config</li>
               <li>Adding global CSS & fonts</li>
             </ol>
-          </MarkdownContent>
+          </MarkdownContainer>
         </section>
       </Blocks>
     </Container>

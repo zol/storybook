@@ -188,6 +188,7 @@ export const BlockDescription = glamorous.p({
   background: 'rgba(134, 134, 134, 0.46)',
   mixBlendMode: 'luminosity',
   textShadow: '0 0 2px rgba(0,0,0,0.5)',
+  fontSize: 14,
 });
 
 export const BlockLabel = glamorous.p({

@@ -30,6 +30,17 @@ module.exports = function({ types: t }) {
       children || [],
       children && children.length === 0
     );
+  const NR = (obj, name, props, children) =>
+    t.jSXElement(
+      t.jSXOpeningElement(
+        t.JSXMemberExpression(t.jSXIdentifier(obj), t.jSXIdentifier(name)),
+        mapProps(props),
+        false
+      ),
+      t.jSXClosingElement(t.JSXMemberExpression(t.jSXIdentifier(obj), t.jSXIdentifier(name))),
+      children || [],
+      children && children.length === 0
+    );
 
   const mapChildren = (children, context = { definitions: {} }) =>
     children
@@ -62,7 +73,7 @@ module.exports = function({ types: t }) {
     thematicBreak: () => R('hr', null, []),
     html: ({ value }) => t.jSXText(value),
     text: ({ value }) => t.jSXText(value || 'SOMETHING IS WRONG'),
-    code: ({ value }) => t.jSXText(value),
+    code: ({ value }) => NR('Markdown', 'Code', { id: 1 }, [t.jSXText(value)]),
     blockquote: () => t.jSXText('todo: quote'),
     inlineCode: ({ value }) => t.jSXText(value),
     link: ({ children, title, url: href }, context) =>
@@ -89,7 +100,7 @@ module.exports = function({ types: t }) {
     tableCell: ({ children }, context) => R('td', null, mapChildren(children, context)),
 
     ReactComponent: ({ children, options }, context) =>
-      R('ReactComponent', options, mapChildren(children, context)),
+      NR('Markdown', 'ReactComponent', options, mapChildren(children, context)),
   };
 
   function endsWith(str, search) {

@@ -6,7 +6,7 @@ import Page, { generator } from '../components/Page';
 
 import TopNav from '../components/TopNav';
 import Hero, { HeroTitle, HeroActions } from '../components/Hero';
-import MarkdownContent, { H1 } from '../components/MarkdownContent';
+import { Container as MarkdownContainer, H1 } from '../components/Markdown';
 import Blocks, {
   BlockActions,
   BlockLink,
@@ -64,7 +64,7 @@ export default generator('RootIndex', () =>
     <Container width={1000} vSpacing={30} hPadding={30}>
       <Blocks padded>
         <section>
-          <MarkdownContent colored={false}>
+          <MarkdownContainer colored={false}>
             <h1>Quick documentation</h1>
             <ol>
               <li>
@@ -83,10 +83,10 @@ export default generator('RootIndex', () =>
                 </Link>
               </li>
             </ol>
-          </MarkdownContent>
+          </MarkdownContainer>
         </section>
         <section>
-          <MarkdownContent colored={false}>
+          <MarkdownContainer colored={false}>
             <h1>Custom configuration</h1>
             <ol>
               <li>
@@ -105,17 +105,17 @@ export default generator('RootIndex', () =>
                 </Link>
               </li>
             </ol>
-          </MarkdownContent>
+          </MarkdownContainer>
         </section>
         <section>
-          <MarkdownContent colored={false}>
+          <MarkdownContainer colored={false}>
             <h1>Try it now</h1>
             <code>
               <pre>
                 npm i -g @storybook/cli<br />cd my-react-app<br />getstorybook
               </pre>
             </code>
-          </MarkdownContent>
+          </MarkdownContainer>
         </section>
       </Blocks>
     </Container>

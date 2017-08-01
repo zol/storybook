@@ -18,7 +18,14 @@ const sitemap = (() => {
 
 module.exports = {
   poweredByHeader: false,
-  exportPathMap: () => Object.assign({ '/': { page: '/' }, '/demo': { page: '/demo' } }, sitemap),
+  exportPathMap: () =>
+    Object.keys(sitemap).reduce(
+      (acc, k) =>
+        Object.assign(acc, {
+          [k]: sitemap[k].route ? { page: sitemap[k].route } : { page: sitemap[k].files[0].route },
+        }),
+      {}
+    ),
   webpack: (config, { dev }) => {
     if (dev) {
       config.module.rules = config.module.rules.map(rule => {

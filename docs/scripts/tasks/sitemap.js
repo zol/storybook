@@ -30,6 +30,7 @@ const allAuthorsRegexp = new RegExp(authorMatchString, 'g');
 const authorRegexp = new RegExp(authorMatchString);
 
 const appFolder = path.join(__dirname, '..', '..');
+const pagesFolder = path.join(appFolder, 'pages');
 const contentFolder = path.join(appFolder, 'content');
 
 /* Read the git '.mailmap' file and parse it and the metadata */
@@ -71,7 +72,7 @@ const normalize = (list, acc = {}) =>
       localItem.files = keys;
     }
     // eslint-disable-next-line no-param-reassign
-    localAcc[item.route] = localItem;
+    localAcc[item.route] = Object.assign(localAcc[item.route] || {}, localItem);
     return localAcc;
   }, acc);
 
@@ -85,7 +86,8 @@ const getContributors = item =>
   Promise.all([
     mailmapData,
     promiseFromCommand(
-      `git --no-pager log --summary -p -- ${contentFolder}/${item.route}${item.extention}`
+      `git --no-pager log --summary -p -- ${path.join(contentFolder, `${item.route}.md`)} &&
+       git --no-pager log --summary -p -- ${path.join(pagesFolder, `${item.route}.js`)}`
     ),
   ])
     .then(([mailmap, result]) =>
@@ -126,9 +128,9 @@ const getContributors = item =>
  *    (This way a partial git history won't break a old contributors list)
  * 5. Write into file (formatted by prettier) */
 const run = () =>
-  folderToTree(contentFolder, contentFolder)
+  folderToTree(pagesFolder, pagesFolder)
     .then(data => {
-      const localData = normalize(data.files);
+      const localData = normalize(data);
 
       return Promise.all(
         Object.keys(localData)

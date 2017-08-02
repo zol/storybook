@@ -3,6 +3,7 @@
 const fs = require('fs');
 const p = require('path');
 const serialize = require('babel-literal-to-ast');
+const slugify = require('github-slugger')();
 
 const unified = require('unified');
 const remarkParse = require('remark-parse');
@@ -11,6 +12,8 @@ const myCustomBlocks = require('./myCustomBlocks');
 const parser = markdown => unified().use(remarkParse).use(myCustomBlocks).parse(markdown);
 
 module.exports = function({ types: t }) {
+  slugify.reset();
+
   const mapProps = props =>
     props
       ? Object.keys(props).map(key => {
@@ -22,6 +25,26 @@ module.exports = function({ types: t }) {
           );
         })
       : [];
+
+  const S = children => {
+    switch (true) {
+      case typeof children === 'string': {
+        return children;
+      }
+      case Array.isArray(children): {
+        return children.reduce((acc, item) => acc + S(item), '');
+      }
+      case Array.isArray(children.children): {
+        return children.children.reduce((acc, item) => acc + S(item), '');
+      }
+      case children.type === 'text': {
+        return S(children.value);
+      }
+      default: {
+        return '';
+      }
+    }
+  };
 
   const R = (name, props, children) =>
     t.jSXElement(
@@ -66,7 +89,11 @@ module.exports = function({ types: t }) {
   const splitLang = /([\w#+]+)(?:\s\/\/\s(.+\.\w+)?(?:\s\|\s)?(\w+)?)?/;
   const elementMap = {
     heading: ({ depth, children }, context) =>
-      R(`h${depth}`, { id: children }, mapChildren(children, context)),
+      R(
+        `h${depth}`,
+        { id: slugify.slug(S(children)), 'aria-level': depth, title: S(children) },
+        mapChildren(children, context)
+      ),
     paragraph: ({ children }, context) => R('p', null, mapChildren(children, context)),
     list: ({ children, ordered }, context) =>
       R(ordered ? 'ol' : 'ul', null, mapChildren(children, context)),

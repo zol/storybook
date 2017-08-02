@@ -18,7 +18,8 @@ const ReactComponent = glamorous(({ children, component, props, className, ...re
 ReactComponent.displayName = 'Markdown.ReactComponent';
 ReactComponent.propTypes = {
   children: PropTypes.node.isRequired,
-  type: PropTypes.string.isRequired,
+  component: PropTypes.string.isRequired,
+  props: PropTypes.oneOfType([PropTypes.object]).isRequired,
 };
 
 export { ReactComponent as default };

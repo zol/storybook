@@ -2,7 +2,7 @@
 
 It's a good place to be in me thinks!
 
-## The robots are coming
+## The robots are coming 🤖
 
 Run humans, run!
 
@@ -18,6 +18,8 @@ humans.map(human => new Slave(human));
 thow new Rock({ size: 'medium' });
 ```
 
+### test
+
 :::Test { test: true }
 
 ```js // human.js | vue
@@ -31,3 +33,7 @@ const machine = { name: 'HAL1000' };
 :::
 
 😃
+
+## It's **the end** !
+
+bye

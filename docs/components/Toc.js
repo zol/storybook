@@ -1,8 +1,8 @@
-import React, { Children } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import glamorous from 'glamorous';
 
-import MarkdownContent from './MarkdownContent';
+import { H2 } from './Markdown';
 
 const SectionNr = glamorous.span({
   userSelect: 'none',
@@ -18,76 +18,36 @@ const SectionLabel = glamorous.span({
   paddingBottom: 7,
 });
 
-const Components = {
-  ol: glamorous.ol({
+const Ol = glamorous.ol({
+  display: 'block',
+  padding: 0,
+  margin: 0,
+  marginLeft: 10,
+  paddingBottom: 10,
+  overflow: 'hidden',
+});
+const Li = glamorous.li(
+  {
     display: 'block',
-    padding: 0,
-    margin: 0,
-    marginLeft: 10,
-    paddingBottom: 10,
-    overflow: 'hidden',
-  }),
-  li: glamorous.li(
-    {
-      display: 'block',
-      lineHeight: '30px',
-    },
-    ({ hasMany }) => ({
-      borderLeft: hasMany ? '1px solid rgba(200, 200, 200, 1)' : '1px solid transparent',
-    })
-  ),
-  a: glamorous(({ children, path, hasMany, ...rest }) =>
-    <a {...rest}>
-      <SectionNr>
-        {path}
-      </SectionNr>
-      <SectionLabel>
-        {children}
-      </SectionLabel>
-    </a>
-  )({
-    color: 'currentColor',
-    display: 'inline-flex',
-    alignItems: 'stretch',
-    borderBottom: '1px solid rgba(200, 200, 200, 1)',
-    textDecoration: 'none',
-    position: 'relative',
-    marginLeft: -1,
-  }),
-  p: ({ children }) => children[0],
-};
-
-const getDepth = (node, depth, index) => {
-  // const localIndex = index + 1;
-  if (node.type === 'ol') {
-    return depth.concat(index);
-  } else if (node.type === 'li') {
-    return depth.slice(0, -1).concat(index + 1);
-  }
-  return depth;
-};
-
-const mapChildren = children =>
-  Children.toArray(children).filter(i => !(typeof i === 'string' && i.length < 2));
-
-const mapComponents = (node, index = 0, depth = [], hasNext) => {
-  if (typeof node === 'string') {
-    return node;
-  }
-
-  const Component = Components[node.type];
-  const { children, ...props } = node.props || {};
-  const localDepth = getDepth(node, depth, index);
-  const localChildren = mapChildren(children);
-
-  return (
-    <Component key={node.key} path={localDepth.join('˚')} {...props} hasMany={hasNext}>
-      {localChildren.map((item, localIndex, list) =>
-        mapComponents(item, localIndex, localDepth, localIndex < list.length - 1)
-      )}
-    </Component>
-  );
-};
+    lineHeight: '30px',
+  },
+  ({ hasMany }) => ({
+    borderLeft: hasMany ? '1px solid rgba(200, 200, 200, 1)' : '1px solid transparent',
+  })
+);
+const A = glamorous(({ children, path, hasMany, ...rest }) =>
+  <a {...rest}>
+    {children}
+  </a>
+)({
+  color: 'currentColor',
+  display: 'inline-flex',
+  alignItems: 'stretch',
+  borderBottom: '1px solid rgba(200, 200, 200, 1)',
+  textDecoration: 'none',
+  position: 'relative',
+  marginLeft: -1,
+});
 
 const List = glamorous.ol({
   position: 'relative',
@@ -96,23 +56,64 @@ const List = glamorous.ol({
   color: 'black',
 });
 
+const Item = ({ id, title, children, key }, index, list) =>
+  <Li key={key} hasMany={index < list.length - 1}>
+    <A href={`#${id}`}>
+      <SectionNr>
+        {key}
+      </SectionNr>
+      <SectionLabel>
+        {title}
+      </SectionLabel>
+    </A>
+    {children.length
+      ? <Ol>
+          {children.map(Item)}
+        </Ol>
+      : null}
+  </Li>;
+Item.propTypes = {
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+  key: PropTypes.string.isRequired,
+};
+
+const getKey = (list, level) => {
+  const n =
+    level === 1
+      ? list.length + 1
+      : `${getKey(list[list.length - 1].children, level - 1)}.${list.length + 1}`;
+  return n;
+};
+
+const getLevel = (list, level) =>
+  level === 1 ? list.children || list : getLevel(list[list.length - 1].children, level - 1);
+const mapListToTree = list => {
+  const output = [];
+  list.forEach(item => {
+    const level = item['aria-level'];
+    const { id, title } = item;
+    const localList = getLevel(output, level);
+    const key = getKey(output, level);
+    localList.push({ id, title, key, children: [] });
+  });
+  return output;
+};
+
 const Toc = ({ toc }) =>
   toc.length
     ? <div>
-        <MarkdownContent>
-          <h2>Table of contents</h2>
-        </MarkdownContent>
+        <H2>Table of contents</H2>
         <List>
-          {mapChildren(toc).map((item, index, list) =>
-            mapComponents(item, index, [], index < list.length - 1)
-          )}
+          {mapListToTree(toc).map(Item)}
         </List>
       </div>
     : null;
 
 Toc.displayName = 'Toc';
 Toc.propTypes = {
-  toc: PropTypes.arrayOf(PropTypes.node),
+  toc: PropTypes.arrayOf(PropTypes.object),
 };
 Toc.defaultProps = {
   toc: [],

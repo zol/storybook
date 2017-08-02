@@ -8,7 +8,7 @@ import PageTitle from './PageTitle';
 import Container from './Container';
 import Split from './Split';
 import * as Markdown from './Markdown';
-// import Toc from './Toc';
+import Toc from './Toc';
 import SideNav from './SideNav';
 
 const childrenToString = children => {
@@ -19,13 +19,14 @@ const childrenToString = children => {
     case Array.isArray(children): {
       return children.reduce((acc, item) => acc + childrenToString(item), '');
     }
+    case Array.isArray(children.props.children): {
+      return childrenToString(children.props.children);
+    }
     default: {
       return '';
     }
   }
 };
-
-const Toc = () => null;
 
 const isHeaderMatch = {
   any: /^h\d$/,
@@ -49,11 +50,8 @@ const Content = ({ children }) => {
         if (acc.header === '' && isHeader(item, 1)) {
           acc.header = childrenToString(item.props.children);
         }
-        if (isHeader(item.type)) {
-          acc.toc = acc.toc.concat({
-            props: { ...item.props, depth: item.type },
-            text: childrenToString(item.props.children),
-          });
+        if (isHeader(item)) {
+          acc.toc = acc.toc.concat(item.props);
         }
 
         if (acc.body.length === 0 && (acc.intro.length === 0 || !`${item.type}`.match(/^h\d$/))) {

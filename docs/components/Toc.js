@@ -82,8 +82,8 @@ Item.propTypes = {
 const getKey = (list, level) => {
   const n =
     level === 1
-      ? list.length + 1
-      : `${getKey(list[list.length - 1].children, level - 1)}.${list.length + 1}`;
+      ? list.length
+      : `${list.length}.${getKey(list[list.length - 1].children, level - 1)}`;
   return n;
 };
 
@@ -95,8 +95,9 @@ const mapListToTree = list => {
     const level = item['aria-level'];
     const { id, title } = item;
     const localList = getLevel(output, level);
-    const key = getKey(output, level);
-    localList.push({ id, title, key, children: [] });
+    const entry = { id, title, key: undefined, children: [] };
+    localList.push(entry);
+    entry.key = getKey(output, level);
   });
   return output;
 };

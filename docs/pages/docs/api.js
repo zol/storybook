@@ -11,10 +11,10 @@ import { Content } from '../../components/Content';
 import * as Markdown from '../../components/Markdown';
 import content from '../../content/docs/api.md';
 
-export default generator('DocsApi', () =>
+export default generator('DocsApi', ({ path, query }) =>
   <Page>
     <TopNav />
-    <Content>
+    <Content {...{ path, query }}>
       {content}
     </Content>
     <Container

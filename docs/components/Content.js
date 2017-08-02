@@ -43,7 +43,7 @@ const isHeader = (t, depth) =>
   t.type.match &&
   (depth ? t.type.match(isHeaderMatch[depth]) : t.type.match(isHeaderMatch.any));
 
-const Content = ({ children }) => {
+const Content = ({ children, path }) => {
   const { toc, body, intro, header } = Children.toArray(children.props.children).reduce(
     (acc, item) => {
       try {
@@ -82,7 +82,7 @@ const Content = ({ children }) => {
           <nav>
             <Toc toc={toc} />
             <Markdown.H2>Other navigation</Markdown.H2>
-            <SideNav sitemap={sitemap} />
+            <SideNav {...{ sitemap, path }} />
           </nav>
           <Markdown.Container>
             {body}
@@ -96,6 +96,10 @@ const Content = ({ children }) => {
 Content.displayName = 'Content';
 Content.propTypes = {
   children: PropTypes.node.isRequired,
+  path: PropTypes.string,
+};
+Content.defaultProps = {
+  path: '/',
 };
 
 export { Content };

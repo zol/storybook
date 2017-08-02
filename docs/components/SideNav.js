@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import Link from 'next/link';
 import glamorous from 'glamorous';
 
-const Item = glamorous(({ name, path, ...props }) =>
-  <Link {...props} href={path}>
+const Item = glamorous(({ name, route, ...props }) =>
+  <Link {...props} href={route}>
     {props.files && props.files.length
       ? <a>
           {name}
@@ -18,15 +18,17 @@ const Item = glamorous(({ name, path, ...props }) =>
 });
 
 /* WORKLOG:
- * get current route
- * find matching route in sitemap
  * get route siblings || children
  */
 
-const SideNav = glamorous(({ sitemap, ...props }) =>
+const getItems = (sitemap, path) => {
+  const out = Object.keys(sitemap).find(k => sitemap[k].files.find(f => f === path));
+  return sitemap[out].files.map(k => sitemap[k]);
+};
+
+const SideNav = glamorous(({ sitemap, path, ...props }) =>
   <ul {...props}>
-    {/* temp disabled */}
-    {([] || sitemap).map(item =>
+    {getItems(sitemap, path).map(item =>
       <li>
         <Item {...item} />
       </li>

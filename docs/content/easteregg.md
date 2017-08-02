@@ -18,14 +18,14 @@ humans.map(human => new Slave(human));
 thow new Rock({ size: 'medium' });
 ```
 
-:::Test click me _content_
+:::Test { test: true }
 
 ```js // human.js | vue
 thow new Rock({ size: 'medium' });
 ```
 
 ```js // machines.js | react
-const machine = { name: 'HAL2000' };
+const machine = { name: 'HAL1000' };
 ```
 
 :::

@@ -1,5 +1,8 @@
 /* eslint-disable consistent-return, no-cond-assign, no-param-reassign */
 
+const P = require('exprjs');
+
+const parser = new P();
 const C_NEWLINE = '\n';
 
 module.exports = function blockPlugin() {
@@ -40,20 +43,22 @@ module.exports = function blockPlugin() {
     const exit = this.enterBlock();
     const contents = this.tokenizeBlock(contentString, now);
     exit();
+    const ast = parser.parse(keep[2]);
+    const props = parser.run(ast);
 
     return add({
       type: 'ReactComponent',
       data: {
         hName: 'component',
         hProperties: {
-          props: keep[2],
-          component: `${keep[1]}`,
+          props,
+          component: keep[1],
         },
       },
       children: contents,
       options: {
-        component: `${keep[1]}`,
-        props: keep[2],
+        component: keep[1],
+        props,
       },
     });
   }

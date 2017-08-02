@@ -1,7 +1,7 @@
 module.exports = {
   '/': {
-    size: 7835,
-    modified: '2017-08-02T06:10:53.000Z',
+    size: 7829,
+    modified: '2017-08-02T06:12:56.000Z',
     created: '2017-07-31T21:02:54.000Z',
     name: 'index',
     isFile: true,
@@ -190,8 +190,8 @@ module.exports = {
     ],
   },
   '/easteregg': {
-    size: 498,
-    modified: '2017-08-01T22:23:13.000Z',
+    size: 502,
+    modified: '2017-08-02T08:51:48.000Z',
     created: '2017-07-31T21:02:54.000Z',
     name: 'easteregg',
     isFile: true,

@@ -63,6 +63,10 @@ const H1 = glamorous.h1({
   marginTop: 0,
   marginBottom: 50,
   color: '#fff',
+
+  '@media screen and (max-width: 400px)': {
+    fontSize: '2em',
+  },
 });
 const Section = glamorous.span(
   {

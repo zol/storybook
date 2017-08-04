@@ -44,19 +44,19 @@ export default generator('RootIndex', () =>
     <Hero>
       <HeroTitle>
         The extendible component explorer<br />
-        you'll ️<span style={{ color: 'red', fontSize: '0.8em' }}>💖</span> to use
+        you'll <span style={{ color: 'red', fontSize: '0.8em' }}>💖</span> to use
       </HeroTitle>
       <HeroActions>
-        <Button href="/guides/why" size={3}>
+        <Button href="/guides/why/" size={3}>
           What is Storybook
         </Button>
-        <Button href="/guides/setup" size={3}>
+        <Button href="/guides/setup/" size={3}>
           Add to your project
         </Button>
-        <Button href="/examples" size={3}>
+        <Button href="/examples/" size={3}>
           See examples
         </Button>
-        <Button href="/guides/talks" size={3}>
+        <Button href="/guides/talks/" size={3}>
           Watch talks
         </Button>
       </HeroActions>
@@ -68,17 +68,17 @@ export default generator('RootIndex', () =>
             <h1>Quick documentation</h1>
             <ol>
               <li>
-                <Link href="/guides/setup">
+                <Link href="/guides/setup/">
                   <a>Automatic setup</a>
                 </Link>
               </li>
               <li>
-                <Link href="/guides/setup">
+                <Link href="/guides/setup/">
                   <a>Add storybook manually</a>
                 </Link>
               </li>
               <li>
-                <Link href="/guides/setup">
+                <Link href="/guides/setup/">
                   <a>Writing stories</a>
                 </Link>
               </li>
@@ -90,17 +90,17 @@ export default generator('RootIndex', () =>
             <h1>Custom configuration</h1>
             <ol>
               <li>
-                <Link href="/guides/setup">
+                <Link href="/guides/setup/">
                   <a>Customise webpack config</a>
                 </Link>
               </li>
               <li>
-                <Link href="/guides/setup">
+                <Link href="/guides/setup/">
                   <a>Custom babel config</a>
                 </Link>
               </li>
               <li>
-                <Link href="/guides/setup">
+                <Link href="/guides/setup/">
                   <a>Adding global CSS & fonts</a>
                 </Link>
               </li>

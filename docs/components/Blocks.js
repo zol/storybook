@@ -115,12 +115,14 @@ export const BlockLink = glamorous(({ children, href, className }) =>
       {children}
     </a>
   </Link>
-)(itemPadding, {
+)({
+  padding: '30px 40px',
+
   boxSizing: 'border-box',
-  height: '100%',
-  maxHeight: 170,
+  height: 160,
 
   '& svg': {
+    boxSizing: 'border-box',
     height: '100%',
     width: '100%',
   },
@@ -142,7 +144,7 @@ Blocks.propTypes = {
   vSpacing: PropTypes.number,
   hSpacing: PropTypes.number,
   max: PropTypes.number,
-  variant: PropTypes.oneOf(['background', 'inverted', 'bordered']),
+  variant: PropTypes.oneOf(['background', 'inverted', 'bordered', 'masked']),
   colors: PropTypes.arrayOf(PropTypes.string),
 };
 Blocks.defaultProps = {

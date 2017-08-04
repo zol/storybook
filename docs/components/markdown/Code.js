@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import glamorous from 'glamorous';
-// import Prism from 'prismjs';
-import { css } from 'glamor';
 
 const Code = glamorous(({ html, className, language, fileName, framework, ...rest }) =>
   <span {...{ className }}>
@@ -32,84 +30,5 @@ Code.displayName = 'Markdown.Code';
 Code.propTypes = {
   children: PropTypes.string.isRequired,
 };
-
-css.global('.prism-code', {
-  display: 'block',
-  color: '#C5C8C6',
-  padding: '0.5rem',
-  boxSizing: 'border-box',
-  verticalAlign: 'baseline',
-  outline: 'none',
-  textShadow: 'none',
-  hyphens: 'none',
-  wordWrap: 'normal',
-  wordBreak: 'normal',
-  textAlign: 'left',
-  wordSpacing: 'normal',
-  tabSize: '2',
-  background: 'rgba(0, 0, 0, 0.7)',
-  fontSize: '0.8rem',
-  fontFamily: '"Operator Mono", "Fira Code", "Fira Code Retina", "FiraCode-Retina", monospace',
-  fontFeatureSettings: '"calt" 1',
-  fontWeight: 300,
-  whiteSpace: 'pre-wrap',
-  borderRadius: '3px',
-  boxShadow: '1px 1px 20px rgba(20, 20, 20, 0.27)',
-  overflowX: 'hidden',
-});
-
-css.global('.token.comment, .token.prolog, .token.doctype, .token.cdata', {
-  color: '#5C6370',
-});
-
-css.global('.token.punctuation', {
-  color: '#abb2bf',
-});
-
-css.global('.token.selector, .token.tag', {
-  color: '#e06c75',
-});
-
-css.global(
-  '.token.property, .token.boolean, .token.number, .token.constant, .token.symbol, .token.attr-name, .token.deleted',
-  {
-    color: '#d19a66',
-  }
-);
-
-css.global('.token.string, .token.char, .token.attr-value, .token.builtin, .token.inserted', {
-  color: '#98c379',
-});
-
-css.global(
-  '.token.operator, .token.entity, .token.url, .language-css .token.string, .style .token.string',
-  {
-    color: '#56b6c2',
-  }
-);
-
-css.global('.token.atrule, .token.keyword', {
-  color: '#c678dd',
-});
-
-css.global('.token.function', {
-  color: '#61afef',
-});
-
-css.global('.token.regex, .token.important, .token.variable', {
-  color: '#c678dd',
-});
-
-css.global('.token.important, .token.bold', {
-  fontWeight: 'bold',
-});
-
-css.global('.token.italic', {
-  fontStyle: 'italic',
-});
-
-css.global('.token.entity', {
-  cursor: 'help',
-});
 
 export { Code as default };

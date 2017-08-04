@@ -12,7 +12,7 @@ module.exports = {
   },
   '/docs/api': {
     size: 1082,
-    modified: '2017-08-04T21:27:25.000Z',
+    modified: '2017-08-04T21:59:51.000Z',
     created: '2017-07-31T21:02:54.000Z',
     name: 'api',
     isFile: true,
@@ -37,7 +37,7 @@ module.exports = {
   },
   '/docs/cli': {
     size: 508,
-    modified: '2017-08-04T21:27:25.000Z',
+    modified: '2017-08-04T21:59:51.000Z',
     created: '2017-07-31T21:02:54.000Z',
     name: 'cli',
     isFile: true,
@@ -62,7 +62,7 @@ module.exports = {
   },
   '/docs/community': {
     size: 520,
-    modified: '2017-08-04T21:27:25.000Z',
+    modified: '2017-08-04T21:59:51.000Z',
     created: '2017-07-31T21:02:54.000Z',
     name: 'community',
     isFile: true,
@@ -87,7 +87,7 @@ module.exports = {
   },
   '/docs/configs': {
     size: 516,
-    modified: '2017-08-04T21:27:25.000Z',
+    modified: '2017-08-04T21:59:51.000Z',
     created: '2017-07-31T21:02:54.000Z',
     name: 'configs',
     isFile: true,
@@ -131,7 +131,7 @@ module.exports = {
   },
   '/docs/issues': {
     size: 514,
-    modified: '2017-08-04T21:27:25.000Z',
+    modified: '2017-08-04T21:59:51.000Z',
     created: '2017-07-31T21:02:54.000Z',
     name: 'issues',
     isFile: true,
@@ -156,7 +156,7 @@ module.exports = {
   },
   '/docs/structure': {
     size: 520,
-    modified: '2017-08-04T21:27:25.000Z',
+    modified: '2017-08-04T21:59:51.000Z',
     created: '2017-07-31T21:02:54.000Z',
     name: 'structure',
     isFile: true,
@@ -180,8 +180,8 @@ module.exports = {
     ],
   },
   '/easteregg': {
-    size: 504,
-    modified: '2017-08-04T21:36:56.000Z',
+    size: 499,
+    modified: '2017-08-04T22:28:21.000Z',
     created: '2017-07-31T21:02:54.000Z',
     name: 'easteregg',
     isFile: true,
@@ -201,7 +201,7 @@ module.exports = {
   },
   '/example': {
     size: 495,
-    modified: '2017-08-04T21:27:25.000Z',
+    modified: '2017-08-04T21:59:51.000Z',
     created: '2017-07-31T21:02:54.000Z',
     name: 'example',
     isFile: true,
@@ -221,7 +221,7 @@ module.exports = {
   },
   '/guides': {
     size: 5107,
-    modified: '2017-08-04T21:27:25.000Z',
+    modified: '2017-08-04T21:59:51.000Z',
     created: '2017-07-31T21:02:54.000Z',
     name: 'index',
     isFile: true,
@@ -242,7 +242,7 @@ module.exports = {
   },
   '/guides/setup': {
     size: 516,
-    modified: '2017-08-04T21:27:25.000Z',
+    modified: '2017-08-04T21:59:51.000Z',
     created: '2017-07-31T21:02:54.000Z',
     name: 'setup',
     isFile: true,
@@ -262,7 +262,7 @@ module.exports = {
   },
   '/guides/why': {
     size: 514,
-    modified: '2017-08-04T21:27:25.000Z',
+    modified: '2017-08-04T21:59:51.000Z',
     created: '2017-07-31T21:02:54.000Z',
     name: 'why',
     isFile: true,

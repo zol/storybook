@@ -5,6 +5,15 @@ const P = require('exprjs');
 const parser = new P();
 const C_NEWLINE = '\n';
 
+const getprop = string => {
+  try {
+    const ast = parser.parse(string);
+    return parser.run(ast);
+  } catch (e) {
+    return {};
+  }
+};
+
 module.exports = function blockPlugin() {
   const regex = new RegExp(':::([a-z]+)(.*)', 'i');
   const regexClose = new RegExp(':::');
@@ -42,9 +51,9 @@ module.exports = function blockPlugin() {
     const add = eat(stringToEat);
     const exit = this.enterBlock();
     const contents = this.tokenizeBlock(contentString, now);
+
+    const props = getprop(keep[2]);
     exit();
-    const ast = parser.parse(keep[2]);
-    const props = parser.run(ast);
 
     return add({
       type: 'ReactComponent',

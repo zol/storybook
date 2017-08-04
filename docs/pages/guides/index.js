@@ -39,22 +39,22 @@ export default generator('GuidesIndex', ({ path }) =>
             <h2>Why Storybook</h2>
             <ol>
               <li>
-                <Link href="/guides/why">
+                <Link href="/guides/why/">
                   <a>Concept</a>
                 </Link>
               </li>
               <li>
-                <Link href="/guides/why#decorators">
+                <Link href="/guides/why/#decorators">
                   <a>Decorators</a>
                 </Link>
               </li>
               <li>
-                <Link href="/guides/why#addons">
+                <Link href="/guides/why/#addons">
                   <a>Addons</a>
                 </Link>
               </li>
               <li>
-                <Link href="/guides/why#integration">
+                <Link href="/guides/why/#integration">
                   <a>Integration</a>
                 </Link>
               </li>

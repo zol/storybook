@@ -11,6 +11,15 @@ if (typeof window !== 'undefined') {
   rehydrate(window.__NEXT_DATA__.ids);
 }
 
+const splitPath = uri => {
+  const [path, hash] = uri.split('#');
+
+  return {
+    path: path.replace(/\/$/, ''),
+    hash,
+  };
+};
+
 const Page = ({ children }) => {
   css.global('html', {
     margin: 0,
@@ -54,7 +63,7 @@ export const generator = (name, content) => {
   };
 
   Component.getInitialProps = ({ asPath, query }) => ({
-    path: asPath,
+    ...splitPath(asPath),
     query,
   });
 

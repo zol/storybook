@@ -13,16 +13,31 @@ import TwitterIcon from './icons/Twitter';
 import Bar from './TopBar';
 import Suggestions from './SearchSuggestions';
 
-const TopLogo = glamorous(StorybookLogo)({
+const TopLogo = glamorous(({ className }) =>
+  <Link href="/">
+    <a className={className}>
+      <StorybookLogo width="auto" height="100%" />
+    </a>
+  </Link>
+)({
   height: '100%',
   width: 'auto',
+
+  '@media screen and (min-width: 501px)': {
+    margin: -4,
+    height: 'calc(100% + 8px)',
+  },
+
+  '& svg': {
+    height: '100%',
+    width: 'auto',
+  },
 });
 const Nav = glamorous.ul(({ active }) => ({
   margin: 0,
   padding: 0,
   '@media screen and (min-width: 501px)': {
     display: 'flex',
-    padding: 0,
   },
   '@media screen and (max-width: 500px)': {
     position: 'absolute',
@@ -142,30 +157,26 @@ const TopNav = class extends Component {
     return (
       <div>
         <Bar active={active}>
-          <Link href="/">
-            <a>
-              <TopLogo />
-            </a>
-          </Link>
+          <TopLogo />
           <NavContainer>
             <Nav active={expanded}>
               <NavItem>
-                <Link href="/guides">
+                <Link href="/guides/">
                   <a>Guides</a>
                 </Link>
               </NavItem>
               <NavItem>
-                <Link href="/demo">
+                <Link href="/demo/">
                   <a>Demo</a>
                 </Link>
               </NavItem>
               <NavItem>
-                <Link href="/docs">
+                <Link href="/docs/">
                   <a>Docs</a>
                 </Link>
               </NavItem>
               <NavItem>
-                <Link href="/guides">
+                <Link href="/guides/">
                   <a>Examples</a>
                 </Link>
               </NavItem>

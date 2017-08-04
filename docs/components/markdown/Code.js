@@ -5,7 +5,9 @@ import Prism from 'prismjs';
 import { css } from 'glamor';
 
 const Code = glamorous(({ children, className, language, fileName, framework, ...rest }) => {
-  const html = Prism.highlight(children, Prism.languages[language]);
+  const html = Prism.languages[language]
+    ? Prism.highlight(children, Prism.languages[language])
+    : children;
   return (
     <span {...{ className }}>
       {Object.keys(rest).length

@@ -21,12 +21,17 @@ const Item = glamorous(({ name, route, className, ...props }) =>
 
 const getItems = (sitemap, path) => {
   const out = Object.keys(sitemap).find(k => sitemap[k].files.find(f => f === path));
+  if (!out) {
+    return [];
+  }
   return sitemap[out].files.map(k => sitemap[k]);
 };
 
 const SideNav = glamorous(({ sitemap, path, ...props }) =>
   <ul {...props}>
-    {getItems(sitemap, path).map(item => <Item {...item} isActive={item.route === path} />)}
+    {getItems(sitemap, path).map(item =>
+      <Item {...item} isActive={item.route === path} key={item.route} />
+    )}
   </ul>
 )({
   background: 'none',
@@ -41,7 +46,7 @@ const SideNav = glamorous(({ sitemap, path, ...props }) =>
 
 SideNav.displayName = 'SideNav';
 SideNav.propTypes = {
-  sitemap: PropTypes.arrayOf(PropTypes.object),
+  sitemap: PropTypes.oneOfType([PropTypes.object]),
 };
 
 export default SideNav;

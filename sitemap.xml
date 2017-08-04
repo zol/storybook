@@ -9,6 +9,8 @@
 <url> <loc>https://storybook.js.org/basics/community/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://storybook.js.org/basics/exporting-storybook/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://storybook.js.org/basics/faq/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://storybook.js.org/basics/guide-react/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://storybook.js.org/basics/guide-vue/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://storybook.js.org/basics/introduction/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://storybook.js.org/basics/quick-start-guide/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://storybook.js.org/basics/slow-start-guide/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>

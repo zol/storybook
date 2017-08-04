@@ -8,6 +8,7 @@ const slugify = require('github-slugger')();
 const unified = require('unified');
 const remarkParse = require('remark-parse');
 const myCustomBlocks = require('./myCustomBlocks');
+const mySyntaxHighlighting = require('./syntaxHighlighting');
 
 const parser = markdown => unified().use(remarkParse).use(myCustomBlocks).parse(markdown);
 
@@ -104,8 +105,9 @@ module.exports = function({ types: t }) {
     code: props => {
       const { value, lang } = props;
       const [, language, filename, framework] = lang.match(splitLang);
+      const html = mySyntaxHighlighting(value, language);
 
-      return NR('Markdown', 'Code', { language, filename, framework }, [t.jSXText(value)]);
+      return NR('Markdown', 'Code', { language, filename, framework, html }, []);
     },
     blockquote: ({ children }, context) => R('blockquote', {}, mapChildren(children, context)),
     inlineCode: ({ value }) => t.jSXText(value),

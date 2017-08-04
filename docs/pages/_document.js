@@ -24,10 +24,6 @@ export default class MyDocument extends Document {
           <title>Storybook</title>
           <meta name="viewport" content="initial-scale=1.0, width=device-width" />
 
-          <link
-            rel="stylesheet"
-            href="https://cloud.typography.com/7039052/7606172/css/fonts.css"
-          />
           <style dangerouslySetInnerHTML={{ __html: this.props.css }} />
         </Head>
         <body>

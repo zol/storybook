@@ -1,24 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import glamorous from 'glamorous';
-import Prism from 'prismjs';
+// import Prism from 'prismjs';
 import { css } from 'glamor';
 
-const Code = glamorous(({ children, className, language, fileName, framework, ...rest }) => {
-  const html = Prism.languages[language]
-    ? Prism.highlight(children, Prism.languages[language])
-    : children;
-  return (
-    <span {...{ className }}>
-      {Object.keys(rest).length
-        ? <pre>
-            {JSON.stringify({ language, fileName, framework, ...rest }, null, 2)}
-          </pre>
-        : null}
+const Code = glamorous(({ html, className, language, fileName, framework, ...rest }) =>
+  <span {...{ className }}>
+    <pre>
+      {JSON.stringify({ language, fileName, framework, ...rest }, null, 2)}
+    </pre>
+    <pre>
       <code className="prism-code" dangerouslySetInnerHTML={{ __html: html }} />
-    </span>
-  );
-})({
+    </pre>
+  </span>
+)({
   whiteSpace: 'pre',
   background: 'repeating-linear-gradient(45deg, #e3eaf1, #e3eaf1 10px, #f0f0f0 10px, #eeeeee 20px)',
   'p > &': {
@@ -54,7 +49,8 @@ css.global('.prism-code', {
   tabSize: '2',
   background: 'rgba(0, 0, 0, 0.7)',
   fontSize: '0.8rem',
-  fontFamily: '"Operator Mono SSm A", "Operator Mono SSm B", monospace',
+  fontFamily: '"Operator Mono", "Fira Code", "Fira Code Retina", "FiraCode-Retina", monospace',
+  fontFeatureSettings: '"calt" 1',
   fontWeight: 300,
   whiteSpace: 'pre-wrap',
   borderRadius: '3px',

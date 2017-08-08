@@ -4,19 +4,20 @@
   // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
+
   {
     "type": "node",
     "request": "launch",
-    "name": "Launch Program",
+    "name": "Test sitemap.js",
     "cwd": "${workspaceRoot}/docs",
-    "program": "${workspaceRoot}/docs/scripts/dev.js"
+    "program": "${workspaceRoot}/docs/scripts/tasks/sitemap.js"
   },
     {
     "type": "node",
     "request": "launch",
-    "name": "Launch test3",
+    "name": "Test dirToTree.js",
     "cwd": "${workspaceRoot}/docs",
-    "program": "${workspaceRoot}/docs/lib/test3.js"
+    "program": "${workspaceRoot}/docs/lib/dirToTree.js"
   }
 
   ]

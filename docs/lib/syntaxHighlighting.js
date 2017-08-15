@@ -43,24 +43,30 @@ const toAst = source => babylon.parse(source, babylonOptions);
 const toIndented = source => prettier.format(source, prettierOptions);
 
 const wrap = node => `<${node.type}>${node.text}</${node.type}>`;
-const replace = (source, parent, child) => {
+const replace = (text, parent, child) => {
   // todo
-  const start = child.start - parent.start;
-  const end = child.end - parent.end;
-  const length = end - start;
+  const offset = text.length - parent.text.length;
+  if (child.type === 'Identifier') {
+    console.log('');
+  }
+  // offset = 0;
 
-  const block1 = parent.text.slice(0, start);
-  const block2 = parent.text.slice(start, end);
-  const block3 = parent.text.slice(end);
-  console.log({ block1, block2, block3 });
-  return parent.text;
+  const start = child.start + offset - parent.start;
+  const length = child.end - child.start + offset;
+  const end = start + length;
+  child.suboffset = offset;
+
+  const block1 = text.substr(0, start);
+  const block2 = text.substr(start, length);
+  const block3 = text.substr(end);
+  const out = block1 + wrap(child) + block3;
+  // console.log({ block1, block2, block3, start, end, length, offset, out });
+  return out;
 };
 const toHighlightString = (source, offset, node) => {
   count++;
   const out = {
-    // id: node.id,
     type: node.type,
-    // init: node.init,
     text: source.slice(node.start, node.end),
     offset,
     start: node.start,
@@ -68,19 +74,30 @@ const toHighlightString = (source, offset, node) => {
     children: []
       .concat(
         isChild(
+          node.id,
           node.body,
           node.children,
+          node.attributes,
+          node.name,
+          node.key,
+          node.value,
+          node.innerComments,
+          node.expression,
+          node.argument,
+          node.object,
+          node.property,
+          node.openingElement,
           node.closingElement,
           node.declarations,
-          node.id,
-          node.init,
-          node.openingElement
+          node.init
         ) || []
       )
+      .sort((a, b) => a.start > b.start)
       .map(n => toHighlightString(source, node.start, n)),
   };
-  out.text = out.children.reverse().reduce((acc, item) => replace(source, out, item), out.text);
-  out.text = wrap(out);
+  // console.log(out.children);
+  out.text = out.children.reduce((acc, item) => replace(acc, out, item), out.text);
+  // out.text = wrap(out);
 
   // console.log(node);
   // console.log(out, count);
@@ -93,10 +110,11 @@ const exampleCode = toIndented(`
 const foo = async() => <Markdown.H2 {...{ a: '4'}}>
   header
 </Markdown.H2>
-const fooz = <H2 {...{ a: '4'}}></H2>
+const fooz = <H2 {...{ a: \`\${4}-\`}}></H2>
 `);
 
 const ast = toAst(exampleCode);
 const out = ast.program.body.map(node => toHighlightString(exampleCode, 0, node));
 
+console.log('in:', `\n${exampleCode}`);
 console.log('out:', `\n${out.map(o => o.text).join('\n')}`);

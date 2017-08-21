@@ -1,5 +1,5 @@
 {
-  "name": "cra-kitchen-sink",
+  "name": "example-cra-kitchen-sink",
   "version": "1.0.0",
   "scripts": {
     "build": "react-scripts build",

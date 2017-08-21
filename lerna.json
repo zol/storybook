@@ -1,13 +1,6 @@
 {
   "lerna": "2.0.0",
   "commands": {
-    "bootstrap": {
-      "ignore": [
-        "crna-kitchen-sink",
-        "test-cra",
-        "react-native-vanilla"
-      ]
-    },
     "publish": {
       "ignore": [
         "cra-kitchen-sink",

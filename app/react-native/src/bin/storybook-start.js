@@ -54,7 +54,9 @@ if (!program.skipPackager) {
     symlinks
   );
 
-  let cliCommand = 'node node_modules/react-native/local-cli/cli.js start';
+  const reactnativePath = path.join(__dirname, '..', '..', 'node_modules', 'react-native');
+  console.log('reactnativePath', reactnativePath);
+  let cliCommand = `node ${reactnativePath}/local-cli/cli.js start`;
   if (program.haul) {
     cliCommand = `node node_modules/.bin/haul start --config ${program.haul} --platform all`;
   }

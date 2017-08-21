@@ -107,6 +107,8 @@ export default function(configType, baseConfig, projectDir, configDir) {
   if (!fs.existsSync(customConfigPath)) {
     logger.info('=> Using default webpack setup based on "Create React App".');
     customConfigPath = path.resolve(__dirname, './config/defaults/webpack.config.js');
+    const customConfig = require(customConfigPath); // eslint-disable-line
+    return customConfig(config, configType);
   }
 
   const customConfig = require(customConfigPath); // eslint-disable-line

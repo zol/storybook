@@ -4,8 +4,7 @@
     "bootstrap": {
       "ignore": [
         "crna-kitchen-sink",
-        "test-cra",
-        "react-native-vanilla"
+        "test-cra"
       ]
     },
     "publish": {

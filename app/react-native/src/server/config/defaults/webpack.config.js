@@ -53,6 +53,9 @@ module.exports = storybookBaseConfig => {
     ...newConfig.resolve,
     alias: {
       ...((newConfig.resolve && newConfig.resolve.alias) || {}),
+      react$: require.resolve('react'),
+      'react-dom$': require.resolve('react-dom'),
+      'react-native$': require.resolve('react-native'),
       // This is to support NPM2
       'babel-runtime/regenerator': require.resolve('babel-runtime/regenerator'),
     },

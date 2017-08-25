@@ -2,18 +2,11 @@ import { configure, setAddon } from '@storybook/react';
 import { setOptions } from '@storybook/addon-options';
 import infoAddon from '@storybook/addon-info';
 
-setOptions({
-  name: 'CRA Kitchen Sink',
-  url: 'https://github.com/storybooks/storybook/tree/master/examples/cra-kitchen-sink',
-  goFullScreen: false,
-  showLeftPanel: true,
-  showDownPanel: true,
-  showSearchBox: false,
-  downPanelInRight: true,
-  sortStoriesByKind: false,
-  hierarchySeparator: /\/|\./,
-});
+const options = {
+  name: 'My Storybook',
+};
 
+setOptions(options);
 setAddon(infoAddon);
 
 function loadStories() {
@@ -22,3 +15,20 @@ function loadStories() {
 }
 
 configure(loadStories, module);
+
+export default {
+  options: {
+    name: 'My Storybook',
+  },
+  addons: [infoAddon],
+  stories: [
+    '../src/stories/index',
+    '../src/stories/storybook-components'
+  ],
+  webpack: (config, env) => ({
+    ...config,
+  }),
+  babel: (config, env) => ({
+    ...config,
+  }),
+};

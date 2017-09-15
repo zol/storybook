@@ -3,7 +3,7 @@
 import { configure } from '@storybook/angular';
 
 function loadStories() {
-  require('../src/stories');
+  require('../stories');
 }
 
 configure(loadStories, module);

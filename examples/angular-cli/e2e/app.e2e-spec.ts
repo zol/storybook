@@ -1,15 +1,14 @@
-import { AppPage } from './app.po';
-import 'jasmine';
+import { FixturePage } from './app.po';
 
-describe('ng5test App', () => {
-  let page: AppPage;
+describe('fixture App', function() {
+  let page: FixturePage;
 
   beforeEach(() => {
-    page = new AppPage();
+    page = new FixturePage();
   });
 
-  it('should display welcome message', () => {
+  it('should display message saying app works', () => {
     page.navigateTo();
-    expect(<any>(page.getParagraphText())).toEqual('Welcome to app!');
+    expect(page.getParagraphText()).toEqual('app works!');
   });
 });

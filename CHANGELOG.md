@@ -1,3 +1,11 @@
+# 3.2.12
+
+2017-October-02
+
+Remove opencollective from storybook install. Note that there  is no PR since
+the master branch is possibly messed up right now and we want to get this out
+quickly. Will do a proper patch release 3.3.13 after we clean things up.
+
 # 3.2.11
 
 2017-September-27
